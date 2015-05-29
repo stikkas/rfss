@@ -1,0 +1,35 @@
+{% extends 'cms/help/base.html' %}
+{% load static %}
+
+{% block title %}профиль пользователя{% endblock %}
+
+{% block help_content %}
+	<p>при первичном захождении на сайт, а также при смене личных данных необходимо
+	   отредактировать свой профиль.</p>
+	<p>для начала наведите курсор на имя пользователя, после чего откроется меню, выберите пункт
+	   «профиль».</p>
+
+	<p class="text-centered"><img src="{% static 'img/help/1.jpg' %}"></p>
+	<p class="text-centered"><small class="text-info">рис. 1 меню пользователя </small></p>
+
+	<p>далее откроется профиль пользователя, где в поле «имя» будет указан адрес сайта совета
+	   судей субъекта рф, а в поле «фамилия» - логин.</p>
+
+	<p class="text-centered"><img src="{% static 'img/help/2.jpg' %}"></p>
+	<p class="text-centered"><small class="text-info">рис. 2</small></p>
+
+	<p>для внесения изменений в профиль, нажмите <img src="{% static 'img/help/redakt.jpg' %}"></p>
+	<p class="text-centered"><img src="{% static 'img/help/3.jpg' %}"></p>
+	<p class="text-centered"><small class="text-info">рис. 3</small></p>
+
+	<br>
+	<p class="text-centered">
+		<span class="alert alert-error">
+			<strong>внимание!</strong> проверяйте корректность заполнения данных! не удаляйте наименование сайта в поле «имя»!
+		</span>
+	</p>
+	<br>
+
+	<p class="text-centered"><img src="{% static 'img/help/4.jpg' %}"></p>
+	<p class="text-centered"><small class="text-info">рис. 4</small></p>
+{% endblock %}

@@ -1,0 +1,1385 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2014-04-18 14:15+0400\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2)\n"
+
+#: forms.py:44 forms.py:46 templates/cms/login.html:31
+msgid "Username"
+msgstr "Логин"
+
+#: forms.py:48 forms.py:50 templates/cms/login.html:42
+msgid "Password"
+msgstr "Пароль"
+
+#: forms.py:54
+msgid ""
+"Please enter a correct username and password. Note that both fields are case-"
+"sensitive."
+msgstr ""
+
+#: forms.py:56
+msgid ""
+"Your Web browser doesn't appear to have cookies enabled. Cookies are "
+"required for logging in."
+msgstr ""
+
+#: forms.py:58
+msgid "This account is inactive."
+msgstr ""
+
+#: forms.py:101
+msgid "Title"
+msgstr "Название"
+
+#: forms.py:102 forms.py:133 forms.py:228
+msgid "Category"
+msgstr "Категория"
+
+#: forms.py:103
+msgid "Annotation"
+msgstr "Аннотация"
+
+#: forms.py:121
+#, python-format
+msgid " Max size: %(size)d MiB. Allowed types: %(types)s."
+msgstr " Максимальный размер: %(size)d MiB. Типы файлов: %(types)s."
+
+#: forms.py:147 templates/cms/profile.html:24
+msgid "First name"
+msgstr "Имя"
+
+#: forms.py:148 templates/cms/profile.html:28
+msgid "Last name"
+msgstr "Фамилия"
+
+#: forms.py:149 templates/cms/profile.html:32
+msgid "Gender"
+msgstr "Пол"
+
+#: forms.py:150 templates/cms/profile.html:36
+msgid "Birthday"
+msgstr "День рождения"
+
+#: forms.py:151 templates/cms/moderate_new_users.html:27
+#: templates/cms/moderate_new_users.html:73
+#: templates/cms/moderate_new_users.html:96
+msgid "Department"
+msgstr "Организация"
+
+#: forms.py:153 templates/cms/moderate_new_users.html:28
+#: templates/cms/moderate_new_users.html:75
+#: templates/cms/moderate_new_users.html:98 templates/cms/profile.html:44
+msgid "Position"
+msgstr "Должность"
+
+#: forms.py:155 templates/cms/moderate_new_users.html:78
+#: templates/cms/moderate_new_users.html:101 templates/cms/profile.html:48
+msgid "Phone"
+msgstr "Телефон"
+
+#: forms.py:157 templates/cms/moderate_new_users.html:29
+#: templates/cms/moderate_new_users.html:77
+#: templates/cms/moderate_new_users.html:100 templates/cms/profile.html:52
+msgid "E-Mail"
+msgstr ""
+
+#: forms.py:162
+msgid "Subject"
+msgstr "Тема"
+
+#: forms.py:163
+msgid "Recipients"
+msgstr "Получатели"
+
+#: forms.py:165
+msgid "Body"
+msgstr "Сообщение"
+
+#: forms.py:168
+msgid "Not found sender."
+msgstr "Отправитель не найден"
+
+#: forms.py:169
+msgid "Not all recipients are found"
+msgstr "Не все указанные получатели найдены"
+
+#: forms.py:175
+msgid "Admins"
+msgstr "Администраторы"
+
+#: forms.py:179
+msgid "Moderators"
+msgstr "Модераторы"
+
+#: forms.py:185
+msgid "Managers"
+msgstr "Менеджеры"
+
+#: forms.py:219
+msgid "In Title"
+msgstr "В заголовке"
+
+#: forms.py:220
+msgid "In Content"
+msgstr "В содержимом"
+
+#: forms.py:224 forms.py:226 templates/cms/menu.html:37
+msgid "Query"
+msgstr "Запрос"
+
+#: forms.py:233
+msgid "Date From"
+msgstr "С"
+
+#: forms.py:236
+msgid "Date To"
+msgstr "По"
+
+#: models.py:7
+msgid "Men"
+msgstr "Мужской"
+
+#: models.py:8
+msgid "Woman"
+msgstr "Женский"
+
+#: models.py:14
+msgid "birthday"
+msgstr "день рождения"
+
+#: models.py:16
+msgid "gender"
+msgstr "пол"
+
+#: models.py:18
+msgid "department"
+msgstr "организация"
+
+#: models.py:20 components/person/models.py:20
+msgid "position"
+msgstr "должность"
+
+#: models.py:22 letters/models.py:130
+msgid "phone"
+msgstr "телефон"
+
+#: models.py:25
+msgid "is manager?"
+msgstr "менеджер?"
+
+#: models.py:26
+msgid "is moderator?"
+msgstr "модератор?"
+
+#: widgets.py:10
+msgid "Currently"
+msgstr "Текущая"
+
+#: widgets.py:11
+msgid "Change"
+msgstr "Изменить"
+
+#: widgets.py:12
+msgid "Clear"
+msgstr "Очистить"
+
+#: components/pages/models.py:18 components/pages/models.py:109
+#: letters/models.py:167 menu/models.py:20 regions/models.py:22
+msgid "name"
+msgstr "Имя"
+
+#: components/pages/models.py:20 messenger/models.py:9 polls/models.py:7
+msgid "create date"
+msgstr "дата публикации"
+
+#: components/pages/models.py:21
+msgid "relevance date"
+msgstr "актуально до"
+
+#: components/pages/models.py:24
+msgid "keywords"
+msgstr "Ключевые слова"
+
+#: components/pages/models.py:29
+msgid "annotation"
+msgstr "аннотация"
+
+#: components/pages/models.py:31 messenger/models.py:8
+msgid "content"
+msgstr "содержимое"
+
+#: components/pages/models.py:33 components/pages/models.py:194
+msgid "visible"
+msgstr "видимость"
+
+#: components/pages/models.py:35
+msgid "full preview"
+msgstr "главная"
+
+#: components/pages/models.py:36 templates/cms/components/page_manage.html:26
+msgid "show in news"
+msgstr "Отображать в новостях"
+
+#: components/pages/models.py:39
+msgid "vised"
+msgstr "завизировано"
+
+#: components/pages/models.py:41
+msgid "version"
+msgstr "версия"
+
+#: components/pages/models.py:45 components/pages/models.py:190
+msgid "last modified"
+msgstr ""
+
+#: components/pages/models.py:50 templates/cms/components/page_ctrl.html:4
+#: templates/cms/components/page_edit.html:38
+msgid "Page"
+msgstr "Публикация"
+
+#: components/pages/models.py:51
+msgid "Pages"
+msgstr "Публикации"
+
+#: components/pages/models.py:96
+#, python-format
+msgid "Type .%s is invalid."
+msgstr "Не верный тип файла .%s"
+
+#: components/pages/models.py:102
+#, python-format
+msgid "Attachment file size is invalid (%.2f MiB)."
+msgstr "Превышен размер файла (%.2f MiB)."
+
+#: components/pages/models.py:110 letters/models.py:169
+msgid "file"
+msgstr "файл"
+
+#: components/pages/models.py:115
+msgid "attachment"
+msgstr "приложение"
+
+#: components/pages/models.py:116
+msgid "attachments"
+msgstr "приложения"
+
+#: components/pages/models.py:189 letters/models.py:136
+msgid "message"
+msgstr "Сообщения"
+
+#: components/pages/models.py:192
+msgid "is changed?"
+msgstr ""
+
+#: components/pages/models.py:199
+msgid "page comment"
+msgstr "Написать коментарий"
+
+#: components/pages/models.py:200
+msgid "page comments"
+msgstr "Написать коментарий"
+
+#: components/person/models.py:17
+msgid "Photography"
+msgstr "Фотография"
+
+#: components/person/models.py:19
+msgid "full name"
+msgstr "полное имя"
+
+#: components/person/models.py:21
+msgid "Biography"
+msgstr "Биография"
+
+#: components/person/models.py:22
+msgid "show on map"
+msgstr "отображать на карте"
+
+#: components/person/models.py:26 templates/cms/components/person_ctrl.html:4
+msgid "Person"
+msgstr "Персоналия"
+
+#: components/person/models.py:27
+msgid "Persons"
+msgstr "Персоналии"
+
+#: letters/models.py:12 letters/models.py:16
+msgid "rubrics"
+msgstr "рубрики"
+
+#: letters/models.py:15 letters/models.py:133
+msgid "rubric"
+msgstr "рубрика"
+
+#: letters/models.py:24
+msgid "Russia"
+msgstr "Россия"
+
+#: letters/models.py:25
+msgid "Republic of Adygea"
+msgstr "Республика Адыгея"
+
+#: letters/models.py:26
+msgid "Altai Republic"
+msgstr "Республика Алтай"
+
+#: letters/models.py:27
+msgid "Republic of Bashkortostan"
+msgstr "Республика Башкортостан"
+
+#: letters/models.py:28
+msgid "Republic of Buryatia"
+msgstr "Республика Бурятия"
+
+#: letters/models.py:29
+msgid "Chechen Republic"
+msgstr "Чеченская Республика"
+
+#: letters/models.py:30
+msgid "Chuvash Republic"
+msgstr "Чувашская Республика"
+
+#: letters/models.py:31
+msgid "Republic of Dagestan"
+msgstr "Республика Дагестан"
+
+#: letters/models.py:32
+msgid "Republic of Ingushetia"
+msgstr "Республика Ингушетия"
+
+#: letters/models.py:33
+msgid "Kabardino-Balkar Republic"
+msgstr "Республика Кабардино-Балкария"
+
+#: letters/models.py:34
+msgid "Republic of Kalmykia"
+msgstr "Республика Калмыкия"
+
+#: letters/models.py:35
+msgid "Karachay-Cherkess Republic"
+msgstr "Карачаево-Черкесская Республика"
+
+#: letters/models.py:36
+msgid "Republic of Karelia"
+msgstr "Республика Карелия"
+
+#: letters/models.py:37
+msgid "Republic of Khakassia"
+msgstr "Республика Хакасия"
+
+#: letters/models.py:38
+msgid "Komi Republic"
+msgstr "Республика Коми"
+
+#: letters/models.py:39
+msgid "Mari El Republic"
+msgstr "Республика Марий Эл"
+
+#: letters/models.py:40
+msgid "Republic of Mordovia"
+msgstr "Республика Мордовия"
+
+#: letters/models.py:41
+msgid "Sakha (Yakutia) Republic"
+msgstr "Республика Саха (Якутия)"
+
+#: letters/models.py:42
+msgid "Republic of North Ossetia-Alania"
+msgstr "Республика Северная Осетия-Алания"
+
+#: letters/models.py:43
+msgid "Republic of Tatarstan"
+msgstr "Республика Татарстан"
+
+#: letters/models.py:44
+msgid "Tuva Republic"
+msgstr "Республика Тыва"
+
+#: letters/models.py:45
+msgid "Udmurt Republic"
+msgstr "Удмуртская Республика"
+
+#: letters/models.py:46
+msgid "Altai Krai"
+msgstr "Алтайский край"
+
+#: letters/models.py:47
+msgid "Kamchatka Krai"
+msgstr "Камчатский край"
+
+#: letters/models.py:48
+msgid "Khabarovsk Krai"
+msgstr "Хабаровский край"
+
+#: letters/models.py:49
+msgid "Krasnodar Krai"
+msgstr "Краснодарский край"
+
+#: letters/models.py:50
+msgid "Krasnoyarsk Krai"
+msgstr "Красноярский край"
+
+#: letters/models.py:51
+msgid "Perm Krai"
+msgstr "Пермский край"
+
+#: letters/models.py:52
+msgid "Primorsky Krai"
+msgstr "Приморский край"
+
+#: letters/models.py:53
+msgid "Stavropol Krai"
+msgstr "Ставропольский край"
+
+#: letters/models.py:54
+msgid "Zabaykalsky Krai"
+msgstr "Забайкальский край"
+
+#: letters/models.py:55
+msgid "Amur Oblast"
+msgstr "Амурская область"
+
+#: letters/models.py:56
+msgid "Arkhangelsk Oblast"
+msgstr "Архангельская область"
+
+#: letters/models.py:57
+msgid "Astrakhan Oblast"
+msgstr "Астраханская область"
+
+#: letters/models.py:58
+msgid "Belgorod Oblast"
+msgstr "Белгородская область"
+
+#: letters/models.py:58
+msgid "Bryansk Oblast"
+msgstr "Брянская область"
+
+#: letters/models.py:59
+msgid "Chelyabinsk Oblast"
+msgstr "Челябинская область"
+
+#: letters/models.py:60
+msgid "Irkutsk Oblast"
+msgstr "Иркутская область"
+
+#: letters/models.py:61
+msgid "Ivanovo Oblast"
+msgstr "Ивановская область"
+
+#: letters/models.py:62
+msgid "Kaliningrad Oblast"
+msgstr "Калининградская область"
+
+#: letters/models.py:63
+msgid "Kaluga Oblast"
+msgstr "Калужская область"
+
+#: letters/models.py:64
+msgid "Kemerovo Oblast"
+msgstr "Кемеровская область"
+
+#: letters/models.py:65
+msgid "Kirov Oblast"
+msgstr "Кировская область"
+
+#: letters/models.py:66
+msgid "Kostroma Oblast"
+msgstr "Костромская область"
+
+#: letters/models.py:67
+msgid "Kurgan Oblast"
+msgstr "Курганская область"
+
+#: letters/models.py:68
+msgid "Kursk Oblast"
+msgstr "Курская область"
+
+#: letters/models.py:69
+msgid "Leningrad Oblast"
+msgstr "Ленинградская область"
+
+#: letters/models.py:70
+msgid "Lipetsk Oblast"
+msgstr "Липецкая область"
+
+#: letters/models.py:71
+msgid "Magadan Oblast"
+msgstr "Магаданская область"
+
+#: letters/models.py:72
+msgid "Moscow Oblast"
+msgstr "Московская область"
+
+#: letters/models.py:73
+msgid "Murmansk Oblast"
+msgstr "Мурманская область"
+
+#: letters/models.py:74
+msgid "Nizhny Novgorod Oblast"
+msgstr "Нижегородская область"
+
+#: letters/models.py:75
+msgid "Novgorod Oblast"
+msgstr "Новгородская область"
+
+#: letters/models.py:76
+msgid "Novosibirsk Oblast"
+msgstr "Новосибирская область"
+
+#: letters/models.py:77
+msgid "Omsk Oblast"
+msgstr "Омская область"
+
+#: letters/models.py:78
+msgid "Orenburg Oblast"
+msgstr "Оренбургская область"
+
+#: letters/models.py:79
+msgid "Oryol Oblast"
+msgstr "Орловская область"
+
+#: letters/models.py:80
+msgid "Penza Oblast"
+msgstr "Пензенская область"
+
+#: letters/models.py:81
+msgid "Pskov Oblast"
+msgstr "Псковская область"
+
+#: letters/models.py:82
+msgid "Rostov Oblast"
+msgstr "Ростовская область"
+
+#: letters/models.py:83
+msgid "Ryazan Oblast"
+msgstr "Рязанская область"
+
+#: letters/models.py:84
+msgid "Sakhalin Oblast"
+msgstr "Сахалинская область"
+
+#: letters/models.py:85
+msgid "Samara Oblast"
+msgstr "Самарская область"
+
+#: letters/models.py:86
+msgid "Saratov Oblast"
+msgstr "Саратовская область"
+
+#: letters/models.py:87
+msgid "Smolensk Oblast"
+msgstr "Смоленская область"
+
+#: letters/models.py:88
+msgid "Sverdlovsk Oblast"
+msgstr "Свердловская область"
+
+#: letters/models.py:89
+msgid "Tambov Oblast"
+msgstr "Тамбовская область"
+
+#: letters/models.py:90
+msgid "Tomsk Oblast"
+msgstr "Томская область"
+
+#: letters/models.py:91
+msgid "Tula Oblast"
+msgstr "Тульская область"
+
+#: letters/models.py:92
+msgid "Tver Oblast"
+msgstr "Тверская область"
+
+#: letters/models.py:93
+msgid "Tyumen Oblast"
+msgstr "Тюменская область"
+
+#: letters/models.py:94
+msgid "Ulyanovsk Oblast"
+msgstr "Ульяновская область"
+
+#: letters/models.py:95
+msgid "Vladimir Oblast"
+msgstr "Владимирская область"
+
+#: letters/models.py:96
+msgid "Volgograd Oblast"
+msgstr "Волгоградская область"
+
+#: letters/models.py:97
+msgid "Vologda Oblast"
+msgstr "Вологодская область"
+
+#: letters/models.py:98
+msgid "Voronezh Oblast"
+msgstr "Воронежская область"
+
+#: letters/models.py:99
+msgid "Yaroslavl Oblast"
+msgstr "Ярославская область"
+
+#: letters/models.py:100
+msgid "Moscow"
+msgstr "Москва"
+
+#: letters/models.py:101
+msgid "Saint Petersburg"
+msgstr "Санкт-Петербург"
+
+#: letters/models.py:102
+msgid "Jewish Autonomous Oblast"
+msgstr "Еврейская автономная область"
+
+#: letters/models.py:103
+msgid "Chukotka Autonomous Okrug"
+msgstr "Чукотский автономный округ"
+
+#: letters/models.py:104
+msgid "Khanty-Mansi Autonomous Okrug"
+msgstr "Ханты-Мансийский АО"
+
+#: letters/models.py:105
+msgid "Nenets Autonomous Okrug"
+msgstr "Ненецкий автономный округ"
+
+#: letters/models.py:106
+msgid "Yamalo-Nenets Autonomous Okrug"
+msgstr "Ямало-Ненецкий АО"
+
+#: letters/models.py:107
+msgid "Republic of Crimea"
+msgstr "Республика Крым"
+
+#: letters/models.py:108
+msgid "Sevastopol"
+msgstr "Севастополь"
+
+#: letters/models.py:112
+msgid "first name"
+msgstr "Имя"
+
+#: letters/models.py:113
+msgid "last name"
+msgstr "Фамилия"
+
+#: letters/models.py:114
+msgid "patronymic"
+msgstr "Отчество"
+
+#: letters/models.py:115
+msgid "organization"
+msgstr "Организация"
+
+#: letters/models.py:118
+msgid "country / region"
+msgstr "страна / регион"
+
+#: letters/models.py:119
+msgid "district"
+msgstr "район"
+
+#: letters/models.py:121
+msgid "city / settlement"
+msgstr "город / населенный пункт"
+
+#: letters/models.py:122
+msgid "street"
+msgstr "улица"
+
+#: letters/models.py:123
+msgid "house"
+msgstr "номер дома"
+
+#: letters/models.py:124
+msgid "building"
+msgstr "строение / корпус"
+
+#: letters/models.py:126
+msgid "flat / office"
+msgstr "квартира / офис"
+
+#: letters/models.py:128
+msgid "zip code"
+msgstr "почтовый индекс"
+
+#: letters/models.py:131 letters/models.py:200
+msgid "email"
+msgstr ""
+
+#: letters/models.py:135 messenger/models.py:7
+msgid "subject"
+msgstr "тема"
+
+#: letters/models.py:138
+msgid "reply by email"
+msgstr "ответ по email"
+
+#: letters/models.py:139
+msgid "reply by post"
+msgstr "ответ по почте"
+
+#: letters/models.py:141
+msgid "filing datetime"
+msgstr "дата заполнения"
+
+#: letters/models.py:144
+msgid "letter"
+msgstr "обращение"
+
+#: letters/models.py:145
+msgid "letters"
+msgstr "обращения"
+
+#: letters/models.py:158
+#, python-format
+msgid ""
+"Exceeded the maximum file size of %(size).2f MB: (current %(size).2f MB)"
+msgstr "Превышен максимальный размер в %(size).2f МБ: (сейчас %(size).2f МБ)"
+
+#: letters/models.py:162
+#, python-format
+msgid "Invalid file type: %(ext)s"
+msgstr "Недопустимый тип файла: %(ext)s"
+
+#: letters/models.py:183
+msgid "is sent?"
+msgstr "отправленно?"
+
+#: letters/models.py:184
+msgid "error message"
+msgstr "сообщение ошибки"
+
+#: letters/models.py:186
+msgid "last attempt"
+msgstr "последняя попытка"
+
+#: letters/models.py:187
+msgid "sent at"
+msgstr "отправленно"
+
+#: letters/models.py:203
+msgid "post box"
+msgstr "почтовый ящик"
+
+#: letters/models.py:204
+msgid "post boxes"
+msgstr "почтовые ящики"
+
+#: letters/postman.py:21
+#, python-format
+msgid "%(prefix)s[Letter from %(region)s: %(id)d] %(subject)s"
+msgstr "%(prefix)s[Обращение с %(region)s: %(id)d] %(subject)s"
+
+#: menu/models.py:21
+msgid "sort order"
+msgstr "порядок сортировки"
+
+#: menu/models.py:27
+msgid "template list"
+msgstr "шаблон списка"
+
+#: menu/models.py:28
+msgid "template for component list"
+msgstr "шаблон для списка компонента"
+
+#: menu/models.py:38
+msgid "menu"
+msgstr "меню"
+
+#: menu/models.py:39
+msgid "menus"
+msgstr "меню"
+
+#: messenger/models.py:31
+msgid "is new?"
+msgstr "новый?"
+
+#: messenger/models.py:37
+msgid "inbox message"
+msgstr "входящее сообщение"
+
+#: messenger/models.py:38
+msgid "inbox messages"
+msgstr "исходящее сообщение"
+
+#: messenger/models.py:69
+msgid "sentbox message"
+msgstr "отправленное сообщение"
+
+#: messenger/models.py:70
+msgid "sentbox messages"
+msgstr "отправленные сооббщения"
+
+#: metrika/models.py:11
+msgid "id"
+msgstr ""
+
+#: metrika/models.py:12
+msgid "token"
+msgstr "токен"
+
+#: metrika/models.py:18
+msgid "counter"
+msgstr "счетчик"
+
+#: metrika/models.py:19
+msgid "counters"
+msgstr "счетчики"
+
+#: polls/models.py:6
+msgid "question"
+msgstr "вопрос"
+
+#: polls/models.py:8
+msgid "is active?"
+msgstr "активый?"
+
+#: polls/models.py:19
+msgid "title"
+msgstr "Название"
+
+#: polls/models.py:20
+msgid "votes"
+msgstr "голоса"
+
+#: regions/models.py:6
+msgid "Kaliningrad Time (MSK-1)"
+msgstr "Калининградское время (MSK-1)"
+
+#: regions/models.py:7
+msgid "Moscow Time (MSK)"
+msgstr "Московское время (MSK)"
+
+#: regions/models.py:8
+msgid "Yekaterinburg Time (MSK+2)"
+msgstr "Екатеринбургское время (MSK+2)"
+
+#: regions/models.py:9
+msgid "Omsk Time (MSK+3)"
+msgstr "Омское время (MSK+3)"
+
+#: regions/models.py:10
+msgid "Krasnoyarsk Time (MSK+4)"
+msgstr "Красноярское время (MSK+4)"
+
+#: regions/models.py:11
+msgid "Irkutsk Time (MSK+5)"
+msgstr "Иркутское время (MSK+5)"
+
+#: regions/models.py:12
+msgid "Yakutsk Time (MSK+6)"
+msgstr "Якутское время (MSK+6)"
+
+#: regions/models.py:13
+msgid "Vladivostok Time (MSK+7)"
+msgstr "Владивостокское время (MSK+8)"
+
+#: regions/models.py:14
+msgid "Magadan Time (MSK+8)"
+msgstr "Магаданское время (MSK+9)"
+
+#: regions/models.py:19
+msgid "code"
+msgstr "код"
+
+#: regions/models.py:20
+msgid "abbreviation"
+msgstr "сокращение"
+
+#: regions/models.py:21
+msgid "time zone"
+msgstr "часовой пояс"
+
+#: regions/models.py:23
+msgid "genitive name"
+msgstr "родительский падеж"
+
+#: regions/models.py:29
+msgid "region"
+msgstr "регион"
+
+#: regions/models.py:30
+msgid "regions"
+msgstr "регионы"
+
+#: regions/models.py:32
+msgid "can manage content of region"
+msgstr "возможность редактировать региональный контент"
+
+#: templates/cms/base.html:7
+msgid "Manage System"
+msgstr "Система управления"
+
+#: templates/cms/base.html:23 templates/cms/base.html.py:33
+#: templates/cms/search.html:22
+msgid "Publications"
+msgstr "Публикации"
+
+#: templates/cms/base.html:28 templates/cms/moderate.html:6
+#: templates/cms/moderate_comments.html:6
+msgid "Moderate"
+msgstr "Модерация"
+
+#: templates/cms/base.html:36
+msgid "Registrations"
+msgstr "Регистрации"
+
+#: templates/cms/base.html:39
+msgid "Comments"
+msgstr "Комментарии"
+
+#: templates/cms/base.html:46
+msgid "Statistics"
+msgstr "Статистика"
+
+#: templates/cms/base.html:51 templates/cms/help/base.html:6
+msgid "Help"
+msgstr "Помощь"
+
+#: templates/cms/base.html:62
+msgid "Profile"
+msgstr "Профиль"
+
+#: templates/cms/base.html:64
+msgid "Logout"
+msgstr "Выход"
+
+#: templates/cms/base.html:71
+msgid "Messages"
+msgstr "Сообщения"
+
+#: templates/cms/base.html:76 templates/cms/messenger/inbox.html:6
+#: templates/cms/messenger/inbox.html:18
+#: templates/cms/messenger/inbox_message.html:19
+msgid "Inbox"
+msgstr "Входящие"
+
+#: templates/cms/base.html:79 templates/cms/messenger/sentbox.html:6
+#: templates/cms/messenger/sentbox.html:18
+#: templates/cms/messenger/sentbox_message.html:19
+msgid "Sentbox"
+msgstr "Исходящие"
+
+#: templates/cms/base.html:83
+msgid "Write new"
+msgstr "Написать сообщение"
+
+#: templates/cms/edit_profile.html:7
+msgid "Edit profile:"
+msgstr "Редактировать профиль"
+
+#: templates/cms/edit_profile.html:21
+msgid "Edit profile"
+msgstr "Редактировать профиль"
+
+#: templates/cms/edit_profile.html:41
+#: templates/cms/components/page_add.html:113
+#: templates/cms/components/page_edit.html:105
+#: templates/cms/components/person_add.html:81
+#: templates/cms/components/person_edit.html:88
+msgid "Save"
+msgstr "Сохранить"
+
+#: templates/cms/login.html:7
+msgid "Authorization"
+msgstr "Авторизация"
+
+#: templates/cms/login.html:23
+msgid "Login in Manage System"
+msgstr "Вход в сиcтему управления"
+
+#: templates/cms/login.html:56
+msgid "Enter"
+msgstr "Вход"
+
+#: templates/cms/menu.html:34 templates/cms/search.html:7
+#: templates/cms/search.html.py:31
+msgid "Document search"
+msgstr "Поиск документа"
+
+#: templates/cms/menu.html:39 templates/cms/search.html:45
+msgid "Search"
+msgstr "Искать"
+
+#: templates/cms/metrika.html:6
+msgid "Metrika"
+msgstr "Статистика"
+
+#: templates/cms/metrika.html:18
+msgid "Date range"
+msgstr "Сформировать в период"
+
+#: templates/cms/metrika.html:19
+msgid "from"
+msgstr "с"
+
+#: templates/cms/metrika.html:20
+msgid "till"
+msgstr "по"
+
+#: templates/cms/metrika.html:22
+msgid "Apply"
+msgstr "Применить"
+
+#: templates/cms/metrika.html:30
+msgid "General"
+msgstr "Сводная информация"
+
+#: templates/cms/metrika.html:33
+msgid "Traffic hourly"
+msgstr "Данные за сутки"
+
+#: templates/cms/metrika.html:36
+msgid "Sources"
+msgstr "Данные по переходам"
+
+#: templates/cms/metrika.html:39
+msgid "Browsers"
+msgstr "Браузеры"
+
+#: templates/cms/metrika.html:42
+msgid "Countries"
+msgstr "Данные по странам"
+
+#: templates/cms/metrika.html:45
+msgid "Regions"
+msgstr "Данные по регионам"
+
+#: templates/cms/metrika.html:61
+msgid "Process"
+msgstr "Выполняется"
+
+#: templates/cms/moderate.html:19 templates/cms/moderate_page.html:13
+msgid "Moderate publications"
+msgstr "Модерация публикаций"
+
+#: templates/cms/moderate.html:59
+msgid "Unknown"
+msgstr ""
+
+#: templates/cms/moderate.html:72 templates/cms/search.html:81
+#: templates/cms/components/news_manage.html:46
+#: templates/cms/components/page_manage.html:43
+msgid "Remove Page?"
+msgstr "Удалить публикацию?"
+
+#: templates/cms/moderate.html:77 templates/cms/search.html:86
+#: templates/cms/components/news_manage.html:51
+#: templates/cms/components/page_edit.html:154
+#: templates/cms/components/page_manage.html:48
+#: templates/cms/components/person_manage.html:45
+#: templates/cms/messenger/inbox.html:62
+#: templates/cms/messenger/sentbox.html:59
+msgid "Remove"
+msgstr "Удалить"
+
+#: templates/cms/moderate.html:78 templates/cms/moderate_new_users.html:83
+#: templates/cms/moderate_new_users.html:106 templates/cms/search.html:87
+#: templates/cms/components/news_manage.html:52
+#: templates/cms/components/page_edit.html:155
+#: templates/cms/components/page_manage.html:49
+#: templates/cms/components/person_manage.html:46
+#: templates/cms/messenger/inbox.html:63
+#: templates/cms/messenger/sentbox.html:60
+msgid "Cancel"
+msgstr "Отмена"
+
+#: templates/cms/moderate_comments.html:19
+msgid "Moderate comments"
+msgstr "Модерация комментариев"
+
+#: templates/cms/moderate_comments.html:54
+msgid "Comment from"
+msgstr "Комментарий от"
+
+#: templates/cms/moderate_comments.html:63 templates/cms/moderate_page.html:38
+msgid "Publish"
+msgstr "Публиковать"
+
+#: templates/cms/moderate_comments.html:68 templates/cms/search.html:78
+msgid "Delete"
+msgstr "Удалить"
+
+#: templates/cms/moderate_comments.html:86
+msgid "No comments"
+msgstr "Нет комментариев"
+
+#: templates/cms/moderate_new_users.html:6
+#: templates/cms/moderate_new_users.html:19
+msgid "Moderate registrations"
+msgstr "Модерация регистраций"
+
+#: templates/cms/moderate_new_users.html:26
+#: templates/cms/moderate_new_users.html:71
+#: templates/cms/moderate_new_users.html:94
+msgid "Full name"
+msgstr "Полное имя"
+
+#: templates/cms/moderate_new_users.html:30
+msgid "Actions"
+msgstr "Действия"
+
+#: templates/cms/moderate_new_users.html:68
+msgid "Confirm registration?"
+msgstr "Подтвердить регистрацию?"
+
+#: templates/cms/moderate_new_users.html:82
+msgid "Confirm"
+msgstr "Подтвердить"
+
+#: templates/cms/moderate_new_users.html:91
+msgid "Reject registration?"
+msgstr "Отклонить регистрацию"
+
+#: templates/cms/moderate_new_users.html:105
+msgid "Reject"
+msgstr "Отклонить"
+
+#: templates/cms/moderate_new_users.html:118
+msgid "No new registrations"
+msgstr "Нет новых регистраций"
+
+#: templates/cms/moderate_page.html:5
+msgid "Moderate page: "
+msgstr "Модерировать публикацию: "
+
+#: templates/cms/moderate_page.html:34
+msgid "Unpublish"
+msgstr "Отменить публикацию"
+
+#: templates/cms/moderate_page.html:42
+msgid "Comment"
+msgstr "Коментировать"
+
+#: templates/cms/moderate_write_comment.html:12
+#: templates/cms/messenger/write_message.html:12
+#: templates/cms/messenger/write_message.html:21
+msgid "Write message"
+msgstr "Написать сообщение"
+
+#: templates/cms/moderate_write_comment.html:21
+msgid "Write comment"
+msgstr "Написать коментарий"
+
+#: templates/cms/moderate_write_comment.html:50
+#: templates/cms/messenger/write_message.html:50
+msgid "Send"
+msgstr "Отправить"
+
+#: templates/cms/profile.html:5
+msgid "Profile:"
+msgstr "Профиль:"
+
+#: templates/cms/profile.html:12
+msgid "User profile"
+msgstr "Профиль пользователя"
+
+#: templates/cms/profile.html:16 templates/cms/search.html:77
+msgid "Edit"
+msgstr "Редактировать"
+
+#: templates/cms/profile.html:40
+msgid "Depratment"
+msgstr "Организация"
+
+#: templates/cms/components/page_add.html:7
+msgid "Add new Page"
+msgstr "Добавление новой публикации"
+
+#: templates/cms/components/page_add.html:39
+msgid "Attention!"
+msgstr "Внимание!"
+
+#: templates/cms/components/page_add.html:40
+msgid "The publication will be visible after passing moderation."
+msgstr "Публикация будет видна на сайте после прохождения модерации."
+
+#: templates/cms/components/page_add.html:46
+msgid "New Page"
+msgstr "Новая публикация"
+
+#: templates/cms/components/page_edit.html:7
+msgid "Edit: "
+msgstr "Редактировать: "
+
+#: templates/cms/components/page_edit.html:27
+msgid "Version: "
+msgstr "Версия: "
+
+#: templates/cms/components/page_edit.html:114
+msgid "Attachments"
+msgstr "Приложения: "
+
+#: templates/cms/components/page_edit.html:133
+msgid "Upload"
+msgstr "Загрузить"
+
+#: templates/cms/components/page_edit.html:149
+msgid "Remove attachment?"
+msgstr "Удалить приложение"
+
+#: templates/cms/components/person_add.html:7
+msgid "Add new Person"
+msgstr "Добавление новой персоналии"
+
+#: templates/cms/components/person_add.html:32
+msgid "New Person"
+msgstr "Новый персоналий"
+
+#: templates/cms/components/person_edit.html:7
+msgid "Edit Person:"
+msgstr "Редактировать персоналию:"
+
+#: templates/cms/components/person_edit.html:37
+msgid "Edit Person"
+msgstr "Редактировать персоналию"
+
+#: templates/cms/components/person_manage.html:27
+msgid "Remove Person?"
+msgstr "Удалить персоналию"
+
+#: templates/cms/messenger/inbox.html:52
+#: templates/cms/messenger/sentbox.html:49
+msgid "Remove Message?"
+msgstr "Удалить сообщение"
+
+#: templates/cms/messenger/inbox.html:79
+msgid "No incoming messages"
+msgstr "Нет входящих сообщений"
+
+#: templates/cms/messenger/inbox_message.html:6
+#: templates/cms/messenger/sentbox_message.html:6
+msgid "Message:"
+msgstr "Сообщение:"
+
+#: templates/cms/messenger/inbox_message.html:38
+msgid "From:"
+msgstr "От:"
+
+#: templates/cms/messenger/inbox_message.html:47
+msgid "Reply"
+msgstr "Ответить"
+
+#: templates/cms/messenger/sentbox.html:31
+msgid "pending"
+msgstr "ожидание"
+
+#: templates/cms/messenger/sentbox.html:33
+msgid "delivered"
+msgstr "доставлено"
+
+#: templates/cms/messenger/sentbox.html:76
+msgid "No outgoing messages"
+msgstr "Нет исходящих сообщений"
+
+#: templates/cms/messenger/sentbox_message.html:38
+msgid "Recipients:"
+msgstr "Получатели:"
+
+#: templates/cms/metrika/browsers.html:9
+#: templates/cms/metrika/browsers.html:37
+msgid "Browser"
+msgstr "Браузеры"
+
+#: templates/cms/metrika/browsers.html:10
+#: templates/cms/metrika/browsers.html:37
+#: templates/cms/metrika/countries.html:10
+#: templates/cms/metrika/regions.html:10 templates/cms/metrika/sources.html:10
+#: templates/cms/metrika/sources.html:29 templates/cms/metrika/traffic.html:11
+#: templates/cms/metrika/traffic.html:41
+msgid "Views"
+msgstr "Просмотров"
+
+#: templates/cms/metrika/browsers.html:11
+#: templates/cms/metrika/browsers.html:37
+#: templates/cms/metrika/countries.html:11
+#: templates/cms/metrika/countries.html:29
+#: templates/cms/metrika/regions.html:11 templates/cms/metrika/regions.html:40
+#: templates/cms/metrika/sources.html:11 templates/cms/metrika/sources.html:29
+#: templates/cms/metrika/traffic.html:12 templates/cms/metrika/traffic.html:41
+msgid "Visits"
+msgstr "Визитов"
+
+#: templates/cms/metrika/browsers.html:12
+#: templates/cms/metrika/countries.html:12
+#: templates/cms/metrika/regions.html:13 templates/cms/metrika/sources.html:12
+#: templates/cms/metrika/traffic.html:15
+#: templates/cms/metrika/traffic_hourly.html:11
+msgid "Visit time"
+msgstr "Время на сайте"
+
+#: templates/cms/metrika/countries.html:9
+#: templates/cms/metrika/countries.html:29
+#: templates/cms/metrika/regions.html:9
+msgid "Country"
+msgstr "Страна"
+
+#: templates/cms/metrika/regions.html:12
+msgid "Depth view"
+msgstr "Глубина просмотра страниц"
+
+#: templates/cms/metrika/regions.html:40
+msgid "Region"
+msgstr "Регион"
+
+#: templates/cms/metrika/sources.html:9 templates/cms/metrika/sources.html:29
+msgid "Source type"
+msgstr "Тип источника"
+
+#: templates/cms/metrika/traffic.html:10
+msgid "Date"
+msgstr "Дата"
+
+#: templates/cms/metrika/traffic.html:13 templates/cms/metrika/traffic.html:41
+msgid "Visitors"
+msgstr "Посетителей"
+
+#: templates/cms/metrika/traffic.html:14
+msgid "New visitors"
+msgstr "Новых посетителей"
+
+#: templates/cms/metrika/traffic.html:30
+msgid "Total"
+msgstr "Всего"
+
+#: templates/cms/metrika/traffic.html:41
+msgid "Day"
+msgstr "День"
+
+#: templates/cms/metrika/traffic_hourly.html:9
+#: templates/cms/metrika/traffic_hourly.html:26
+msgid "Hours"
+msgstr "Часы"
+
+#: templates/cms/metrika/traffic_hourly.html:10
+#: templates/cms/metrika/traffic_hourly.html:26
+msgid "Average visits"
+msgstr "Визитов в среднем"
+
+#: templates/cms/metrika/traffic_hourly.html:19
+msgid "sec."
+msgstr "сек."
+
+#: views/menu.py:15
+msgid "Menus"
+msgstr "Меню"
+
+#: views/moderate.py:84
+msgid "Comment to"
+msgstr "Замечания к"

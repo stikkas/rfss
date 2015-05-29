@@ -1,0 +1,52 @@
+{% extends 'cms/base.html' %}
+{% load static %}
+{% load i18n %}
+{% load cms_tags %}
+
+{% block title %}{% trans 'Message:' %} {{ message.subject }}{% endblock %}
+
+{% block css %}
+	{{ block.super }}
+	<link rel="stylesheet" type="text/css" href="{% static 'css/cms-messenger.css' %}">
+{% endblock %}
+
+{% block content %}
+	<div class="container">
+		<div class="row">
+			<div class="span10 offset1">
+				<ul class="breadcrumb">
+					<li>
+						<a href="{% link cms:inbox %}">{% trans 'Inbox' %}</a>
+						<span class="divider">/</span>
+					</li>
+					<li class="active">
+						{% if message.subject|length > 82 %}
+							{{ message.subject|slice:":82" }}...
+						{% else %}
+							{{ message.subject }}
+						{% endif %}
+					</li>
+				</ul>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="span8 offset2">
+				<div class="well well-small">
+					<p class="message-detail-subject text-centered"><em>{{ message.subject }}</em></p>
+					<p class="message-detail-user">
+						<small class="muted">{% trans 'From:' %} </small>
+						<small>
+							<a href="{% link cms:profile message.sender.id %}">{{ message.sender|short_name }}</a>
+						</small>
+					</p>
+					<div class="message-detail-body">{{ message.body|linebreaksbr|blockquote }}</div>
+					<p class="text-right"><small class="muted">{{ message.create_date }}</small></p>
+				</div>
+				<div class="text-centered">
+					<a class="btn" href="{% link cms:reply_inbox_message message.id %}">{% trans 'Reply' %}</a>
+				</div>
+			</div>
+		</div>
+	</div>
+{% endblock %}

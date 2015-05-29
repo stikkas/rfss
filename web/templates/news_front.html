@@ -1,0 +1,17 @@
+<div class="news-list">
+	{% for page in comp.elements %}
+		{% if page.visible %}
+			<div class="item">
+				<div class="fleft">
+					<span class="date">{{ page.create_date|date:'d.m.Y' }}</span>&nbsp;|&nbsp;
+				</div>
+				<div class="info">
+					<a href="{{ page.link_detail }}" class="news-name">{{ page.name }}</a>
+					{% if page.annotation %}
+						<p class="preview">{{ page.annotation }}</p>
+					{% endif %}
+				</div>
+			</div>
+		{% endif %}
+	{% endfor %}
+</div>

@@ -1,0 +1,926 @@
+[
+    {
+        "pk": 1, 
+        "model": "regions.region", 
+        "fields": {
+            "g_name": "\u0420\u043e\u0441\u0441\u0438\u0439\u0441\u043a\u043e\u0439 \u0424\u0435\u0434\u0435\u0440\u0430\u0446\u0438\u0438", 
+            "code": 0, 
+            "tz": "Europe/Moscow", 
+            "abbr": "ru", 
+            "name": "\u0420\u043e\u0441\u0441\u0438\u0439\u0441\u043a\u0430\u044f \u0424\u0435\u0434\u0435\u0440\u0430\u0446\u0438\u044f"
+        }
+    }, 
+    {
+        "pk": 2, 
+        "model": "regions.region", 
+        "fields": {
+            "g_name": "\u0420\u0435\u0441\u043f\u0443\u0431\u043b\u0438\u043a\u0438 \u0410\u0434\u044b\u0433\u0435\u044f", 
+            "code": 1, 
+            "tz": "Europe/Moscow", 
+            "abbr": "ad", 
+            "name": "\u0420\u0435\u0441\u043f\u0443\u0431\u043b\u0438\u043a\u0430 \u0410\u0434\u044b\u0433\u0435\u044f"
+        }
+    }, 
+    {
+        "pk": 3, 
+        "model": "regions.region", 
+        "fields": {
+            "g_name": "\u0420\u0435\u0441\u043f\u0443\u0431\u043b\u0438\u043a\u0438 \u0410\u043b\u0442\u0430\u0439", 
+            "code": 2, 
+            "tz": "Asia/Omsk", 
+            "abbr": "al", 
+            "name": "\u0420\u0435\u0441\u043f\u0443\u0431\u043b\u0438\u043a\u0430 \u0410\u043b\u0442\u0430\u0439"
+        }
+    }, 
+    {
+        "pk": 4, 
+        "model": "regions.region", 
+        "fields": {
+            "g_name": "\u0420\u0435\u0441\u043f\u0443\u0431\u043b\u0438\u043a\u0438 \u0411\u0430\u0448\u043a\u043e\u0440\u0442\u043e\u0441\u0442\u0430\u043d", 
+            "code": 3, 
+            "tz": "Asia/Yekaterinburg", 
+            "abbr": "ba", 
+            "name": "\u0420\u0435\u0441\u043f\u0443\u0431\u043b\u0438\u043a\u0430 \u0411\u0430\u0448\u043a\u043e\u0440\u0442\u043e\u0441\u0442\u0430\u043d"
+        }
+    }, 
+    {
+        "pk": 5, 
+        "model": "regions.region", 
+        "fields": {
+            "g_name": "\u0420\u0435\u0441\u043f\u0443\u0431\u043b\u0438\u043a\u0438 \u0411\u0443\u0440\u044f\u0442\u0438\u044f", 
+            "code": 4, 
+            "tz": "Asia/Irkutsk", 
+            "abbr": "bu", 
+            "name": "\u0420\u0435\u0441\u043f\u0443\u0431\u043b\u0438\u043a\u0430 \u0411\u0443\u0440\u044f\u0442\u0438\u044f"
+        }
+    }, 
+    {
+        "pk": 6, 
+        "model": "regions.region", 
+        "fields": {
+            "g_name": "\u0420\u0435\u0441\u043f\u0443\u0431\u043b\u0438\u043a\u0438 \u0414\u0430\u0433\u0435\u0441\u0442\u0430\u043d", 
+            "code": 5, 
+            "tz": "Europe/Moscow", 
+            "abbr": "da", 
+            "name": "\u0420\u0435\u0441\u043f\u0443\u0431\u043b\u0438\u043a\u0430 \u0414\u0430\u0433\u0435\u0441\u0442\u0430\u043d"
+        }
+    }, 
+    {
+        "pk": 7, 
+        "model": "regions.region", 
+        "fields": {
+            "g_name": "\u0420\u0435\u0441\u043f\u0443\u0431\u043b\u0438\u043a\u0438 \u0418\u043d\u0433\u0443\u0448\u0435\u0442\u0438\u044f", 
+            "code": 6, 
+            "tz": "Europe/Moscow", 
+            "abbr": "in", 
+            "name": "\u0420\u0435\u0441\u043f\u0443\u0431\u043b\u0438\u043a\u0430 \u0418\u043d\u0433\u0443\u0448\u0435\u0442\u0438\u044f"
+        }
+    }, 
+    {
+        "pk": 8, 
+        "model": "regions.region", 
+        "fields": {
+            "g_name": "\u041a\u0430\u0431\u0430\u0440\u0434\u0438\u043d\u043e-\u0411\u0430\u043b\u043a\u0430\u0440\u0441\u043a\u043e\u0439 \u0420\u0435\u0441\u043f\u0443\u0431\u043b\u0438\u043a\u0438", 
+            "code": 7, 
+            "tz": "Europe/Moscow", 
+            "abbr": "kb", 
+            "name": "\u041a\u0430\u0431\u0430\u0440\u0434\u0438\u043d\u043e-\u0411\u0430\u043b\u043a\u0430\u0440\u0441\u043a\u0430\u044f \u0420\u0435\u0441\u043f\u0443\u0431\u043b\u0438\u043a\u0430"
+        }
+    }, 
+    {
+        "pk": 9, 
+        "model": "regions.region", 
+        "fields": {
+            "g_name": "\u0420\u0435\u0441\u043f\u0443\u0431\u043b\u0438\u043a\u0438 \u041a\u0430\u043b\u043c\u044b\u043a\u0438\u044f", 
+            "code": 8, 
+            "tz": "Europe/Moscow", 
+            "abbr": "kl", 
+            "name": "\u0420\u0435\u0441\u043f\u0443\u0431\u043b\u0438\u043a\u0430 \u041a\u0430\u043b\u043c\u044b\u043a\u0438\u044f"
+        }
+    }, 
+    {
+        "pk": 10, 
+        "model": "regions.region", 
+        "fields": {
+            "g_name": "\u041a\u0430\u0440\u0430\u0447\u0430\u0435\u0432\u043e-\u0427\u0435\u0440\u043a\u0435\u0441\u0441\u043a\u043e\u0439 \u0420\u0435\u0441\u043f\u0443\u0431\u043b\u0438\u043a\u0438", 
+            "code": 9, 
+            "tz": "Europe/Moscow", 
+            "abbr": "kc", 
+            "name": "\u041a\u0430\u0440\u0430\u0447\u0430\u0435\u0432\u043e-\u0427\u0435\u0440\u043a\u0435\u0441\u0441\u043a\u0430\u044f \u0420\u0435\u0441\u043f\u0443\u0431\u043b\u0438\u043a\u0430"
+        }
+    }, 
+    {
+        "pk": 11, 
+        "model": "regions.region", 
+        "fields": {
+            "g_name": "\u0420\u0435\u0441\u043f\u0443\u0431\u043b\u0438\u043a\u0438 \u041a\u0430\u0440\u0435\u043b\u0438\u044f", 
+            "code": 10, 
+            "tz": "Europe/Moscow", 
+            "abbr": "kr", 
+            "name": "\u0420\u0435\u0441\u043f\u0443\u0431\u043b\u0438\u043a\u0430 \u041a\u0430\u0440\u0435\u043b\u0438\u044f"
+        }
+    }, 
+    {
+        "pk": 12, 
+        "model": "regions.region", 
+        "fields": {
+            "g_name": "\u0420\u0435\u0441\u043f\u0443\u0431\u043b\u0438\u043a\u0438 \u041a\u043e\u043c\u0438", 
+            "code": 11, 
+            "tz": "Europe/Moscow", 
+            "abbr": "ko", 
+            "name": "\u0420\u0435\u0441\u043f\u0443\u0431\u043b\u0438\u043a\u0430 \u041a\u043e\u043c\u0438"
+        }
+    }, 
+    {
+        "pk": 13, 
+        "model": "regions.region", 
+        "fields": {
+            "g_name": "\u0420\u0435\u0441\u043f\u0443\u0431\u043b\u0438\u043a\u0438 \u041c\u0430\u0440\u0438\u0439 \u042d\u043b", 
+            "code": 12, 
+            "tz": "Europe/Moscow", 
+            "abbr": "me", 
+            "name": "\u0420\u0435\u0441\u043f\u0443\u0431\u043b\u0438\u043a\u0430 \u041c\u0430\u0440\u0438\u0439 \u042d\u043b"
+        }
+    }, 
+    {
+        "pk": 14, 
+        "model": "regions.region", 
+        "fields": {
+            "g_name": "\u0420\u0435\u0441\u043f\u0443\u0431\u043b\u0438\u043a\u0438 \u041c\u043e\u0440\u0434\u043e\u0432\u0438\u044f", 
+            "code": 13, 
+            "tz": "Europe/Moscow", 
+            "abbr": "mo", 
+            "name": "\u0420\u0435\u0441\u043f\u0443\u0431\u043b\u0438\u043a\u0430 \u041c\u043e\u0440\u0434\u043e\u0432\u0438\u044f"
+        }
+    }, 
+    {
+        "pk": 15, 
+        "model": "regions.region", 
+        "fields": {
+            "g_name": "\u0420\u0435\u0441\u043f\u0443\u0431\u043b\u0438\u043a\u0438 \u0421\u0430\u0445\u0430 (\u042f\u043a\u0443\u0442\u0438\u044f)", 
+            "code": 14, 
+            "tz": "Asia/Vladivostok", 
+            "abbr": "sa", 
+            "name": "\u0420\u0435\u0441\u043f\u0443\u0431\u043b\u0438\u043a\u0430 \u0421\u0430\u0445\u0430 (\u042f\u043a\u0443\u0442\u0438\u044f)"
+        }
+    }, 
+    {
+        "pk": 16, 
+        "model": "regions.region", 
+        "fields": {
+            "g_name": "\u0420\u0435\u0441\u043f\u0443\u0431\u043b\u0438\u043a\u0438 \u0421\u0435\u0432\u0435\u0440\u043d\u0430\u044f \u041e\u0441\u0435\u0442\u0438\u044f-\u0410\u043b\u0430\u043d\u0438\u044f", 
+            "code": 15, 
+            "tz": "Europe/Moscow", 
+            "abbr": "se", 
+            "name": "\u0420\u0435\u0441\u043f\u0443\u0431\u043b\u0438\u043a\u0430 \u0421\u0435\u0432\u0435\u0440\u043d\u0430\u044f \u041e\u0441\u0435\u0442\u0438\u044f-\u0410\u043b\u0430\u043d\u0438\u044f"
+        }
+    }, 
+    {
+        "pk": 17, 
+        "model": "regions.region", 
+        "fields": {
+            "g_name": "\u0420\u0435\u0441\u043f\u0443\u0431\u043b\u0438\u043a\u0438 \u0422\u0430\u0442\u0430\u0440\u0441\u0442\u0430\u043d", 
+            "code": 16, 
+            "tz": "Europe/Moscow", 
+            "abbr": "ta", 
+            "name": "\u0420\u0435\u0441\u043f\u0443\u0431\u043b\u0438\u043a\u0430 \u0422\u0430\u0442\u0430\u0440\u0441\u0442\u0430\u043d"
+        }
+    }, 
+    {
+        "pk": 18, 
+        "model": "regions.region", 
+        "fields": {
+            "g_name": "\u0420\u0435\u0441\u043f\u0443\u0431\u043b\u0438\u043a\u0438 \u0422\u044b\u0432\u0430", 
+            "code": 17, 
+            "tz": "Asia/Krasnoyarsk", 
+            "abbr": "ty", 
+            "name": "\u0420\u0435\u0441\u043f\u0443\u0431\u043b\u0438\u043a\u0430 \u0422\u044b\u0432\u0430"
+        }
+    }, 
+    {
+        "pk": 19, 
+        "model": "regions.region", 
+        "fields": {
+            "g_name": "\u0423\u0434\u043c\u0443\u0440\u0442\u0441\u043a\u043e\u0439 \u0420\u0435\u0441\u043f\u0443\u0431\u043b\u0438\u043a\u0438", 
+            "code": 18, 
+            "tz": "Europe/Moscow", 
+            "abbr": "ud", 
+            "name": "\u0423\u0434\u043c\u0443\u0440\u0442\u0441\u043a\u0430\u044f \u0420\u0435\u0441\u043f\u0443\u0431\u043b\u0438\u043a\u0430"
+        }
+    }, 
+    {
+        "pk": 20, 
+        "model": "regions.region", 
+        "fields": {
+            "g_name": "\u0420\u0435\u0441\u043f\u0443\u0431\u043b\u0438\u043a\u0438 \u0425\u0430\u043a\u0430\u0441\u0438\u044f", 
+            "code": 19, 
+            "tz": "Asia/Krasnoyarsk", 
+            "abbr": "kk", 
+            "name": "\u0420\u0435\u0441\u043f\u0443\u0431\u043b\u0438\u043a\u0430 \u0425\u0430\u043a\u0430\u0441\u0438\u044f"
+        }
+    }, 
+    {
+        "pk": 21, 
+        "model": "regions.region", 
+        "fields": {
+            "g_name": "\u0427\u0435\u0447\u0435\u043d\u0441\u043a\u043e\u0439 \u0420\u0435\u0441\u043f\u0443\u0431\u043b\u0438\u043a\u0438", 
+            "code": 20, 
+            "tz": "Europe/Moscow", 
+            "abbr": "ce", 
+            "name": "\u0427\u0435\u0447\u0435\u043d\u0441\u043a\u0430\u044f \u0420\u0435\u0441\u043f\u0443\u0431\u043b\u0438\u043a\u0430"
+        }
+    }, 
+    {
+        "pk": 22, 
+        "model": "regions.region", 
+        "fields": {
+            "g_name": "\u0427\u0443\u0432\u0430\u0448\u0441\u043a\u043e\u0439 \u0420\u0435\u0441\u043f\u0443\u0431\u043b\u0438\u043a\u0438", 
+            "code": 21, 
+            "tz": "Europe/Moscow", 
+            "abbr": "cu", 
+            "name": "\u0427\u0443\u0432\u0430\u0448\u0441\u043a\u0430\u044f \u0420\u0435\u0441\u043f\u0443\u0431\u043b\u0438\u043a\u0430"
+        }
+    }, 
+    {
+        "pk": 23, 
+        "model": "regions.region", 
+        "fields": {
+            "g_name": "\u0410\u043b\u0442\u0430\u0439\u0441\u043a\u043e\u0433\u043e \u043a\u0440\u0430\u044f", 
+            "code": 22, 
+            "tz": "Asia/Omsk", 
+            "abbr": "alt", 
+            "name": "\u0410\u043b\u0442\u0430\u0439\u0441\u043a\u0438\u0439 \u043a\u0440\u0430\u0439"
+        }
+    }, 
+    {
+        "pk": 76, 
+        "model": "regions.region", 
+        "fields": {
+            "g_name": "\u0417\u0430\u0431\u0430\u0439\u043a\u0430\u043b\u044c\u0441\u043a\u043e\u0433\u043e \u043a\u0440\u0430\u044f", 
+            "code": 23, 
+            "tz": "Asia/Yakutsk", 
+            "abbr": "zab", 
+            "name": "\u0417\u0430\u0431\u0430\u0439\u043a\u0430\u043b\u044c\u0441\u043a\u0438\u0439 \u043a\u0440\u0430\u0439"
+        }
+    }, 
+    {
+        "pk": 42, 
+        "model": "regions.region", 
+        "fields": {
+            "g_name": "\u041a\u0430\u043c\u0447\u0430\u0442\u0441\u043a\u043e\u0433\u043e \u043a\u0440\u0430\u044f", 
+            "code": 24, 
+            "tz": "Asia/Magadan", 
+            "abbr": "kam", 
+            "name": "\u041a\u0430\u043c\u0447\u0430\u0442\u0441\u043a\u0438\u0439 \u043a\u0440\u0430\u0439"
+        }
+    }, 
+    {
+        "pk": 24, 
+        "model": "regions.region", 
+        "fields": {
+            "g_name": "\u041a\u0440\u0430\u0441\u043d\u043e\u0434\u0430\u0440\u0441\u043a\u043e\u0433\u043e \u043a\u0440\u0430\u044f", 
+            "code": 25, 
+            "tz": "Europe/Moscow", 
+            "abbr": "kda", 
+            "name": "\u041a\u0440\u0430\u0441\u043d\u043e\u0434\u0430\u0440\u0441\u043a\u0438\u0439 \u043a\u0440\u0430\u0439"
+        }
+    }, 
+    {
+        "pk": 25, 
+        "model": "regions.region", 
+        "fields": {
+            "g_name": "\u041a\u0440\u0430\u0441\u043d\u043e\u044f\u0440\u0441\u043a\u043e\u0433\u043e  \u043a\u0440\u0430\u044f", 
+            "code": 26, 
+            "tz": "Asia/Krasnoyarsk", 
+            "abbr": "kya", 
+            "name": "\u041a\u0440\u0430\u0441\u043d\u043e\u044f\u0440\u0441\u043a\u0438\u0439  \u043a\u0440\u0430\u0439"
+        }
+    }, 
+    {
+        "pk": 60, 
+        "model": "regions.region", 
+        "fields": {
+            "g_name": "\u041f\u0435\u0440\u043c\u0441\u043a\u043e\u0433\u043e \u043a\u0440\u0430\u044f", 
+            "code": 27, 
+            "tz": "Asia/Yekaterinburg", 
+            "abbr": "per", 
+            "name": "\u041f\u0435\u0440\u043c\u0441\u043a\u0438\u0439 \u043a\u0440\u0430\u0439"
+        }
+    }, 
+    {
+        "pk": 26, 
+        "model": "regions.region", 
+        "fields": {
+            "g_name": "\u041f\u0440\u0438\u043c\u043e\u0440\u0441\u043a\u043e\u0433\u043e \u043a\u0440\u0430\u044f", 
+            "code": 28, 
+            "tz": "Asia/Vladivostok", 
+            "abbr": "pri", 
+            "name": "\u041f\u0440\u0438\u043c\u043e\u0440\u0441\u043a\u0438\u0439 \u043a\u0440\u0430\u0439"
+        }
+    }, 
+    {
+        "pk": 27, 
+        "model": "regions.region", 
+        "fields": {
+            "g_name": "\u0421\u0442\u0430\u0432\u0440\u043e\u043f\u043e\u043b\u044c\u0441\u043a\u043e\u0433\u043e \u043a\u0440\u0430\u044f", 
+            "code": 29, 
+            "tz": "Europe/Moscow", 
+            "abbr": "sta", 
+            "name": "\u0421\u0442\u0430\u0432\u0440\u043e\u043f\u043e\u043b\u044c\u0441\u043a\u0438\u0439 \u043a\u0440\u0430\u0439"
+        }
+    }, 
+    {
+        "pk": 28, 
+        "model": "regions.region", 
+        "fields": {
+            "g_name": "\u0425\u0430\u0431\u0430\u0440\u043e\u0432\u0441\u043a\u043e\u0433\u043e \u043a\u0440\u0430\u044f", 
+            "code": 30, 
+            "tz": "Asia/Vladivostok", 
+            "abbr": "kha", 
+            "name": "\u0425\u0430\u0431\u0430\u0440\u043e\u0432\u0441\u043a\u0438\u0439 \u043a\u0440\u0430\u0439"
+        }
+    }, 
+    {
+        "pk": 29, 
+        "model": "regions.region", 
+        "fields": {
+            "g_name": "\u0410\u043c\u0443\u0440\u0441\u043a\u043e\u0439 \u043e\u0431\u043b\u0430\u0441\u0442\u0438", 
+            "code": 31, 
+            "tz": "Asia/Yakutsk", 
+            "abbr": "amu", 
+            "name": "\u0410\u043c\u0443\u0440\u0441\u043a\u0430\u044f \u043e\u0431\u043b\u0430\u0441\u0442\u044c"
+        }
+    }, 
+    {
+        "pk": 30, 
+        "model": "regions.region", 
+        "fields": {
+            "g_name": "\u0410\u0440\u0445\u0430\u043d\u0433\u0435\u043b\u044c\u0441\u043a\u043e\u0439 \u043e\u0431\u043b\u0430\u0441\u0442\u0438", 
+            "code": 32, 
+            "tz": "Europe/Moscow", 
+            "abbr": "ark", 
+            "name": "\u0410\u0440\u0445\u0430\u043d\u0433\u0435\u043b\u044c\u0441\u043a\u0430\u044f \u043e\u0431\u043b\u0430\u0441\u0442\u044c"
+        }
+    }, 
+    {
+        "pk": 31, 
+        "model": "regions.region", 
+        "fields": {
+            "g_name": "\u0410\u0441\u0442\u0440\u0430\u0445\u0430\u043d\u0441\u043a\u043e\u0439 \u043e\u0431\u043b\u0430\u0441\u0442\u0438", 
+            "code": 33, 
+            "tz": "Europe/Moscow", 
+            "abbr": "ast", 
+            "name": "\u0410\u0441\u0442\u0440\u0430\u0445\u0430\u043d\u0441\u043a\u0430\u044f \u043e\u0431\u043b\u0430\u0441\u0442\u044c"
+        }
+    }, 
+    {
+        "pk": 32, 
+        "model": "regions.region", 
+        "fields": {
+            "g_name": "\u0411\u0435\u043b\u0433\u043e\u0440\u043e\u0434\u0441\u043a\u043e\u0439 \u043e\u0431\u043b\u0430\u0441\u0442\u0438", 
+            "code": 34, 
+            "tz": "Europe/Moscow", 
+            "abbr": "bel", 
+            "name": "\u0411\u0435\u043b\u0433\u043e\u0440\u043e\u0434\u0441\u043a\u0430\u044f \u043e\u0431\u043b\u0430\u0441\u0442\u044c"
+        }
+    }, 
+    {
+        "pk": 33, 
+        "model": "regions.region", 
+        "fields": {
+            "g_name": "\u0411\u0440\u044f\u043d\u0441\u043a\u043e\u0439 \u043e\u0431\u043b\u0430\u0441\u0442\u0438", 
+            "code": 35, 
+            "tz": "Europe/Moscow", 
+            "abbr": "bry", 
+            "name": "\u0411\u0440\u044f\u043d\u0441\u043a\u0430\u044f \u043e\u0431\u043b\u0430\u0441\u0442\u044c"
+        }
+    }, 
+    {
+        "pk": 34, 
+        "model": "regions.region", 
+        "fields": {
+            "g_name": "\u0412\u043b\u0430\u0434\u0438\u043c\u0438\u0440\u0441\u043a\u043e\u0439 \u043e\u0431\u043b\u0430\u0441\u0442\u0438", 
+            "code": 36, 
+            "tz": "Europe/Moscow", 
+            "abbr": "vla", 
+            "name": "\u0412\u043b\u0430\u0434\u0438\u043c\u0438\u0440\u0441\u043a\u0430\u044f \u043e\u0431\u043b\u0430\u0441\u0442\u044c"
+        }
+    }, 
+    {
+        "pk": 35, 
+        "model": "regions.region", 
+        "fields": {
+            "g_name": "\u0412\u043e\u043b\u0433\u043e\u0433\u0440\u0430\u0434\u0441\u043a\u043e\u0439 \u043e\u0431\u043b\u0430\u0441\u0442\u0438", 
+            "code": 37, 
+            "tz": "Europe/Moscow", 
+            "abbr": "vgg", 
+            "name": "\u0412\u043e\u043b\u0433\u043e\u0433\u0440\u0430\u0434\u0441\u043a\u0430\u044f \u043e\u0431\u043b\u0430\u0441\u0442\u044c"
+        }
+    }, 
+    {
+        "pk": 36, 
+        "model": "regions.region", 
+        "fields": {
+            "g_name": "\u0412\u043e\u043b\u043e\u0433\u043e\u0434\u0441\u043a\u043e\u0439 \u043e\u0431\u043b\u0430\u0441\u0442\u0438", 
+            "code": 38, 
+            "tz": "Europe/Moscow", 
+            "abbr": "vlg", 
+            "name": "\u0412\u043e\u043b\u043e\u0433\u043e\u0434\u0441\u043a\u0430\u044f \u043e\u0431\u043b\u0430\u0441\u0442\u044c"
+        }
+    }, 
+    {
+        "pk": 37, 
+        "model": "regions.region", 
+        "fields": {
+            "g_name": "\u0412\u043e\u0440\u043e\u043d\u0435\u0436\u0441\u043a\u043e\u0439 \u043e\u0431\u043b\u0430\u0441\u0442\u0438", 
+            "code": 39, 
+            "tz": "Europe/Moscow", 
+            "abbr": "vor", 
+            "name": "\u0412\u043e\u0440\u043e\u043d\u0435\u0436\u0441\u043a\u0430\u044f \u043e\u0431\u043b\u0430\u0441\u0442\u044c"
+        }
+    }, 
+    {
+        "pk": 38, 
+        "model": "regions.region", 
+        "fields": {
+            "g_name": "\u0418\u0432\u0430\u043d\u043e\u0432\u0441\u043a\u043e\u0439 \u043e\u0431\u043b\u0430\u0441\u0442\u0438", 
+            "code": 40, 
+            "tz": "Europe/Moscow", 
+            "abbr": "iva", 
+            "name": "\u0418\u0432\u0430\u043d\u043e\u0432\u0441\u043a\u0430\u044f \u043e\u0431\u043b\u0430\u0441\u0442\u044c"
+        }
+    }, 
+    {
+        "pk": 39, 
+        "model": "regions.region", 
+        "fields": {
+            "g_name": "\u0418\u0440\u043a\u0443\u0442\u0441\u043a\u043e\u0439 \u043e\u0431\u043b\u0430\u0441\u0442\u0438", 
+            "code": 41, 
+            "tz": "Asia/Irkutsk", 
+            "abbr": "irk", 
+            "name": "\u0418\u0440\u043a\u0443\u0442\u0441\u043a\u0430\u044f \u043e\u0431\u043b\u0430\u0441\u0442\u044c"
+        }
+    }, 
+    {
+        "pk": 40, 
+        "model": "regions.region", 
+        "fields": {
+            "g_name": "\u041a\u0430\u043b\u0438\u043d\u0438\u043d\u0433\u0440\u0430\u0434\u0441\u043a\u043e\u0439 \u043e\u0431\u043b\u0430\u0441\u0442\u0438", 
+            "code": 42, 
+            "tz": "Europe/Kaliningrad", 
+            "abbr": "kgd", 
+            "name": "\u041a\u0430\u043b\u0438\u043d\u0438\u043d\u0433\u0440\u0430\u0434\u0441\u043a\u0430\u044f \u043e\u0431\u043b\u0430\u0441\u0442\u044c"
+        }
+    }, 
+    {
+        "pk": 41, 
+        "model": "regions.region", 
+        "fields": {
+            "g_name": "\u041a\u0430\u043b\u0443\u0436\u0441\u043a\u043e\u0439 \u043e\u0431\u043b\u0430\u0441\u0442\u0438", 
+            "code": 43, 
+            "tz": "Europe/Moscow", 
+            "abbr": "klu", 
+            "name": "\u041a\u0430\u043b\u0443\u0436\u0441\u043a\u0430\u044f \u043e\u0431\u043b\u0430\u0441\u0442\u044c"
+        }
+    }, 
+    {
+        "pk": 43, 
+        "model": "regions.region", 
+        "fields": {
+            "g_name": "\u041a\u0435\u043c\u0435\u0440\u043e\u0432\u0441\u043a\u043e\u0439 \u043e\u0431\u043b\u0430\u0441\u0442\u0438", 
+            "code": 44, 
+            "tz": "Asia/Omsk", 
+            "abbr": "kem", 
+            "name": "\u041a\u0435\u043c\u0435\u0440\u043e\u0432\u0441\u043a\u0430\u044f \u043e\u0431\u043b\u0430\u0441\u0442\u044c"
+        }
+    }, 
+    {
+        "pk": 44, 
+        "model": "regions.region", 
+        "fields": {
+            "g_name": "\u041a\u0438\u0440\u043e\u0432\u0441\u043a\u043e\u0439 \u043e\u0431\u043b\u0430\u0441\u0442\u0438", 
+            "code": 45, 
+            "tz": "Europe/Moscow", 
+            "abbr": "kir", 
+            "name": "\u041a\u0438\u0440\u043e\u0432\u0441\u043a\u0430\u044f \u043e\u0431\u043b\u0430\u0441\u0442\u044c"
+        }
+    }, 
+    {
+        "pk": 45, 
+        "model": "regions.region", 
+        "fields": {
+            "g_name": "\u041a\u043e\u0441\u0442\u0440\u043e\u043c\u0441\u043a\u043e\u0439 \u043e\u0431\u043b\u0430\u0441\u0442\u0438", 
+            "code": 46, 
+            "tz": "Europe/Moscow", 
+            "abbr": "kos", 
+            "name": "\u041a\u043e\u0441\u0442\u0440\u043e\u043c\u0441\u043a\u0430\u044f \u043e\u0431\u043b\u0430\u0441\u0442\u044c"
+        }
+    }, 
+    {
+        "pk": 46, 
+        "model": "regions.region", 
+        "fields": {
+            "g_name": "\u041a\u0443\u0440\u0433\u0430\u043d\u0441\u043a\u043e\u0439 \u043e\u0431\u043b\u0430\u0441\u0442\u0438", 
+            "code": 47, 
+            "tz": "Asia/Yekaterinburg", 
+            "abbr": "kgn", 
+            "name": "\u041a\u0443\u0440\u0433\u0430\u043d\u0441\u043a\u0430\u044f \u043e\u0431\u043b\u0430\u0441\u0442\u044c"
+        }
+    }, 
+    {
+        "pk": 47, 
+        "model": "regions.region", 
+        "fields": {
+            "g_name": "\u041a\u0443\u0440\u0441\u043a\u043e\u0439 \u043e\u0431\u043b\u0430\u0441\u0442\u0438", 
+            "code": 48, 
+            "tz": "Europe/Moscow", 
+            "abbr": "krs", 
+            "name": "\u041a\u0443\u0440\u0441\u043a\u0430\u044f \u043e\u0431\u043b\u0430\u0441\u0442\u044c"
+        }
+    }, 
+    {
+        "pk": 48, 
+        "model": "regions.region", 
+        "fields": {
+            "g_name": "\u041b\u0435\u043d\u0438\u043d\u0433\u0440\u0430\u0434\u0441\u043a\u043e\u0439 \u043e\u0431\u043b\u0430\u0441\u0442\u0438", 
+            "code": 49, 
+            "tz": "Europe/Moscow", 
+            "abbr": "len", 
+            "name": "\u041b\u0435\u043d\u0438\u043d\u0433\u0440\u0430\u0434\u0441\u043a\u0430\u044f \u043e\u0431\u043b\u0430\u0441\u0442\u044c"
+        }
+    }, 
+    {
+        "pk": 49, 
+        "model": "regions.region", 
+        "fields": {
+            "g_name": "\u041b\u0438\u043f\u0435\u0446\u043a\u043e\u0439 \u043e\u0431\u043b\u0430\u0441\u0442\u0438", 
+            "code": 50, 
+            "tz": "Europe/Moscow", 
+            "abbr": "lip", 
+            "name": "\u041b\u0438\u043f\u0435\u0446\u043a\u0430\u044f \u043e\u0431\u043b\u0430\u0441\u0442\u044c"
+        }
+    }, 
+    {
+        "pk": 50, 
+        "model": "regions.region", 
+        "fields": {
+            "g_name": "\u041c\u0430\u0433\u0430\u0434\u0430\u043d\u0441\u043a\u043e\u0439 \u043e\u0431\u043b\u0430\u0441\u0442\u0438", 
+            "code": 51, 
+            "tz": "Asia/Magadan", 
+            "abbr": "mag", 
+            "name": "\u041c\u0430\u0433\u0430\u0434\u0430\u043d\u0441\u043a\u0430\u044f \u043e\u0431\u043b\u0430\u0441\u0442\u044c"
+        }
+    }, 
+    {
+        "pk": 51, 
+        "model": "regions.region", 
+        "fields": {
+            "g_name": "\u041c\u043e\u0441\u043a\u043e\u0432\u0441\u043a\u043e\u0439 \u043e\u0431\u043b\u0430\u0441\u0442\u0438", 
+            "code": 52, 
+            "tz": "Europe/Moscow", 
+            "abbr": "mos", 
+            "name": "\u041c\u043e\u0441\u043a\u043e\u0432\u0441\u043a\u0430\u044f \u043e\u0431\u043b\u0430\u0441\u0442\u044c"
+        }
+    }, 
+    {
+        "pk": 52, 
+        "model": "regions.region", 
+        "fields": {
+            "g_name": "\u041c\u0443\u0440\u043c\u0430\u043d\u0441\u043a\u043e\u0439 \u043e\u0431\u043b\u0430\u0441\u0442\u0438", 
+            "code": 53, 
+            "tz": "Europe/Moscow", 
+            "abbr": "mur", 
+            "name": "\u041c\u0443\u0440\u043c\u0430\u043d\u0441\u043a\u0430\u044f \u043e\u0431\u043b\u0430\u0441\u0442\u044c"
+        }
+    }, 
+    {
+        "pk": 53, 
+        "model": "regions.region", 
+        "fields": {
+            "g_name": "\u041d\u0438\u0436\u0435\u0433\u043e\u0440\u043e\u0434\u0441\u043a\u043e\u0439 \u043e\u0431\u043b\u0430\u0441\u0442\u0438", 
+            "code": 54, 
+            "tz": "Europe/Moscow", 
+            "abbr": "niz", 
+            "name": "\u041d\u0438\u0436\u0435\u0433\u043e\u0440\u043e\u0434\u0441\u043a\u0430\u044f \u043e\u0431\u043b\u0430\u0441\u0442\u044c"
+        }
+    }, 
+    {
+        "pk": 54, 
+        "model": "regions.region", 
+        "fields": {
+            "g_name": "\u041d\u043e\u0432\u0433\u043e\u0440\u043e\u0434\u0441\u043a\u043e\u0439 \u043e\u0431\u043b\u0430\u0441\u0442\u0438", 
+            "code": 55, 
+            "tz": "Europe/Moscow", 
+            "abbr": "ngr", 
+            "name": "\u041d\u043e\u0432\u0433\u043e\u0440\u043e\u0434\u0441\u043a\u0430\u044f \u043e\u0431\u043b\u0430\u0441\u0442\u044c"
+        }
+    }, 
+    {
+        "pk": 55, 
+        "model": "regions.region", 
+        "fields": {
+            "g_name": "\u041d\u043e\u0432\u043e\u0441\u0438\u0431\u0438\u0440\u0441\u043a\u043e\u0439 \u043e\u0431\u043b\u0430\u0441\u0442\u0438", 
+            "code": 56, 
+            "tz": "Asia/Omsk", 
+            "abbr": "nvs", 
+            "name": "\u041d\u043e\u0432\u043e\u0441\u0438\u0431\u0438\u0440\u0441\u043a\u0430\u044f \u043e\u0431\u043b\u0430\u0441\u0442\u044c"
+        }
+    }, 
+    {
+        "pk": 56, 
+        "model": "regions.region", 
+        "fields": {
+            "g_name": "\u041e\u043c\u0441\u043a\u043e\u0439 \u043e\u0431\u043b\u0430\u0441\u0442\u0438", 
+            "code": 57, 
+            "tz": "Asia/Omsk", 
+            "abbr": "oms", 
+            "name": "\u041e\u043c\u0441\u043a\u0430\u044f \u043e\u0431\u043b\u0430\u0441\u0442\u044c"
+        }
+    }, 
+    {
+        "pk": 57, 
+        "model": "regions.region", 
+        "fields": {
+            "g_name": "\u041e\u0440\u0435\u043d\u0431\u0443\u0440\u0433\u0441\u043a\u043e\u0439 \u043e\u0431\u043b\u0430\u0441\u0442\u0438", 
+            "code": 58, 
+            "tz": "Asia/Yekaterinburg", 
+            "abbr": "ore", 
+            "name": "\u041e\u0440\u0435\u043d\u0431\u0443\u0440\u0433\u0441\u043a\u0430\u044f \u043e\u0431\u043b\u0430\u0441\u0442\u044c"
+        }
+    }, 
+    {
+        "pk": 58, 
+        "model": "regions.region", 
+        "fields": {
+            "g_name": "\u041e\u0440\u043b\u043e\u0432\u0441\u043a\u043e\u0439 \u043e\u0431\u043b\u0430\u0441\u0442\u0438", 
+            "code": 59, 
+            "tz": "Europe/Moscow", 
+            "abbr": "orl", 
+            "name": "\u041e\u0440\u043b\u043e\u0432\u0441\u043a\u0430\u044f \u043e\u0431\u043b\u0430\u0441\u0442\u044c"
+        }
+    }, 
+    {
+        "pk": 59, 
+        "model": "regions.region", 
+        "fields": {
+            "g_name": "\u041f\u0435\u043d\u0437\u0435\u043d\u0441\u043a\u043e\u0439 \u043e\u0431\u043b\u0430\u0441\u0442\u0438", 
+            "code": 60, 
+            "tz": "Europe/Moscow", 
+            "abbr": "pnz", 
+            "name": "\u041f\u0435\u043d\u0437\u0435\u043d\u0441\u043a\u0430\u044f \u043e\u0431\u043b\u0430\u0441\u0442\u044c"
+        }
+    }, 
+    {
+        "pk": 61, 
+        "model": "regions.region", 
+        "fields": {
+            "g_name": "\u041f\u0441\u043a\u043e\u0432\u0441\u043a\u043e\u0439 \u043e\u0431\u043b\u0430\u0441\u0442\u0438", 
+            "code": 61, 
+            "tz": "Europe/Moscow", 
+            "abbr": "psk", 
+            "name": "\u041f\u0441\u043a\u043e\u0432\u0441\u043a\u0430\u044f \u043e\u0431\u043b\u0430\u0441\u0442\u044c"
+        }
+    }, 
+    {
+        "pk": 62, 
+        "model": "regions.region", 
+        "fields": {
+            "g_name": "\u0420\u043e\u0441\u0442\u043e\u0432\u0441\u043a\u043e\u0439 \u043e\u0431\u043b\u0430\u0441\u0442\u0438", 
+            "code": 62, 
+            "tz": "Europe/Moscow", 
+            "abbr": "ros", 
+            "name": "\u0420\u043e\u0441\u0442\u043e\u0432\u0441\u043a\u0430\u044f \u043e\u0431\u043b\u0430\u0441\u0442\u044c"
+        }
+    }, 
+    {
+        "pk": 63, 
+        "model": "regions.region", 
+        "fields": {
+            "g_name": "\u0420\u044f\u0437\u0430\u043d\u0441\u043a\u043e\u0439 \u043e\u0431\u043b\u0430\u0441\u0442\u0438", 
+            "code": 63, 
+            "tz": "Europe/Moscow", 
+            "abbr": "rya", 
+            "name": "\u0420\u044f\u0437\u0430\u043d\u0441\u043a\u0430\u044f \u043e\u0431\u043b\u0430\u0441\u0442\u044c"
+        }
+    }, 
+    {
+        "pk": 64, 
+        "model": "regions.region", 
+        "fields": {
+            "g_name": "\u0421\u0430\u043c\u0430\u0440\u0441\u043a\u043e\u0439 \u043e\u0431\u043b\u0430\u0441\u0442\u0438", 
+            "code": 64, 
+            "tz": "Europe/Moscow", 
+            "abbr": "sam", 
+            "name": "\u0421\u0430\u043c\u0430\u0440\u0441\u043a\u0430\u044f \u043e\u0431\u043b\u0430\u0441\u0442\u044c"
+        }
+    }, 
+    {
+        "pk": 65, 
+        "model": "regions.region", 
+        "fields": {
+            "g_name": "\u0421\u0430\u0440\u0430\u0442\u043e\u0432\u0441\u043a\u043e\u0439 \u043e\u0431\u043b\u0430\u0441\u0442\u0438", 
+            "code": 65, 
+            "tz": "Europe/Moscow", 
+            "abbr": "sar", 
+            "name": "\u0421\u0430\u0440\u0430\u0442\u043e\u0432\u0441\u043a\u0430\u044f \u043e\u0431\u043b\u0430\u0441\u0442\u044c"
+        }
+    }, 
+    {
+        "pk": 66, 
+        "model": "regions.region", 
+        "fields": {
+            "g_name": "\u0421\u0430\u0445\u0430\u043b\u0438\u043d\u0441\u043a\u043e\u0439 \u043e\u0431\u043b\u0430\u0441\u0442\u0438", 
+            "code": 66, 
+            "tz": "Asia/Vladivostok", 
+            "abbr": "sak", 
+            "name": "\u0421\u0430\u0445\u0430\u043b\u0438\u043d\u0441\u043a\u0430\u044f \u043e\u0431\u043b\u0430\u0441\u0442\u044c"
+        }
+    }, 
+    {
+        "pk": 67, 
+        "model": "regions.region", 
+        "fields": {
+            "g_name": "\u0421\u0432\u0435\u0440\u0434\u043b\u043e\u0432\u0441\u043a\u043e\u0439 \u043e\u0431\u043b\u0430\u0441\u0442\u0438", 
+            "code": 67, 
+            "tz": "Asia/Yekaterinburg", 
+            "abbr": "sve", 
+            "name": "\u0421\u0432\u0435\u0440\u0434\u043b\u043e\u0432\u0441\u043a\u0430\u044f \u043e\u0431\u043b\u0430\u0441\u0442\u044c"
+        }
+    }, 
+    {
+        "pk": 68, 
+        "model": "regions.region", 
+        "fields": {
+            "g_name": "\u0421\u043c\u043e\u043b\u0435\u043d\u0441\u043a\u043e\u0439 \u043e\u0431\u043b\u0430\u0441\u0442\u0438", 
+            "code": 68, 
+            "tz": "Asia/Yekaterinburg", 
+            "abbr": "smo", 
+            "name": "\u0421\u043c\u043e\u043b\u0435\u043d\u0441\u043a\u0430\u044f \u043e\u0431\u043b\u0430\u0441\u0442\u044c"
+        }
+    }, 
+    {
+        "pk": 69, 
+        "model": "regions.region", 
+        "fields": {
+            "g_name": "\u0422\u0430\u043c\u0431\u043e\u0432\u0441\u043a\u043e\u0439 \u043e\u0431\u043b\u0430\u0441\u0442\u0438", 
+            "code": 69, 
+            "tz": "Europe/Moscow", 
+            "abbr": "tam", 
+            "name": "\u0422\u0430\u043c\u0431\u043e\u0432\u0441\u043a\u0430\u044f \u043e\u0431\u043b\u0430\u0441\u0442\u044c"
+        }
+    }, 
+    {
+        "pk": 70, 
+        "model": "regions.region", 
+        "fields": {
+            "g_name": "\u0422\u0432\u0435\u0440\u0441\u043a\u043e\u0439 \u043e\u0431\u043b\u0430\u0441\u0442\u0438", 
+            "code": 70, 
+            "tz": "Europe/Moscow", 
+            "abbr": "tve", 
+            "name": "\u0422\u0432\u0435\u0440\u0441\u043a\u0430\u044f \u043e\u0431\u043b\u0430\u0441\u0442\u044c"
+        }
+    }, 
+    {
+        "pk": 71, 
+        "model": "regions.region", 
+        "fields": {
+            "g_name": "\u0422\u043e\u043c\u0441\u043a\u043e\u0439 \u043e\u0431\u043b\u0430\u0441\u0442\u0438", 
+            "code": 71, 
+            "tz": "Asia/Omsk", 
+            "abbr": "tom", 
+            "name": "\u0422\u043e\u043c\u0441\u043a\u0430\u044f \u043e\u0431\u043b\u0430\u0441\u0442\u044c"
+        }
+    }, 
+    {
+        "pk": 72, 
+        "model": "regions.region", 
+        "fields": {
+            "g_name": "\u0422\u0443\u043b\u044c\u0441\u043a\u043e\u0439 \u043e\u0431\u043b\u0430\u0441\u0442\u0438", 
+            "code": 72, 
+            "tz": "Europe/Moscow", 
+            "abbr": "tul", 
+            "name": "\u0422\u0443\u043b\u044c\u0441\u043a\u0430\u044f \u043e\u0431\u043b\u0430\u0441\u0442\u044c"
+        }
+    }, 
+    {
+        "pk": 73, 
+        "model": "regions.region", 
+        "fields": {
+            "g_name": "\u0422\u044e\u043c\u0435\u043d\u0441\u043a\u043e\u0439 \u043e\u0431\u043b\u0430\u0441\u0442\u0438", 
+            "code": 73, 
+            "tz": "Asia/Yekaterinburg", 
+            "abbr": "tyu", 
+            "name": "\u0422\u044e\u043c\u0435\u043d\u0441\u043a\u0430\u044f \u043e\u0431\u043b\u0430\u0441\u0442\u044c"
+        }
+    }, 
+    {
+        "pk": 74, 
+        "model": "regions.region", 
+        "fields": {
+            "g_name": "\u0423\u043b\u044c\u044f\u043d\u043e\u0432\u0441\u043a\u043e\u0439 \u043e\u0431\u043b\u0430\u0441\u0442\u0438", 
+            "code": 74, 
+            "tz": "Europe/Moscow", 
+            "abbr": "uly", 
+            "name": "\u0423\u043b\u044c\u044f\u043d\u043e\u0432\u0441\u043a\u0430\u044f \u043e\u0431\u043b\u0430\u0441\u0442\u044c"
+        }
+    }, 
+    {
+        "pk": 75, 
+        "model": "regions.region", 
+        "fields": {
+            "g_name": "\u0427\u0435\u043b\u044f\u0431\u0438\u043d\u0441\u043a\u043e\u0439 \u043e\u0431\u043b\u0430\u0441\u0442\u0438", 
+            "code": 75, 
+            "tz": "Asia/Yekaterinburg", 
+            "abbr": "che", 
+            "name": "\u0427\u0435\u043b\u044f\u0431\u0438\u043d\u0441\u043a\u0430\u044f \u043e\u0431\u043b\u0430\u0441\u0442\u044c"
+        }
+    }, 
+    {
+        "pk": 77, 
+        "model": "regions.region", 
+        "fields": {
+            "g_name": "\u042f\u0440\u043e\u0441\u043b\u0430\u0432\u0441\u043a\u043e\u0439 \u043e\u0431\u043b\u0430\u0441\u0442u", 
+            "code": 76, 
+            "tz": "Europe/Moscow", 
+            "abbr": "yar", 
+            "name": "\u042f\u0440\u043e\u0441\u043b\u0430\u0432\u0441\u043a\u0430\u044f \u043e\u0431\u043b\u0430\u0441\u0442\u044c"
+        }
+    }, 
+    {
+        "pk": 78, 
+        "model": "regions.region", 
+        "fields": {
+            "g_name": "\u041c\u043e\u0441\u043a\u0432\u044b", 
+            "code": 77, 
+            "tz": "Europe/Moscow", 
+            "abbr": "mow", 
+            "name": "\u041c\u043e\u0441\u043a\u0432\u0430"
+        }
+    }, 
+    {
+        "pk": 79, 
+        "model": "regions.region", 
+        "fields": {
+            "g_name": "\u0421\u0430\u043d\u043a\u0442-\u041f\u0435\u0442\u0435\u0440\u0431\u0443\u0440\u0433\u0430", 
+            "code": 78, 
+            "tz": "Europe/Moscow", 
+            "abbr": "spe", 
+            "name": "\u0421\u0430\u043d\u043a\u0442-\u041f\u0435\u0442\u0435\u0440\u0431\u0443\u0440\u0433"
+        }
+    }, 
+    {
+        "pk": 80, 
+        "model": "regions.region", 
+        "fields": {
+            "g_name": "\u0415\u0432\u0440\u0435\u0439\u0441\u043a\u043e\u0439 \u0430\u0432\u0442\u043e\u043d\u043e\u043c\u043d\u043e\u0439 \u043e\u0431\u043b\u0430\u0441\u0442\u0438", 
+            "code": 79, 
+            "tz": "Asia/Vladivostok", 
+            "abbr": "yev", 
+            "name": "\u0415\u0432\u0440\u0435\u0439\u0441\u043a\u0430\u044f \u0430\u0432\u0442\u043e\u043d\u043e\u043c\u043d\u0430\u044f \u043e\u0431\u043b\u0430\u0441\u0442\u044c"
+        }
+    }, 
+    {
+        "pk": 84, 
+        "model": "regions.region", 
+        "fields": {
+            "g_name": "\u041d\u0435\u043d\u0435\u0446\u043a\u043e\u0433\u043e \u0430\u0432\u0442\u043e\u043d\u043e\u043c\u043d\u043e\u0433\u043e \u043e\u043a\u0440\u0443\u0433\u0430", 
+            "code": 80, 
+            "tz": "Europe/Moscow", 
+            "abbr": "nen", 
+            "name": "\u041d\u0435\u043d\u0435\u0446\u043a\u0438\u0439 \u0430\u0432\u0442\u043e\u043d\u043e\u043c\u043d\u044b\u0439 \u043e\u043a\u0440\u0443\u0433"
+        }
+    }, 
+    {
+        "pk": 82, 
+        "model": "regions.region", 
+        "fields": {
+            "g_name": "\u0425\u0430\u043d\u0442\u044b-\u041c\u0430\u043d\u0441\u0438\u0439\u0441\u043a\u043e\u0433\u043e \u0430\u0432\u0442\u043e\u043d\u043e\u043c\u043d\u043e\u0433\u043e \u043e\u043a\u0440\u0443\u0433\u0430 - \u042e\u0433\u0440\u044b", 
+            "code": 81, 
+            "tz": "Asia/Yekaterinburg", 
+            "abbr": "khm", 
+            "name": "\u0425\u0430\u043d\u0442\u044b-\u041c\u0430\u043d\u0441\u0438\u0439\u0441\u043a\u0438\u0439 \u0430\u0432\u0442\u043e\u043d\u043e\u043c\u043d\u044b\u0439 \u043e\u043a\u0440\u0443\u0433 - \u042e\u0433\u0440\u0430"
+        }
+    }, 
+    {
+        "pk": 83, 
+        "model": "regions.region", 
+        "fields": {
+            "g_name": "\u0427\u0443\u043a\u043e\u0442\u0441\u043a\u043e\u0433\u043e \u0430\u0432\u0442\u043e\u043d\u043e\u043c\u043d\u043e\u0433\u043e \u043e\u043a\u0440\u0443\u0433\u0430", 
+            "code": 82, 
+            "tz": "Asia/Magadan", 
+            "abbr": "chu", 
+            "name": "\u0427\u0443\u043a\u043e\u0442\u0441\u043a\u0438\u0439 \u0430\u0432\u0442\u043e\u043d\u043e\u043c\u043d\u044b\u0439 \u043e\u043a\u0440\u0443\u0433"
+        }
+    }, 
+    {
+        "pk": 81, 
+        "model": "regions.region", 
+        "fields": {
+            "g_name": "\u042f\u043c\u0430\u043b\u043e-\u041d\u0435\u043d\u0435\u0446\u043a\u043e\u0433\u043e \u0430\u0432\u0442\u043e\u043d\u043e\u043c\u043d\u043e\u0433\u043e \u043e\u043a\u0440\u0443\u0433\u0430", 
+            "code": 83, 
+            "tz": "Asia/Yekaterinburg", 
+            "abbr": "yan", 
+            "name": "\u042f\u043c\u0430\u043b\u043e-\u041d\u0435\u043d\u0435\u0446\u043a\u0438\u0439 \u0430\u0432\u0442\u043e\u043d\u043e\u043c\u043d\u044b\u0439 \u043e\u043a\u0440\u0443\u0433"
+        }
+    }
+]

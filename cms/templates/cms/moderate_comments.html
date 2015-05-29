@@ -1,0 +1,91 @@
+{% extends 'cms/base.html' %}
+{% load static %}
+{% load i18n %}
+{% load cms_tags %}
+
+{% block title %}{% trans 'Moderate' %}{% endblock %}
+
+{% block css %}
+	{{ block.super }}
+	<link rel="stylesheet" type="text/css" href="{% static 'css/cms-moderate.css' %}">
+{% endblock %}
+
+{% block content %}
+	<div class="container">
+		<div class="row">
+			<div class="span12">
+
+				<ul class="breadcrumb">
+					<li class="active">{% trans 'Moderate comments' %}</li>
+				</ul>
+
+				{% if comments %}
+					<table class="table table-condensed well well-small">
+						<tbody>
+						{% for comment in comments %}
+							<tr>
+								<td class="moderate-comments_date">
+									<small class="muted">{{ comment.last_modified|date:"d.m.Y H:i" }}</small>
+								</td>
+								<td class="moderate-page_region">
+									{% if comment.page.region.name|length > 20 %}
+										{{ comment.page.region.name|slice:":17" }}...
+									{% else %}
+										{{ comment.page.region.name }}
+									{% endif %}
+								</td>
+								<td class="moderate-page_name">
+									<span class="label label-info">{{ comment.page.id }}</span>
+									{% if comment.page.name|length > 70 %}
+										{{ comment.page.name|slice:":67" }}...
+									{% else %}
+										{{ comment.page.name }}
+									{% endif %}
+								</td>
+								<td class="moderate-comments_author">
+									<a href="{% link cms:profile comment.user.id %}">{{ comment.user|short_name }}</a>
+								</td>
+								<td class="moderate-comments_actions">
+									<a href="#comment-{{ comment.id }}" class="btn btn-small" data-toggle="modal">
+										<i class="icon-eye-open"></i>
+									</a>
+									<div id="comment-{{ comment.id }}" class="modal hide fade text-left">
+										<div class="modal-header">
+											<h4>{% trans 'Comment from' %} {{ comment.user|short_name }}</h4>
+										</div>
+										<div class="modal-body">
+											<small class="muted">{{ comment.last_modified }}</small>
+											<p>{{ comment.message|blockquote }}</p>
+										</div>
+										<div class="modal-footer">
+											<form action="{% link cms:moderate_comment_publish comment.id %}"
+												  method="post" class="moderate-comments_form">
+												<button type="submit" class="btn btn-primary">{% trans 'Publish' %}</button>
+												{% csrf_token %}
+											</form>
+											<form action="{% link cms:moderate_comment_delete comment.id %}"
+												  method="post" class="moderate-comments_form">
+												<button type="submit" class="btn btn-danger">{% trans 'Delete' %}</button>
+												{% csrf_token %}
+											</form>
+										</div>
+									</div>
+								</td>
+							</tr>
+						{% endfor %}
+						</tbody>
+					</table>
+
+					{% if pages.has_other_pages %}
+						<div class="pagination pagination-right">
+							{% include 'cms/pagination.html' with objects=pages %}
+						</div>
+					{% endif %}
+
+				{% else %}
+					<legend class="text-centered no-border">{% trans 'No comments' %}</legend>
+				{% endif %}
+			</div>
+		</div>
+	</div>
+{% endblock %}

@@ -1,0 +1,121 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load cms_tags %}
+
+{% block content %}
+<div class="index">
+	<div class="col-1 fleft">
+		<div class="item fleft">
+			<h2><a href="{% link menu widgets.interview_menu.id %}">интервью</a></h2>
+			<div class="indent">
+				<img src="{% static 'img/nophoto-interview.jpg' %}" alt="" />
+				<div class="fio">
+					{{ wdigets.interview }}
+					<a href="{{ widgets.interview.link_detail }}">
+						{{ widgets.interview.name }}
+					</a>
+				</div>
+				<div class="">
+					{{ widgets.interview.annotation }}
+				</div>
+			</div>
+		</div>
+		<div class="item fleft sep2">
+			<h2><a href="#">Анонс мероприятия</a></h2>
+			<div class="indent blue">
+				<img src="{% static 'img/pic2.jpg' %}" alt="" />
+				<br />
+				<br />
+				<a href="{{ widgets.events.link_detail }}" class="">{{ widgets.events.name }}</a>
+			</div>
+		</div>
+		<div class="clear"></div>
+		<div class="sep3"></div>
+		<div class="personal">
+			<h2><a href="{% link menu widgets.persons_menu.id %}">Персоналии</a></h2>
+			{% for person in widgets.persons %}
+				<div class="item fleft">
+					<div class="indent">
+						{% if person.photo %}
+							<img src="{{ MEDIA_URL }}{{ person.photo.name }}" alt=""  width="110"/>
+						{% else %}
+							<img src="{% static 'img/nophoto-person.jpg' %}" alt=""  width="110"/>
+						{% endif %}
+						<div class="fio">{{ person.full_name }}</div>
+						<div class="">{{ person.position }}</div>
+					</div>
+				</div>
+			{% endfor %}
+			<div class="clear"></div>
+		</div>
+		<div class="sep3"></div>
+		<div class="news">
+			<h2><a href="{% link menu widgets.initiatives_menu.id %}">Инициативы</a></h2>
+			<div class="indent">
+				{% for initiative in widgets.initiatives %}
+					<div class="item" style="width: 310px;">
+						<span class="date">{{ initiative.create_date|date:'d.m.Y' }}</span>
+						<a href="{{ initiative.link_detail }}">{{ initiative.name }}</a>
+					</div>
+				{% endfor %}
+			</div>
+		</div>
+		<div class="clear"></div>
+	</div>
+	<div class="col-2 ">
+	<div class="borderl">
+		<ul class="tabs">
+			<li class="selected">
+				<a href="{% link menu widgets.ordinance.resolution.id %}">Постановления</a>
+			</li>
+			<li>
+				<a href="{% link menu widgets.activity.id %}">Мероприятия</a>
+			</li>
+			<li class="last">
+				<a href="{% link menu widgets.honors.id %}">Награды и поздравления</a>
+			</li>
+		</ul>
+		<div class="indent news">
+			{% for page in widgets.ordinance.red %}
+				<div class="item">
+					<h4><a href="{{ page.link_detail }}">{{ page.name }}</a></h4>
+					<span class="date">{{ page.create_date|date:'d.m.Y' }}</span>
+					<p>
+						{% if page.annotation %}
+							{{ page.annotation }}
+						{% endif %}
+					</p>
+				</div>
+			{% endfor %}
+			{% for page in widgets.ordinance.blue %}
+				<div class="item blue">
+					<h4><a href="{{ page.link_detail }}">{{ page.name }}</a></h4>
+					<span class="date">{{ page.create_date|date:'d.m.Y' }}</span>
+					<p>
+						{% if page.annotation %}
+							{{ page.annotation }}
+						{% endif %}
+					</p>
+				</div>
+			{% endfor %}
+		</div>
+	</div>
+	<div class="indent"><div class="sep3"></div></div>
+	<div class="borderl">
+		<div class="indent reform red ohidden">
+			<h2><a href="{% link menu widgets.legal_reform_menu.id %}">Правовая платформа</a></h2>
+			{% for page in widgets.legal_reform %}
+				<div class="fleft item">
+					<a href="{{ page.link_detail }}">{{ page.name }}</a>
+					<p>
+						{% if page.annotation %}
+							{{ page.annotation }}
+						{% endif %}
+					</p>
+				</div>
+			{% endfor %}
+		</div>
+		</div>
+	</div>
+</div>
+{% endblock %}

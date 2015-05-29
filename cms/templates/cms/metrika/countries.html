@@ -1,0 +1,37 @@
+{% load i18n %}
+{% load static %}
+
+<div id="countries-chart"></div>
+<br>
+<table class="table table-bordered">
+	<thead>
+	<tr>
+		<th>{% trans 'Country' %}</th>
+		<th>{% trans 'Views' %}</th>
+		<th>{% trans 'Visits' %}</th>
+		<th>{% trans 'Visit time' %}</th>
+	</tr>
+	</thead>
+	<tbody>
+	{% for country in countries.data %}
+		<tr>
+			<td>{{ country.name }}</td>
+			<td>{{ country.page_views}}</td>
+			<td>{{ country.visits }}</td>
+			<td>{{ country.visit_time }} сек.</td>
+		</tr>
+	{% endfor %}
+	</tbody>
+</table>
+
+<script>
+	var data = google.visualization.arrayToDataTable([
+		["{% trans 'Country' %}", "{% trans 'Visits' %}"],
+		{% for country in countries.data %}
+			// {{ country.name }}
+			["{{ country.code }}", {{ country.page_views }}]{% if not forloop.last %},{% endif %}
+		{% endfor %}
+	]);
+	var chart = new google.visualization.GeoChart(document.getElementById("countries-chart"));
+	chart.draw(data, {width: 760, height: 480});
+</script>

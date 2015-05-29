@@ -1,0 +1,41 @@
+{% load cms_tags %}
+<div class="news-list">
+	{% for page in comp.elements %}
+		{% if page.full_preview and page.visible %}
+			<div class="item">
+				<div class="info" style="margin-left: 0;">
+					{% autoescape off %}
+						{{ page.content }}
+					{% endautoescape %}
+				</div>
+				{% if page.attachments.count %}
+					<div class="page-attachments">
+						<ul>
+							{% for attachment in page.attachments.all %}
+								<li>
+									<a href="{% link cms:get_attach attachment.id %}">{{ attachment.name }}</a>
+								</li>
+							{% endfor %}
+						</ul>
+					</div>
+				<br/><br/>
+				{% endif %}
+			</div>
+		{% endif %}
+	{% endfor %}
+	{% for page in comp.elements %}
+		{% if page.visible %}
+			<div class="item">
+				<div class="fleft">
+					<span class="date">{{ page.create_date|date:'d.m.Y' }}</span>&nbsp;|&nbsp;
+				</div>
+				<div class="info">
+					<a href="{{ page.link_detail }}" class="news-name">{{ page.name }}</a>
+					{% if page.annotation %}
+						<p class="preview">{{ page.annotation }}</p>
+					{% endif %}
+				</div>
+			</div>
+		{% endif %}
+	{% endfor %}
+</div>

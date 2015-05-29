@@ -1,0 +1,63 @@
+{% extends 'cms/base.html' %}
+{% load static %}
+{% load i18n %}
+{% load widget_tweaks %}
+{% load cms_tags %}
+
+{% block title %}{% trans 'Authorization' %}{% endblock %}
+
+{% block css %}
+	{{ block.super }}
+	<link rel="stylesheet" type="text/css" href="{% static 'css/cms-login.css' %}">
+{% endblock %}
+
+{% block navbar %}{% endblock %}
+
+{% block content %}
+	<div class="container">
+		<div class="row">
+			<div class="b-login">
+				<div class="span4 offset4 well">
+					<form action="{% link cms:login %}" method="post" class="form-horizontal">
+						<fieldset>
+							<legend>{% trans 'Login in Manage System' %}</legend>
+
+							{% for error in form.non_field_errors %}
+								<div class="alert alert-error">
+									<a class="close" data-dismiss="alert" href="#">×</a>{{ error }}
+								</div>
+							{% endfor %}
+
+							<label>{% trans 'Username' %}:</label>
+							<div class="b-login_field">
+								{{ form.username|add_class:'span4' }}
+								{% if form.username.errors %}
+									<div class="alert alert-error">
+										<a class="close" data-dismiss="alert" href="#">×</a>
+										{{ form.username.errors }}
+									</div>
+								{% endif %}
+							</div>
+
+							<label>{% trans 'Password' %}:</label>
+							<div class="b-login_field">
+								{{ form.password|add_class:'span4' }}
+								{% if form.password.errors %}
+									<div class="alert alert-error">
+										<a class="close" data-dismiss="alert" href="#">×</a>
+										{{ form.password.errors }}
+									</div>
+								{% endif %}
+							</div>
+
+							<input type="hidden" name="next" value="{{ next }}">
+							{% csrf_token %}
+
+							<button type="submit" class="btn btn-primary btn-block">{% trans 'Enter' %}</button>
+						</fieldset>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+{% endblock %}

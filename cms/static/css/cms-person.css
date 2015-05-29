@@ -1,0 +1,19 @@
+.person-form_photo-clear {
+	padding-left: 15px;
+}
+.person-photo_thumb {
+	text-align: center !important;
+	vertical-align: middle !important;
+	width: 55px;
+}
+.person-short_info {
+	vertical-align: middle !important;
+}
+.person-ctrl_btn {
+	 text-align: center !important;
+	 vertical-align: middle !important;
+	 width: 50px;
+ }
+.person-modal_delete {
+	width: 100%;
+}

@@ -1,0 +1,68 @@
+{% extends 'cms/base.html' %}
+{% load static %}
+{% load i18n %}
+{% load cms_tags %}
+
+{% block title %}{{ active_menu.name }}{% endblock %}
+
+{% block content %}
+	<div class="container">
+		<div class="row">
+			<div class="span12">
+				<ul class="breadcrumb">
+					{% for node in active_menu|call_method:"get_ancestors:include_self=True" %}
+						{% if forloop.last %}
+							<li class="active">{{ node.name }}</li>
+						{% else %}
+							<li>
+								<a href="{% link cms:menu node.id %}">{{ node.name }}</a>
+								<span class="divider">/</span>
+							</li>
+						{% endif %}
+					{% endfor %}
+				</ul>
+			</div>
+		</div>
+	</div>
+
+	<div class="container">
+		<div class="row">
+
+			<div class="span3">
+
+				<div class="text-centered well well-small">
+					<h5>{% trans 'Document search' %}</h5>
+					<form action="{% link cms:search %}" method="get">
+						<div class="input-append">
+							<input type="text" class="span2" name="q" value="{{ q|default:'' }}" placeholder="{% trans 'Query' %}">
+							<input type="hidden" name="menu" value="{{ active_menu.id }}">
+							<button type="submit" class="btn">{% trans 'Search' %}</button>
+						</div>
+					</form>
+				</div>
+
+				{% include comp.model_class.tmpl_ctrl with comp=comp %}
+
+				<hr>
+
+				{% for menu in menu_tree %}
+					<div class="well well-small" style="padding: 8px 0;">
+						<ul class="nav nav-list">
+							<li class="nav-header">{{ menu.name }}</li>
+							{% for child in menu.children %}
+								<li{% if child == active_menu %} class="active"{% endif %}>
+									<a href="{% link cms:menu child.id %}">{{ child.name }}</a>
+								</li>
+							{% endfor %}
+						</ul>
+					</div>
+				{% endfor %}
+			</div>
+
+			<div class="span9">
+				{% include comp.model_class.tmpl_manage with comp=comp %}
+			</div>
+
+		</div>
+	</div>
+{% endblock %}

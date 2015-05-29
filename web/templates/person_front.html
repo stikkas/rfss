@@ -1,0 +1,19 @@
+<div>
+	<table>
+		{% for person in comp.elements %}
+			<tr>
+				<td style="vertical-align: middle; text-align: center;">
+					<img width="300" src="{{ MEDIA_URL }}{{ person.photo.name }}"></td>
+				<td style="vertical-align: middle; padding-left: 30px;">
+					<h2>{{ person.full_name }}</h2>
+					<span>{{ person.position }}</span>
+					<br />
+					<br />
+					{% autoescape off %}
+						{{ person.bio }}
+					{% endautoescape %}
+				</td>
+			</tr>
+		{% endfor %}
+	</table>
+</div>

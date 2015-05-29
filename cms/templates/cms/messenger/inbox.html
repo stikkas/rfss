@@ -1,0 +1,84 @@
+{% extends 'cms/base.html' %}
+{% load static %}
+{% load i18n %}
+{% load cms_tags %}
+
+{% block title %}{% trans 'Inbox' %}{% endblock %}
+
+{% block css %}
+	{{ block.super }}
+	<link rel="stylesheet" type="text/css" href="{% static 'css/cms-messenger.css' %}">
+{% endblock %}
+
+{% block content %}
+	<div class="container">
+		<div class="row">
+			<div class="span10 offset1">
+				<ul class="breadcrumb">
+					<li class="active">{% trans 'Inbox' %}</li>
+				</ul>
+
+				{% if inbox %}
+					<table class="table table-condensed well well-small">
+						<tbody>
+						{% for mesg in inbox %}
+							<tr>
+								<td class="message-create_date">
+									<small class="muted">{{ mesg.create_date }}</small>
+								</td>
+								<td class="message-sender">
+									<small>
+										<a href="{% link cms:profile mesg.sender.id %}">
+											{{ mesg.sender|short_name }}
+										</a>
+									</small>
+								</td>
+								<td>
+									{% if mesg.is_new %}
+										<span class="label label-info">new</span>
+									{% endif %}
+									<a href="{% link cms:inbox_message mesg.id %}">
+										{% if mesg.subject|length > 62 %}
+											{{ mesg.subject|slice:":62" }}...
+										{% else %}
+											{{ mesg.subject }}
+										{% endif %}
+									</a>
+								</td>
+								<td class="message-delete">
+									<a href="#mesg_{{ mesg.id }}-delete" data-toggle="modal"><i class="icon-trash"></i></a>
+									<div id="mesg_{{ mesg.id }}-delete" class="modal hide fade text-left">
+										<div class="modal-header">
+											<h4>{% trans 'Remove Message?' %}</h4>
+										</div>
+										<div class="modal-body">
+											<div class="text-left">
+												<small class="muted">{{ mesg.create_date }}</small>
+											</div>
+											{{ mesg.subject }}
+										</div>
+										<div class="modal-footer">
+											<form class="form-delete" action="{% link cms:delete_inbox_message mesg.id %}" method="post">
+												<button type="submit" class="btn btn-danger">{% trans 'Remove' %}</button>
+												<a href="#" class="btn btn-primary" data-dismiss="modal">{% trans 'Cancel' %}</a>
+												{% csrf_token %}
+											</form>
+										</div>
+									</div>
+								</td>
+							</tr>
+						{% endfor %}
+						</tbody>
+					</table>
+					{% if inbox.has_other_pages %}
+						<div class="pagination pagination-right">
+							{% include 'cms/pagination.html' with objects=inbox %}
+						</div>
+					{% endif %}
+				{% else %}
+					<legend class="text-centered no-border">{% trans 'No incoming messages' %}</legend>
+				{% endif %}
+			</div>
+		</div>
+	</div>
+{% endblock %}

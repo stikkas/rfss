@@ -1,0 +1,36 @@
+Дата подачи обращения: {{ letter.filing_datetime|date:'d.m.Y' }}
+
+
+Ответ в электронном виде: {{ letter.reply_by_email|yesno:'Да,Нет' }}
+Ответ в письменном виде: {{ letter.reply_by_post|yesno:'Да,Нет' }}
+
+
+Заявитель
+    Фамилия:        {{ letter.first_name }}
+    Имя:            {{ letter.last_name }}
+    Отчество:       {{ letter.patronymic }}
+    Организация:    {{ letter.organization }}
+
+
+Почтовый адрес
+    Страна / регион:             {{ letter.get_country_display }}
+    Район:                       {{ letter.district }}
+    Почтовый индекс:             {{ letter.postcode }}
+    Город / населенный пункт:    {{ letter.settlement }}
+    Улица:                       {{ letter.street }}
+    Номер дома:                  {{ letter.house }}
+    Строение / корпус:           {{ letter.building }}
+    Номер квартиры / офиса:      {{ letter.flat }}
+
+
+Контактные данные
+    Номер телефона:    {{ letter.phone }}
+    E-mail:            {{ letter.email }}
+
+
+Обращение
+    Рубрика обращения:    {{ letter.rubric }}
+    Тема обращения:       {{ letter.subject }}
+
+
+{{ letter.message }}

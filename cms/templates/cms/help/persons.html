@@ -1,0 +1,28 @@
+{% extends 'cms/help/base.html' %}
+{% load static %}
+
+{% block title %}Персоналии{% endblock %}
+
+{% block help_content %}
+	<p>На Главной странице сайтов Совета судей субъектов РФ предусмотрено отображение фотографий
+	   Председателя  и членов Совета судей конкретного субъекта, размещенных в
+	   Основное меню/о Совете судей/ Совет судей.</p>
+	<p class="text-centered"><img src="{% static 'img/help/32.jpg' %}"></p>
+	<p class="text-centered"><small class="text-info">Рис. 32 </small></p>
+	<p class="text-centered"><img src="{% static 'img/help/33.jpg' %}"></p>
+	<p class="text-centered"><small class="text-info">Рис. 33 </small></p>
+	<p>Для того чтобы разместить информацию о составе Совета судей субъекта РФ, в режиме
+	   администрирования необходимо зайти в соответствующий раздел
+	   (Основное меню/о Совете судей/ Совет судей) и нажать
+	   на кнопку <img src="{% static 'img/help/pers.jpg' %}"></p>
+	<p>В открывшейся форме поэтапно заполните все поля, загрузите фото.</p>
+	<p class="text-centered"><img src="{% static 'img/help/34.jpg' %}"></p>
+	<p class="text-centered"><small class="text-info">Рис. 34 </small></p>
+	<br>
+	<p><span class="text-error"><strong>Внимание!</strong> Проставьте признак «Отображать на карте»
+	   ТОЛЬКО в персоналии ПРЕДСЕДАТЕЛЯ Совета судей субъекта РФ для отображения информации
+	   на интерактивной карте сайта.</span></p>
+	<br>
+	<p class="text-centered"><img src="{% static 'img/help/35.jpg' %}"></p>
+	<p class="text-centered"><small class="text-info">Рис. 35 </small></p>
+{% endblock %}

@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+{% load cms_tags %}
+
+{% block title %}{{ menu.name }}{% endblock %}
+
+{% block main_menu %}
+	<ul class="topmenu">
+		{% for m in main_menu %}
+			<li{% if m in menu.get_ancestors or m == menu %} class="selected"{% endif %}>
+				<a href="{% link menu m.id %}">{{ m.name }}</a>
+			</li>
+		{% endfor %}
+	</ul>
+{% endblock %}
+
+{% block content %}
+	<div class="col-2">
+		<div>
+			{% if menus.level2 %}
+				<ul class="tabs">
+					{% for m in menus.level2 %}
+						{% if not forloop.last %}
+							<li{% if m.active %} class="selected"{% endif %}>
+								<a href="{% link menu m.id %}">{{ m.name }}</a>
+							</li>
+						{% else %}
+							<li class="last{% if m.active %} selected{% endif %}"><a href="{% link menu m.id %}">{{ m.name }}</a></li>
+						{% endif %}
+					{% endfor %}
+				</ul>
+			{% endif %}
+			{% if menus.level3 %}<br/><br/><br/>{% endif %}
+			<div>
+				{% if menus.level3 %}
+					<ul class="tabs tabs_inner">
+					{% for m in menus.level3 %}
+						<li{% if m.active %} class="selected"{% endif %}>
+							<a href="{% link menu m.id %}">{{ m.name }}</a>
+						</li>
+					{% endfor %}
+					</ul>
+				{% endif %}
+				<div class="indent{% if menus.level3 %} borderl{% endif %}">
+					{% if menu.tmpl_list %}
+						{% include menu.tmpl_list with comp=comp %}
+					{% else %}
+						{% include comp.model_class.tmpl_front with comp=comp %}
+					{% endif %}
+				</div>
+			</div>
+		</div>
+		<div class="sep3"></div>
+        {% if comp.elements.has_other_pages %}
+            {% include 'pagination.html' with objects=comp.elements %}
+        {% endif %}
+	</div>
+{% endblock %}

@@ -1,0 +1,36 @@
+{% load i18n %}
+{% load static %}
+
+<div id="sources-chart"></div>
+<br>
+<table class="table table-bordered">
+	<thead>
+	<tr>
+		<th>{% trans 'Source type' %}</th>
+		<th>{% trans 'Views' %}</th>
+		<th>{% trans 'Visits' %}</th>
+		<th>{% trans 'Visit time' %}</th>
+	</tr>
+	</thead>
+	<tbody>
+	{% for source in sources.data %}
+		<tr>
+			<td>{{ source.name }}</td>
+			<td>{{ source.page_views}}</td>
+			<td>{{ source.visits }}</td>
+			<td>{{ source.visit_time }} сек.</td>
+		</tr>
+	{% endfor %}
+	</tbody>
+</table>
+
+<script>
+	var data = google.visualization.arrayToDataTable([
+		["{% trans 'Source type' %}", "{% trans 'Visits' %}", "{% trans 'Views' %}"],
+		{% for source in sources.data %}
+			["{{ source.name }}", {{ source.visits }}, {{ source.page_views }}]{% if not forloop.last %},{% endif %}
+		{% endfor %}
+	]);
+	var chart = new google.visualization.ImageChart(document.getElementById("sources-chart"));
+	chart.draw(data, {cht: "bhg", width: 760, height: 310});
+</script>

@@ -1,0 +1,126 @@
+{% extends 'cms/base.html' %}
+{% load static %}
+{% load i18n %}
+{% load widget_tweaks %}
+{% load cms_tags %}
+
+{% block title %}{% trans 'Document search' %}: {{ q|default:'' }}{% endblock %}
+
+{% block css %}
+	{{ block.super }}
+	<link rel="stylesheet" type="text/css" href="{% static 'css/themes/smoothness/jquery-ui-1.9.0.min.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'css/datepicker-custom.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'css/cms-search.css' %}">
+{% endblock %}
+
+{% block content %}
+	<div class="container">
+		<div class="row">
+			<div class="span12">
+				<ul class="breadcrumb">
+					<li>
+						<a href="{% link cms:menu %}">{% trans 'Publications' %}</a>
+						<span class="divider">/</span>
+					</li>
+					{% for node in menu|call_method:"get_ancestors:include_self=True" %}
+						<li>
+							<a href="{% link cms:menu node.id %}">{{ node.name }}</a>
+							<span class="divider">/</span>
+						</li>
+					{% endfor %}
+					<li class="active">{% trans 'Document search' %}</li>
+				</ul>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="span10 offset1">
+				<form action="{% link cms:search %}" class="form-inline well well-small text-centered" method="get">
+					{{ form.q|add_class:"span2" }}
+					{{ form.search_in|add_class:"span2" }}
+					{{ form.menu|add_class:"span2" }}
+					{{ form.date_start|add_class:"input-small datepicker" }}
+					<i class="icon-calendar"></i>
+					{{ form.date_end|add_class:"input-small datepicker" }}
+					<button type="submit" class="btn">{% trans 'Search' %}</button>
+				</form>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="span12">
+				{% if pages.has_other_pages %}
+					<div class="pagination">
+						{% include 'cms/pagination.html' with objects=pages %}
+					</div>
+				{% endif %}
+
+				{% for page in pages %}
+					<div class="well well-small">
+						<p>
+							<span class="badge">{{ page.num }}</span>
+							<small class="muted">{{ page.menu.name }}</small>
+						</p>
+						<p class="search-element_name">
+							<em>{{ page.name }}</em>
+						</p>
+						<blockquote class="search-element_content">
+							{% autoescape off %}
+								{% if search_in == 'content' %}
+									...{{ page.content }}...
+								{% elif search_in == 'name' %}
+									...{{ page.name_hit }}...
+								{% endif %}
+							{% endautoescape %}
+						</blockquote>
+						<div class="search-element_link text-right">
+							[ <i class="icon-pencil"></i> <a href="{{ page.link_edit }}">{% trans 'Edit' %}</a> ]
+							[ <i class="icon-trash"></i> <a href="#page_{{ page.id }}-delete" data-toggle="modal">{% trans 'Delete' %}</a> ]
+							<div id="page_{{ page.id }}-delete" class="modal hide fade text-left">
+								<div class="modal-header">
+									<h4>{% trans 'Remove Page?' %}</h4>
+								</div>
+								<div class="modal-body">{{ page.name }}</div>
+								<div class="modal-footer">
+									<form class="form-delete" action="{{ page.link_delete }}" method="post">
+										<button type="submit" class="btn btn-danger">{% trans 'Remove' %}</button>
+										<a href="#" class="btn btn-primary" data-dismiss="modal">{% trans 'Cancel' %}</a>
+										{% csrf_token %}
+									</form>
+								</div>
+							</div>
+						</div>
+					</div>
+				{% endfor %}
+
+				{% if pages.has_other_pages %}
+					<div class="pagination">
+						{% include 'cms/pagination.html' with objects=pages %}
+					</div>
+				{% endif %}
+			</div>
+		</div>
+	</div>
+{% endblock %}
+
+{% block js_libs %}
+	{{ block.super }}
+	<script src="{% static 'js/libs/jquery.ui-1.9.0-core.min.js' %}"></script>
+{% endblock %}
+{% block js_widgets %}
+	{{ block.super }}
+	<script src="{% static 'js/widgets/jquery.ui-1.9.0-datepicker.min.js' %}"></script>
+	<script src="{% static 'js/i18n/jquery.ui-1.9.0-datepicker-ru.min.js' %}"></script>
+{% endblock %}
+{% block js_raw %}
+	{{ block.super }}
+	<script>
+		(function ($) {
+			$().ready(function() {
+				$.datepicker.setDefaults( $.datepicker.regional["{{ LANG }}"] );
+				$(".datepicker").datepicker();
+			});
+		} (window.jQuery) );
+	</script>
+{% endblock %}
+

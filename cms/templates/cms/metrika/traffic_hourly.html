@@ -1,0 +1,34 @@
+{% load i18n %}
+{% load static %}
+
+<div id="traffic-hourly-chart"></div>
+<br>
+<table class="table table-bordered">
+	<thead>
+	<tr>
+		<th>{% trans 'Hours' %}</th>
+		<th>{% trans 'Average visits' %}</th>
+		<th>{% trans 'Visit time' %}</th>
+	</tr>
+	</thead>
+	<tbody>
+	{% for time in traffic_hourly.data %}
+		<tr>
+			<td>{{ time.hours }}</td>
+			<td>{{ time.avg_visits }}</td>
+			<td>{{ time.visit_time }} {% trans 'sec.' %}</td>
+		</tr>
+	{% endfor %}
+	</tbody>
+</table>
+<script>
+	var data = google.visualization.arrayToDataTable([
+		["{% trans 'Hours' %}", "{% trans 'Average visits' %}"],
+		{% for time in traffic_hourly.data %}
+			["{{ time.hours }}", {{ time.avg_visits }}]{% if not forloop.last %},{% endif %}
+		{% endfor %}
+	]);
+	var chart = new google.visualization.ImageLineChart(document.getElementById("traffic-hourly-chart"));
+	chart.draw(data, {width: 760, height: 310});
+</script>
+

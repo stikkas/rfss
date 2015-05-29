@@ -1,0 +1,188 @@
+{% extends 'cms/base.html' %}
+{% load static %}
+{% load i18n %}
+{% load cms_tags %}
+
+{% block title %}{% trans 'Metrika' %}{% endblock %}
+
+{% block css %}
+	{{ block.super }}
+	<link rel="stylesheet" type="text/css" href="{% static 'css/themes/smoothness/jquery-ui-1.9.0.min.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'css/datepicker-custom.css' %}">
+{% endblock %}
+
+{% block content %}
+	<div class="container">
+		<div class="well well-small text-centered">
+			<form action="{% link cms:statistic %}" method="post" class="form-delete form-inline">
+				<span>{% trans 'Date range' %}: </span>
+				<input id="date1" type="text" class="input-small" name="date1" value="{{ date1 }}" placeholder="{% trans 'from' %}">
+				<input id="date2" type="text" class="input-small" name="date2" value="{{ date2 }}" placeholder="{% trans 'till' %}">
+				{% csrf_token %}
+				<button class="btn" type="submit">{% trans 'Apply' %}</button>
+			</form>
+		</div>
+	</div>
+	<div class="container">
+		<div class="tabbable tabs-left">
+			<ul class="nav nav-tabs">
+				<li class="active">
+					<a href="#traffic-pane" data-toggle="tab">{% trans 'General' %}</a>
+				</li>
+				<li>
+					<a href="#traffic-hourly-pane" data-toggle="tab">{% trans 'Traffic hourly' %}</a>
+				</li>
+				<li>
+					<a href="#sources-pane" data-toggle="tab">{% trans 'Sources' %}</a>
+				</li>
+				<li>
+					<a href="#browsers-pane" data-toggle="tab">{% trans 'Browsers' %}</a>
+				</li>
+				<li>
+					<a href="#countries-pane" data-toggle="tab">{% trans 'Countries' %}</a>
+				</li>
+				<li>
+					<a href="#regions-pane" data-toggle="tab">{% trans 'Regions' %}</a>
+				</li>
+			</ul>
+			<div class="tab-content">
+				<div class="tab-pane active" id="traffic-pane"></div>
+				<div class="tab-pane" id="traffic-hourly-pane"></div>
+				<div class="tab-pane" id="sources-pane"></div>
+				<div class="tab-pane" id="browsers-pane"></div>
+				<div class="tab-pane" id="countries-pane"></div>
+				<div class="tab-pane" id="regions-pane"></div>
+			</div>
+		</div>
+	</div>
+
+	<div id="ajax_process" class="modal">
+		<div class="modal-body">
+			<img src="{% static 'img/loading.gif' %}"> {% trans 'Process' %}
+		</div>
+	</div>
+{% endblock %}
+
+{% block js_libs %}
+	{{ block.super }}
+	<script src="{% static 'js/libs/jquery.ui-1.9.0-core.min.js' %}"></script>
+	<script src="https://www.google.com/jsapi"></script>
+	<script>
+		google.load('visualization', '1', {packages:['imagechart', 'geochart']});
+	</script>
+{% endblock %}
+
+{% block js_widgets %}
+	{{ block.super }}
+	<script src="{% static 'js/widgets/jquery.ui-1.9.0-datepicker.min.js' %}"></script>
+	<script src="{% static 'js/i18n/jquery.ui-1.9.0-datepicker-ru.min.js' %}"></script>
+{% endblock %}
+
+{% block js_raw %}
+	{{ block.super }}
+	<script>
+		(function ($) {
+			$().ready(function() {
+				$.datepicker.setDefaults( $.datepicker.regional["ru"] );
+				$("#date1").datepicker({dateFormat: "yymmdd"});
+				$("#date2").datepicker({dateFormat: "yymmdd"});
+			});
+		} (window.jQuery) );
+
+		var traffic_loaded = false;
+		var traffic_hourly_loaded = false;
+		var sources_loaded = false;
+		var browsers_loaded = false;
+		var countries_loaded = false;
+		var regions_loaded = false;
+
+
+	{% if date1 and date2 %}
+		$.get('{% link cms:stat_traffic date1=date1 date2=date2 %}').success(function(data){
+	{% else %}
+		$.get('{% link cms:stat_traffic %}').success(function(data){
+	{% endif %}
+		$('#traffic-pane').html(data);
+		});
+		traffic_loaded = true;
+
+		$('a[data-toggle="tab"]').on('show', function (e) {
+			var tab = e.target;
+			var paneid = $(tab).attr('href');
+
+			// Traffic
+			if (paneid == '#traffic-pane' && !traffic_loaded) {
+			{% if date1 and date2 %}
+				$.get('{% link cms:stat_traffic date1=date1 date2=date2 %}').success(function(data){
+			{% else %}
+				$.get('{% link cms:stat_traffic %}').success(function(data){
+			{% endif %}
+					$(paneid).html(data);
+				});
+				traffic_loaded = true;
+			}
+
+			// Traffic hourly
+			if (paneid == '#traffic-hourly-pane' && !traffic_hourly_loaded) {
+			{% if date1 and date2 %}
+				$.get('{% link cms:stat_traffic_hourly date1=date1 date2=date2 %}').success(function(data){
+			{% else %}
+				$.get('{% link cms:stat_traffic_hourly %}').success(function(data){
+			{% endif %}
+					$(paneid).html(data);
+				});
+				traffic_hourly_loaded = true;
+			}
+
+			// Sources
+			if (paneid == '#sources-pane' && !sources_loaded) {
+			{% if date1 and date2 %}
+				$.get('{% link cms:stat_sources date1=date1 date2=date2 %}').success(function(data){
+			{% else %}
+				$.get('{% link cms:stat_sources %}').success(function(data){
+			{% endif %}
+					$(paneid).html(data);
+				});
+				sources_loaded = true;
+			}
+
+			// Browsers
+			if (paneid == '#browsers-pane' && !browsers_loaded) {
+			{% if date1 and date2 %}
+				$.get('{% link cms:stat_browsers date1=date1 date2=date2 %}').success(function(data){
+			{% else %}
+				$.get('{% link cms:stat_browsers %}').success(function(data){
+			{% endif %}
+					$(paneid).html(data);
+				});
+				browsers_loaded = true;
+			}
+
+			// Countries
+			if (paneid == '#countries-pane' && !countries_loaded) {
+			{% if date1 and date2 %}
+				$.get('{% link cms:stat_countries date1=date1 date2=date2 %}').success(function(data){
+			{% else %}
+				$.get('{% link cms:stat_countries %}').success(function(data){
+			{% endif %}
+					$(paneid).html(data);
+				});
+				countries_loaded = true;
+			}
+
+			// Regions
+			if (paneid == '#regions-pane' && !regions_loaded) {
+			{% if date1 and date2 %}
+				$.get('{% link cms:stat_regions date1=date1 date2=date2 %}').success(function(data){
+			{% else %}
+				$.get('{% link cms:stat_regions %}').success(function(data){
+			{% endif %}
+					$(paneid).html(data);
+				});
+				regions_loaded = true;
+			}
+		});
+
+		$("#ajax_process").ajaxStart(function() {$(this).show();}).ajaxStop(function() {$(this).hide();})
+	</script>
+{% endblock %}

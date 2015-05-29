@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block title %}Результаты{% endblock %}
+
+{% block content %}
+	<h1>{{ poll.question }}</h1>
+	<div class="doc">
+		<div class="item indent">
+			<div class="info">
+				{% for choice in poll.choices.all %}
+					<strong>{{ choice.title }}</strong>: {{ choice.votes }}
+					<br/>
+					<br/>
+				{% endfor %}
+			</div>
+		</div>
+	</div>
+{% endblock %}

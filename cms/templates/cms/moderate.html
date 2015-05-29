@@ -1,0 +1,99 @@
+{% extends 'cms/base.html' %}
+{% load static %}
+{% load i18n %}
+{% load cms_tags %}
+
+{% block title %}{% trans 'Moderate' %}{% endblock %}
+
+{% block css %}
+	{{ block.super }}
+	<link rel="stylesheet" type="text/css" href="{% static 'css/cms-moderate.css' %}">
+{% endblock %}
+
+{% block content %}
+	<div class="container">
+		<div class="row">
+			<div class="span12">
+
+				<ul class="breadcrumb">
+					<li class="active">{% trans 'Moderate publications' %}</li>
+				</ul>
+
+				<table class="table table-condensed well well-small">
+					<tbody>
+					{% for page in pages %}
+						<tr>
+							<td class="moderate-page_visible">
+								{% if page.visible %}
+									<i class="icon-eye-open"></i>
+								{% else %}
+									<i class="icon-eye-close"></i>
+								{% endif %}
+							</td>
+							<td class="moderate-page_date">
+								<small class="muted">{{ page.last_modified|date:"d.m.Y H:i" }}</small>
+							</td>
+							<td class="moderate-page_region">
+								{% if page.region.name|length > 20 %}
+									{{ page.region.name|slice:":17" }}...
+								{% else %}
+									{{ page.region.name }}
+								{% endif %}
+							</td>
+							<td>
+								{% if not page.is_vised %}
+									<span class="label label-info">new</span>
+								{% endif %}
+								<a href="{% link cms:moderate_page page.id %}">
+									{% if page.name|length > 65 %}
+										{{ page.name|slice:":62" }}...
+									{% else %}
+										{{ page.name }}
+									{% endif %}
+								</a>
+							</td>
+							<td class="moderate-page_author">
+								{% if page.last_edit_by %}
+									<a href="{% link cms:profile page.last_edit_by.id %}">{{ page.last_edit_by|short_name }}</a>
+								{% else %}
+									{% trans 'Unknown' %}
+								{% endif %}
+							</td>
+							<td class="moderate-page_version">
+								<span class="label">{{ page.version }}</span>
+							</td>
+							{% if user.profile.is_manager or user.is_superuser %}
+								<td class="moderate-page_delete">
+									<a href="#page_{{ page.id }}-delete" data-toggle="modal">
+										<i class="icon-trash"></i>
+									</a>
+									<div id="page_{{ page.id }}-delete" class="modal hide fade text-left">
+										<div class="modal-header">
+											<h4>{% trans 'Remove Page?' %}</h4>
+										</div>
+										<div class="modal-body">{{ page.name }}</div>
+										<div class="modal-footer">
+											<form class="form-delete" action="{{ page.link_delete }}" method="post">
+												<button type="submit" class="btn btn-danger">{% trans 'Remove' %}</button>
+												<a href="#" class="btn btn-primary" data-dismiss="modal">{% trans 'Cancel' %}</a>
+												{% csrf_token %}
+											</form>
+										</div>
+									</div>
+								</td>
+							{% endif %}
+						</tr>
+					{% endfor %}
+					</tbody>
+				</table>
+
+				{% if pages.has_other_pages %}
+					<div class="pagination pagination-right">
+						{% include 'cms/pagination.html' with objects=pages %}
+					</div>
+				{% endif %}
+
+			</div>
+		</div>
+	</div>
+{% endblock %}

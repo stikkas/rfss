@@ -1,0 +1,244 @@
+{% extends 'cms/base.html' %}
+{% load i18n %}
+{% load static %}
+{% load widget_tweaks %}
+{% load cms_tags %}
+
+{% block title %}{% trans 'Edit: ' %}{{ page.name }}{% endblock %}
+
+{% block css %}
+	{{ block.super }}
+	<link rel="stylesheet" type="text/css" href="{% static 'css/themes/smoothness/jquery-ui-1.9.0.min.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'css/datepicker-custom.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'css/cms-attach_form.css' %}">
+{% endblock %}
+
+{% block content %}
+	<div class="container">
+		<div class="row">
+			<div class="span12">
+				<ul class="breadcrumb">
+					{% for node in page.menu|call_method:"get_ancestors:include_self=True" %}
+						<li>
+							<a href="{% link cms:menu node.id %}">{{ node.name }}</a>
+							<span class="divider">/</span>
+						</li>
+					{% endfor %}
+					<li class="active">{{ page.name }} ({% trans 'Version: ' %}{{ page.version }})</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+
+	<div class="container">
+		<div class="row">
+			<div class="span8">
+				<form action="{% link cms:page_edit page.id %}" method="post">
+					<fieldset>
+						<legend>{% trans 'Page' %}</legend>
+
+						<div class="controls controls-row">
+							{% if page_form.name.errors %}
+								<label class="text-error">{{ page_form.name.label }}: {{ page_form.name.errors }}</label>
+							{% else %}
+								<label class="muted">{{ page_form.name.label }}</label>
+							{% endif %}
+							{{ page_form.name|add_class:"span4" }}
+
+							<span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+
+							<label class="checkbox inline muted">
+								{{ page_form.full_preview }}{{ page_form.full_preview.label }}
+							</label>
+							<label class="checkbox inline muted">
+								{{ page_form.show_in_news }}{{ page_form.show_in_news.label }}
+							</label>
+						</div>
+
+						<label class="muted">
+							{% if page_form.create_date.errors %}
+								<span class="text-error">{{ page_form.create_date.label }}: {{ page_form.create_date.errors }}</span>
+							{% else %}
+								{{ page_form.create_date.label }}
+							{% endif %}
+							/
+							{% if page_form.relevance_date.errors %}
+								<span class="text-error">{{ page_form.relevance_date.label }}: {{ page_form.relevance_date.errors }}</span>
+							{% else %}
+								{{ page_form.relevance_date.label }}
+							{% endif %}
+						</label>
+						{{ page_form.create_date|add_class:"span2" }}
+						<i class="icon-calendar"></i>
+						{{ page_form.relevance_date|add_class:"span2" }}
+
+
+						<label class="muted">{{ page_form.menu.label }}</label>
+						{{ page_form.menu|add_class:"span4" }}
+
+						<label class="muted">{{ page_form.keywords.label }}</label>
+						{{ page_form.keywords|add_class:"span4" }}
+
+						{% if page_form.annotation.errors %}
+							<label class="text-error">{{ page_form.annotation.label }}: {{ page_form.annotation.errors }}</label>
+						{% else %}
+							<label class="muted">{{ page_form.annotation.label }}</label>
+						{% endif %}
+						{{ page_form.annotation|add_class:"span6"|attr:"rows:3" }}
+
+
+						{% if page_form.content.errors %}
+							<label class="text-error">{{ page_form.content.label }}: {{ page_form.content.errors }}</label>
+						{% else %}
+							<label class="muted">{{ page_form.content.label }}</label>
+						{% endif %}
+						{{ page_form.content|add_class:"tinymce span8" }}
+
+						{% for field in page_form.hidden_fields %}
+							{{ field }}
+						{% endfor %}
+						{% csrf_token %}
+
+						<br>
+
+						<div class="text-centered">
+							<button type="submit" class="btn" name="save" value="save">{% trans 'Save' %}</button>
+						</div>
+					</fieldset>
+				</form>
+			</div>
+
+			<div class="span4">
+				<form action="{% link cms:page_edit page.id %}" enctype="multipart/form-data" class="form" method="post">
+					<fieldset>
+						<legend>{% trans 'Attachments' %}</legend>
+
+						{% if attach_form.file.errors %}
+							<label class="text-error">{{ attach_form.file.label }}: {{ attach_form.file.errors }}</label>
+						{% else %}
+							<label class="muted">{{ attach_form.file.label }}</label>
+						{% endif %}
+						{{ attach_form.file }}
+						<span class="help-block">
+							<small class="muted">{{ attach_form.file.help_text }}</small>
+						</span>
+
+						{% for field in attach_form.hidden_fields %}
+							{{ field }}
+						{% endfor %}
+
+						{% csrf_token %}
+						<div class="text-centered">
+							<button type="submit" class="btn" name="upload" value="upload">
+								<i class="icon-download"></i> {% trans 'Upload' %}
+							</button>
+						</div>
+					</fieldset>
+				</form>
+				<table class="table table-condensed well well-small">
+					{% for attach in page.attachments.all %}
+						<tr>
+							<td class="b-attach-download">
+								<a class="b-attach-download_link" href="{% link cms:get_attach attach.id %}">
+									{{ attach.name }}
+								</a>
+							</td>
+							<td class="b-attach-delete">
+								<div id="attach_{{ attach.id }}-delete" class="modal hide fade">
+									<div class="modal-header">
+										<h4>{% trans 'Remove attachment?' %}</h4>
+									</div>
+									<div class="modal-body">{{ attach.name }}</div>
+									<div class="modal-footer">
+										<form class="form-delete" action="{% link cms:attach_delete attach.id %}" method="post">
+											<button type="submit" class="btn btn-danger">{% trans 'Remove' %}</button>
+											<a href="#" class="btn btn-primary" data-dismiss="modal">{% trans 'Cancel' %}</a>
+											{% csrf_token %}
+										</form>
+									</div>
+								</div>
+								<a href="#attach_{{ attach.id }}-delete" data-toggle="modal"><i class="icon-trash"></i></a>
+							</td>
+						</tr>
+					{% endfor %}
+				</table>
+			</div>
+		</div>
+	</div>
+{% endblock %}
+
+{% block js_libs %}
+	{{ block.super }}
+	<script src="{% static 'js/libs/jquery.ui-1.9.0-core.min.js' %}"></script>
+{% endblock %}
+{% block js_widgets %}
+	{{ block.super }}
+	<script src="{% static 'js/widgets/jquery.ui-1.9.0-datepicker.min.js' %}"></script>
+	<script src="{% static 'js/i18n/jquery.ui-1.9.0-datepicker-ru.min.js' %}"></script>
+	<script src="{% static 'js/tiny_mce/tiny_mce.js' %}"></script>
+{% endblock %}
+{% block js_raw %}
+	{{ block.super }}
+	<script>
+		(function ($) {
+			$().ready(function() {
+				$.datepicker.setDefaults( $.datepicker.regional["{{ LANG }}"] );
+				$("#id_create_date").datepicker();
+				$("#id_relevance_date").datepicker();
+			});
+
+			tinyMCE.init({
+
+				// Main settings
+				mode: "specific_textareas",
+				editor_selector: "tinymce",
+				theme: "advanced",
+				language: "{{ LANG|slice:":2" }}",
+				dialog_type: "modal",
+
+				// General settings
+				//width: '500',
+				height: '350',
+				indentation : '10px',
+				fix_list_elements : true,
+				relative_urls: false,
+				remove_script_host : true,
+				accessibility_warnings : false,
+				object_resizing: false,
+				//cleanup: false, // SETTING THIS TO FALSE WILL BREAK EMBEDDING YOUTUBE VIDEOS
+				forced_root_block: "p",
+				remove_trailing_nbsp: true,
+
+				// Theme advanced
+				theme_advanced_toolbar_location: "top",
+				theme_advanced_toolbar_align: "left",
+				theme_advanced_statusbar_location: "",
+				theme_advanced_buttons1: "bold,italic,underline,|,formatselect,|,justifyleft,justifycenter,justifyright,justifyfull,|,outdent,indent,|,code,fullscreen",
+				theme_advanced_buttons2: "hr,|,forecolor,backcolor,|,pasteword,pastetext,|,link,unlink,|,table,|,bullist,numlist,blockquote,|,image,images,media,|,charmap",
+				theme_advanced_buttons3: "",
+				theme_advanced_path: false,
+				theme_advanced_blockformats: "p,h2,h3,h4,pre",
+				theme_advanced_resizing : true,
+				theme_advanced_resize_horizontal : false,
+				theme_advanced_resizing_use_cookie : true,
+				theme_advanced_styles: "Image left-aligned=img_left;Image left-aligned (nospace)=img_left_nospacetop;Image right-aligned=img_right;Image right-aligned (nospace)=img_right_nospacetop;Image Block=img_block",
+				advlink_styles: "intern=internal;extern=external",
+
+				// Plugins
+				plugins: "inlinepopups,contextmenu,tabfocus,searchreplace,fullscreen,advimage,advlink,paste,media,table,images",
+				advimage_update_dimensions_onchange: true,
+				images_url_connector: "{% url tinymce:connector %}",
+
+				// Remove MS Word's inline styles when copying and pasting.
+				paste_remove_spans: true,
+				paste_auto_cleanup_on_paste : true,
+				paste_remove_styles: true,
+				paste_remove_styles_if_webkit: true,
+				paste_strip_class_attributes: true,
+
+				// Allow inline styles
+				inline_styles : true
+			})
+		} (window.jQuery) );
+	</script>
+{% endblock %}

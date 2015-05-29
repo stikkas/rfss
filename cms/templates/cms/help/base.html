@@ -1,0 +1,73 @@
+{% extends 'cms/base.html' %}
+{% load static %}
+{% load i18n %}
+{% load cms_tags %}
+
+{% block title %}{% trans 'Help' %}{% endblock %}
+
+{% block css %}
+	{{ block.super }}
+	<link rel="stylesheet" type="text/css" href="{% static 'css/cms-help.css' %}">
+{% endblock %}
+
+{% block content %}
+	<div class="container">
+		<div class="row">
+			<div class="span1"></div>
+			<div class="span10">
+				<h4 class="text-centered">Помощь</h4>
+				<ul class="nav nav-pills">
+					<li{% if tmpl == 'user_profile' %} class="active"{% endif %}>
+						<a href="{% link cms:help 'user_profile' %}">Профиль пользователя</a>
+					</li>
+					<li{% if tmpl == 'messages' %} class="active"{% endif %}>
+						<a href="{% link cms:help 'messages' %}">Сообщения</a>
+					</li>
+					<li class="dropdown">
+						<a class="dropdown-toggle" data-toggle="dropdown" href="#">
+							Работа модуля ввода, редактирования и удаления данных <b class="caret"></b>
+						</a>
+						<ul class="dropdown-menu">
+							<li>
+								<a href="{% link cms:help 'list_of_editable_documents' %}">
+									Списки редактируемых документов
+								</a>
+							</li>
+							<li>
+								<a href="{% link cms:help 'add_edit_and_remove_menu' %}">
+									Добавление, редактирование и удаление раздела
+								</a>
+							</li>
+							<li>
+								<a href="{% link cms:help 'add_edit_and_remove_document' %}">
+									Добавление, редактирование и удаление документа
+								</a>
+							</li>
+							<li>
+								<a href="{% link cms:help 'insert_image_in_document' %}">
+									Вставка графического изображения в документ
+								</a>
+							</li>
+							<li>
+								<a href="{% link cms:help 'insert_video_and_flash_in_document' %}">
+									Вставка видео, Flash файла в документ
+								</a>
+							</li>
+							<li>
+								<a href="{% link cms:help 'download_and_attach_files_to_document' %}">
+									Загрузка/прикрепление файлов к документам
+								</a>
+							</li>
+						</ul>
+					</li>
+					<li{% if tmpl == 'persons' %} class="active"{% endif %}>
+						<a href="{% link cms:help 'persons' %}">Персоналии</a>
+					</li>
+				</ul>
+				{% block help_content %}{% endblock %}
+			</div>
+			<div class="span1"></div>
+		</div>
+	</div>
+
+{% endblock %}

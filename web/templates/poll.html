@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% load cms_tags %}
+
+{% block title %}Опросы: {{ poll.question }}{% endblock %}
+
+{% block content %}
+	<h1>{{ poll.question }}</h1>
+	<div class="doc">
+		<div class="item indent">
+			<div class="info">
+				<form action="{% link poll poll.id %}" method="post">
+					{{ form.choices }}
+					<span class="form-field_error">{{ form.choices.errors }}</span>
+					{{ form.poll }}
+					{% csrf_token %}
+					<br/>
+					<button type="submit">Голосовать</button>
+				</form>
+			</div>
+		</div>
+	</div>
+{% endblock %}

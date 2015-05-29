@@ -1,0 +1,69 @@
+.moderate-page_visible {
+	width: 10px;
+}
+.moderate-page_date {
+	width: 85px;
+}
+.moderate-page_region {
+	vertical-align: middle !important;
+	width: 150px;
+}
+.moderate-page_name {
+	vertical-align: middle !important;
+}
+.moderate-page_version {
+	text-align: center !important;
+	width: 5px;
+}
+.moderate-page_author {
+	text-align: center !important;
+	width: 120px;
+}
+.moderate-page_delete {
+    text-align: center !important;
+    vertical-align: middle !important;
+    width: 20px;
+}
+
+.moderate-new_users-actions {
+	text-align: center !important;
+	vertical-align: middle !important;
+	width: 100px;
+}
+.moderate-new_users-name {
+	text-align: center !important;
+	vertical-align: middle !important;
+	width: 120px;
+}
+.moderate-new_users-department {
+	text-align: center !important;
+	vertical-align: middle !important;
+}
+.moderate-new_users-position {
+	text-align: center !important;
+	vertical-align: middle !important;
+	width: 240px;
+}
+.moderate-new_users-email {
+	vertical-align: middle !important;
+	text-align: center !important;
+	width: 120px;
+}
+
+.moderate-comments_date {
+	vertical-align: middle !important;
+	width: 85px;
+}
+.moderate-comments_author {
+	text-align: center !important;
+	vertical-align: middle !important;
+	width: 120px;
+}
+.moderate-comments_form {
+	display: inline;
+}
+.moderate-comments_actions {
+	text-align: center !important;
+	vertical-align: middle !important;
+	width: 20px;
+}

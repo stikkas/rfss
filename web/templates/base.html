@@ -1,0 +1,305 @@
+{% load static %}
+{% load cms_tags %}
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>{% block title %}{% endblock %}</title>
+	{% block css %}
+		<link href="{% static 'css/style.css' %}" rel="stylesheet" type="text/css" />
+		<link href="{% static 'css/map_russia.css' %}" rel="stylesheet" type="text/css" />
+		<link href="{% static 'css/jqvmap.css' %}" rel="stylesheet" type="text/css" />
+		<!--[if IE]>
+		<link href="ie.css" rel="stylesheet" type="text/css" />
+		<![endif]-->
+	{% endblock %}
+</head>
+<body>
+<div class="all-bg{% if region.abbr != 'ru' %} rm{% endif %}">
+
+	<div class="header">
+		<div class="left"></div>
+		<div class="right"></div>
+		<div class="main">
+			<div class="col-1 fleft">
+				<a href="{% link index %}" class="logo logo{{ region.code }}"><div class="indent"><span>СОВЕТ СУДЕЙ</span>{{ region.g_name|upper }}</div></a>
+				<div class="auth fright">
+					{% if user.is_authenticated %}
+						<strong>{{ user|short_name }}</strong> / <a href="{% link logout %}?next={{ request.path_info }}">Выход</a>
+					{% else %}
+						<strong>
+							<a href="javascript://" id="login">Вход</a>
+						</strong> / <a href="{% link registration %}">Регистрация</a>
+					{% endif %}
+				</div>
+				<div class="search-mar">
+					<div class="search">
+						<form action="{% link search %}" method="get">
+							<input type="text" name="q" value="{{ q }}" /><input type="submit" value=""/>
+						</form>
+					</div>
+				</div>
+				<div>
+					{% block main_menu %}
+						<ul class="topmenu">
+							{% for menu in main_menu %}
+								<li><a href="{% link menu menu.id %}">{{ menu.name }}</a></li>
+							{% endfor %}
+						</ul>
+					{% endblock %}
+				</div>
+			</div>
+			<div class="col-2 fleft">
+				<div class="indent">
+					<div class="header-link">
+						<ul>
+							<li><a href="{% link polls %}">Опросы</a></li>
+							<li>
+								<a id="region-list" href="javascript://" class="selected">Регионы</a>
+								<div class="region-list modal" style="display: none;">
+									<ul>
+										{% for r in regions %}
+											<li><a href="{% link change_region r.id %}">{{ r.name }}</a></li>
+										{% endfor %}
+									</ul>
+								</div>
+							</li>
+							<li><a href="{% link menu contact.id %}">Контакты</a></li>
+							<li><a href="{% link menu english.id %}">English</a></li>
+							<li><a href="{% link letters %}">Обращения граждан</a></li>
+						</ul>
+					</div>
+
+					<div class="motherland-map">
+						<div id="russia_map" style="width: 593px; height: 288px;"></div>
+						<div id="persons-map" class="maps">
+							{% for person in persons %}
+								<div id="person-RU-{{ person.region.abbr|upper }}" class="popup modal" style="display: none;">
+									<div class="indent ohidden">
+										{% if person.photo %}
+											<img src="{{ person.photo_thumb_url }}" alt="" class="fleft" height="55" width="55"/>
+										{% else %}
+											<img src="{% static 'img/nophoto-map.jpg' %}" alt="" class="fleft" height="55" width="55"/>
+										{% endif %}
+										<div class="info">
+											<div><strong class="red">{{ person.full_name }}</strong></div>
+											<div>{{ person.position }}</div>
+										</div>
+									</div>
+								</div>
+							{% endfor %}
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="content">
+		<div class="main">
+			<div class="indent">
+				{% block content %}{% endblock %}
+			</div>
+		</div>
+	</div>
+	<div class="footer">
+		<div class="main">
+
+			<!--
+			<div align="center" class="counter">
+				<div>
+					<span class="blue">Статистика посещений</span>
+					<br>
+					<span>с 18.04.2012</span>
+					<br>
+					<span>Вы сегодня </span><span class="red">1305</span><span style="font-size: 11px;"> посетитель</span>
+				</div>
+				<div class="bordert mart10"></div>
+				<div align="right" class="mart10 dark">
+					<p class="padt3"><span>Сегодня - </span><span class="red">1625</span></p>
+					<p class="padt3"><span>Всего - </span><span class="red">951573</span></p>
+					<p class="padt3"><span>Просмотров - </span><span class="red">1217837</span></p>
+				</div>
+			</div>
+			-->
+
+			<div class="indent ohidden">
+				<ul class="menubottom">
+					<li>
+						<ul>
+							<li><a href="http://www.vsrf.ru/">верховный суд РФ</a></li>
+							<li><a href="http://www.cdep.ru/">судебный департамент при верховном суде РФ</a></li>
+							<li><a href="http://www.ksrf.ru/">конституционный суд РФ</a></li>
+							<li><a href="http://www.arbitr.ru/">высший арбитражный суд РФ</a></li>
+						</ul>
+					</li>
+					<li>
+						<ul>
+							<li><a href="http://www.raj.ru/">российская академия правосудия</a></li>
+							<li><a href="http://www.gov.ru/">федеральные органы власти</a></li>
+							<li><a href="http://vkks.ru/">портал квалификационных коллегий судей</a></li>
+							<li><a href="http://www.sudrf.ru/">портал гас "Правосудие"</a></li>
+						</ul>
+					</li>
+					<li>
+						<ul>
+							<li><a href="{% link menu contact.id %}">контакты</a></li>
+						</ul>
+					</li>
+				</ul>
+			</div>
+		</div>
+		<div class="foot-bg2">
+			<div class="main">
+				<div class="indent text8">
+					{% if counter %}
+						<img src="//bs.yandex.ru/informer/{{ counter.id }}/3_0_7F96A8FF_7F96A8FF_1_pageviews"
+						     style="width:88px; height:31px; border:0; margin-top: -8px;" alt="Метрика"
+						     title="Метрика: данные за сегодня (просмотры, визиты и уникальные посетители)" />
+					{% endif %}
+					<div class="fright">
+						© 2012 Совет судей Российской Федерации
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	{% if not user.is_authenticated %}
+		<div class="auth-block modal" id="auth-block" style="display: none;">
+			<div class="ohidden">
+				<div class="width280">
+					<form action="{% link login %}" method="post">
+						<div class="ohidden">
+							<div class="col-1 fleft aright">
+								<label>Логин:</label>
+							</div>
+							<div class="col-2 fleft">
+								{{ auth_form.username }}
+							</div>
+						</div>
+						<div class="ohidden">
+							<div class="col-1 fleft aright">
+								<label>Пароль:</label>
+							</div>
+							<div class="col-2 fleft">
+								{{ auth_form.password }}
+							</div>
+						</div>
+						<div class="ohidden">
+							<input type="submit" value="Войти" class="fright" />
+						</div>
+						<input type="hidden" name="next" value="{{ request.path_info }}">
+						{% csrf_token %}
+					</form>
+				</div>
+			</div>
+		</div>
+	{% endif %}
+</div>
+
+{% block js_libs %}
+	<script src="{% static 'js/libs/jquery-1.8.2.min.js' %}"></script>
+	<script src="{% static 'js/jquery.vmap.min.js' %}"></script>
+	<script src="{% static 'js/jquery.vmap.russia.js' %}"></script>
+{% endblock %}
+{% block js_widgets %}{% endblock %}
+{% block js_raw %}
+	{% if not user.is_authenticated %}
+		<script>
+			(function ($) {
+				$().ready(function() {
+					$('#login').click(function() {
+						var auth_block = $('#auth-block');
+						if (auth_block.css('display') == 'block') {
+							auth_block.css('display', 'none');
+						}
+						else {
+							auth_block.css('display', 'block');
+						}
+					});
+				});
+			} (window.jQuery) );
+		</script>
+	{% endif %}
+	<script>
+		(function ($) {
+			$(document).ready(function() {
+				$('#region-list').click(function() {
+					$('.region-list').toggle();
+				});
+			});
+			function showRegionInfo(code){
+				var region = $('#jqvmap1_'+code);
+				var person = $('#person-'+code);
+				var map = $('.motherland-map');
+				$("#persons-map").find('.visible').removeClass('visible');
+				var top_offset = 105;
+				var left_offset = 400;
+
+				if (region.position().left > Math.floor(map.width() / 1.8)) {
+					// left align
+					person.css('left', (left_offset + region.position().left - person.width() / 1.5) + 'px');
+				} else {
+					// right align
+					person.css('left', (left_offset + region.position().left - 10) + 'px');
+				}
+
+				if (region.position().top > Math.floor(map.height() / 2.5)) {
+					// top align
+					person.css('top', (top_offset + region.position().top - person.height()) + 'px');
+				} else {
+					// bottom align
+					person.css('top', (top_offset + region.position().top + region.height() / 1.3) + 'px');
+				}
+
+				person.addClass('visible');
+			}
+			$('#russia_map').vectorMap({
+				map: 'russia_ru',
+				backgroundColor: '#e5f1f7',
+				borderWidth: 2,
+				borderColor: '#ffffff',
+				color: '#7bbcd9',
+				hoverOpacity: 0,
+				hoverColor: '#1e79b0',
+				selectedColor: '#1e79b0',
+				selectedRegion: '{{ region.alpha_code }}',
+				showTooltip: true,
+				enableZoom: false,
+				normalizeFunction: 'polynomial',
+				onRegionClick: function(element, code, region) {
+					showRegionInfo(code);
+				}
+			});
+		} (window.jQuery) );
+	</script>
+{% endblock %}
+
+{% if counter %}
+	<script type="text/javascript">
+		(function (d, w, c) {
+			(w[c] = w[c] || []).push(function() {
+				try {
+					w.yaCounter{{ counter.id }}= new Ya.Metrika({id:{{ counter.id }},
+						clickmap:true,
+						accurateTrackBounce:true,
+						ut:"noindex"});
+				} catch(e) { }
+			});
+
+			var n = d.getElementsByTagName("script")[0],
+					s = d.createElement("script"),
+					f = function () { n.parentNode.insertBefore(s, n); };
+			s.type = "text/javascript";
+			s.async = true;
+			s.src = (d.location.protocol == "https:" ? "https:" : "http:") + "//mc.yandex.ru/metrika/watch.js";
+
+			if (w.opera == "[object Opera]") {
+				d.addEventListener("DOMContentLoaded", f, false);
+			} else { f(); }
+		})(document, window, "yandex_metrika_callbacks");
+	</script>
+	<noscript><div><img src="//mc.yandex.ru/watch/{{ counter.id }}?ut=noindex" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+{% endif %}
+</body>
+</html>

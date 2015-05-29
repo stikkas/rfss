@@ -1,0 +1,70 @@
+{% extends 'cms/base.html' %}
+{% load static %}
+{% load i18n %}
+{% load cms_tags %}
+{% load widget_tweaks %}
+
+{% block css %}
+	{{ block.super }}
+	<link rel="stylesheet" type="text/css" href="{% static 'css/chosen.css' %}">
+{% endblock %}
+
+{% block title %}{% trans 'Write message' %}{% endblock %}
+
+{% block content %}
+	<div class="container">
+		<div class="row">
+			<div class="span6 offset3">
+				<!--// {{ form.errors }} //-->
+				<form action="{% link cms:moderate_write_comment page.id %}" method="post">
+					<fieldset>
+						<legend>{% trans 'Write comment' %}</legend>
+
+						{% if form.subject.errors %}
+							<label class="text-error">{{ form.subject.label }}: {{ form.subject.errors }}</label>
+						{% else %}
+							<label class="muted">{{ form.subject.label }}</label>
+						{% endif %}
+						{{ form.subject|add_class:"span6" }}
+
+						{% if form.recipients.errors %}
+							<label class="text-error">{{ form.recipients.label }}: {{ form.recipients.errors }}</label>
+						{% else %}
+							<label class="muted">{{ form.recipients.label }}</label>
+						{% endif %}
+						{{ form.recipients|add_class:"span6 chosen" }}
+
+						{% if form.body.errors %}
+							<label class="text-error">{{ form.body.label }}: {{ form.body.errors }}</label>
+						{% else %}
+							<label class="muted">{{ form.body.label }}</label>
+						{% endif %}
+						{{ form.body|add_class:"span6"|attr:"row:5" }}
+
+						{% for hidden_field in form.hidden_fields %}
+							{{ hidden_field }}
+						{% endfor %}
+
+						{% csrf_token %}
+						<div class="text-centered">
+							<button type="submit" class="btn" name="send" value="send">{% trans 'Send' %}</button>
+						</div>
+					</fieldset>
+				</form>
+			</div>
+		</div>
+	</div>
+{% endblock %}
+
+{% block js_widgets %}
+	{{ block.super }}
+	<script src="{% static 'js/widgets/chosen.jquery.min.js' %}"></script>
+{% endblock %}
+{% block js_raw %}
+	{{ block.super }}
+	<script>
+		(function ($) {
+			$(".chosen").chosen();
+		} (window.jQuery) );
+	</script>
+{% endblock %}

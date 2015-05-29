@@ -1,0 +1,143 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load cms_tags %}
+
+{% block title %}Поиск: {{ q }}{% endblock %}
+
+{% block css %}
+	{{ block.super }}
+	<link rel="stylesheet" type="text/css" href="{% static 'css/themes/smoothness/jquery-ui-1.9.0.min.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'css/datepicker-custom.css' %}">
+{% endblock %}
+
+{% block content %}
+	<div class="">
+		<h1>Расширенный поиск</h1>
+		<div class="search-block mart10 ohidden">
+
+			<form action="{% link search %}" method="get">
+				<div>
+					<div class="ohidden">
+						<div class="col-1 fleft aright">
+							<label>Искать</label>
+						</div>
+						<div class="col-2 fleft">
+							<input type="text" name="q" value="{{ q }}"/>
+							<div class="paddt5">
+								<input{% if search_in == 'name' %} checked="checked"{% endif %}  type="radio" name="search_in" value="name">
+								<span>В наменовании</span>
+							</div>
+							<div>
+								<input{% if search_in == 'content' %} checked="checked"{% endif %} type="radio" name="search_in" value="content">
+								<span>В тексте</span>
+							</div>
+						</div>
+					</div>
+					<div class="ohidden">
+						<div class="col-1 fleft aright">
+							<label>В разделе</label>
+						</div>
+						<div class="col-2 fleft">
+							<select name="menu_search">
+								{% for menu in main_menu %}
+									<option value="{{ menu.id }}"{% if menu_search == menu.id %} selected="selected"{% endif %}>{{ menu.name }}</option>
+								{% endfor %}
+							</select>
+						</div>
+					</div>
+					<div class="ohidden">
+						<div class="col-1 fleft aright">
+							<label>Субъект</label>
+						</div>
+						<div class="col-2 fleft">
+							<select name="region_search">
+								{% for reg in regions %}
+									<option value="{{ reg.id }}"{% if region_search == reg.id %} selected="selected"{% endif %}>{{ reg.name }}</option>
+								{% endfor %}
+							</select>
+						</div>
+					</div>
+					<div class="ohidden">
+						<div class="col-1 fleft aright">
+							<label>Период публикации с</label>
+						</div>
+						<div class="col-2 fleft">
+							<input type="text" name="date_start" value="{{ date_start }}" class="date datepicker"/>
+							<span class="marlr5">по</span>
+							<input type="text" name="date_end" value="{{ date_end }}" class="date datepicker"/>
+						</div>
+					</div>
+					<br />
+					<div class="ohidden" style="padding-left: 220px;">
+						<button type="submit">Искать</button>
+					</div>
+				</div>
+			</form>
+
+			<div class="indent">
+				<h2>Результаты поиска</h2>
+				<div class="indent1">
+					<div class="">
+						<div class="ohidden width600">
+							<span class="fleft">
+								<strong>Найдено <span class="red">{{ hits_count }}</span> записей</strong></span>
+						</div>
+					</div>
+					<div>
+						{% for page in pages %}
+							<div class="item">
+								<span class="fleft">{{ page.num }}</span>
+								<div class="marl30">
+									{% if search_in == 'content' %}
+										<strong>{{ page.name }}</strong>
+										{% autoescape off %}
+											<div class="search-content">...{{ page.content }}...</div>
+										{% endautoescape %}
+									{% elif search_in == 'name' %}
+										{% autoescape off %}
+											{{ page.name }}
+										{% endautoescape %}
+									{% endif %}
+									<div><a href="{{ page.link_detail }}">подробнее</a></div>
+								</div>
+							</div>
+						{% endfor %}
+					</div>
+					{% if pages.has_other_pages %}
+						<div class="acenter">
+							{% for num_page in pages.paginator.page_range %}
+								{% if pages.number == num_page %}
+									{{ num_page }}
+								{% else %}
+									<a href="?q={{ q }}&search_in={{ search_in }}&menu_search={{ menu_search }}&region_search={{ region_search }}&date_start={{ date_start }}&date_end={{ date_end }}&page={{ num_page }}">{{ num_page }}</a>
+								{% endif %}
+							{% endfor %}
+						</div>
+					{% endif %}
+				</div>
+			</div>
+		</div>
+	</div>
+{% endblock %}
+
+{% block js_libs %}
+	{{ block.super }}
+	<script src="{% static 'js/libs/jquery.ui-1.9.0-core.min.js' %}"></script>
+{% endblock %}
+{% block js_widgets %}
+	{{ block.super }}
+	<script src="{% static 'js/widgets/jquery.ui-1.9.0-datepicker.min.js' %}"></script>
+	<script src="{% static 'js/i18n/jquery.ui-1.9.0-datepicker-ru.min.js' %}"></script>
+{% endblock %}
+{% block js_raw %}
+	{{ block.super }}
+	<script>
+		(function ($) {
+			$().ready(function() {
+				$.datepicker.setDefaults( $.datepicker.regional["ru"] );
+				$(".datepicker").datepicker();
+			});
+		} (window.jQuery) );
+	</script>
+{% endblock %}
+

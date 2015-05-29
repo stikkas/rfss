@@ -1,0 +1,50 @@
+{% extends 'cms/base.html' %}
+{% load i18n %}
+{% load cms_tags %}
+
+{% block title %}{% trans 'Moderate page: ' %} {{ page.name }}{% endblock %}
+
+{% block content %}
+	<div class="container">
+		<div class="row">
+			<div class="span10 offset1">
+				<ul class="breadcrumb">
+					<li>
+						<a href="{% link cms:moderate_pages %}">{% trans 'Moderate publications' %}</a>
+						<span class="divider">-</span>
+					</li>
+					{% for node in page.menu|call_method:"get_ancestors:include_self=True" %}
+						<li class="active">
+							{{ node.name }}
+							<span class="divider">/</span>
+						</li>
+					{% endfor %}
+					<li class="active">{{ page.name }}</li>
+				</ul>
+				<fieldset>
+					<div class="well well-small">
+						{% autoescape off %}
+							{{ page.content }}
+						{% endautoescape %}
+					</div>
+					<div class="text-centered">
+						<div class="btn-group">
+						{% if page.visible %}
+							<a href="{% link cms:moderate_page_unpublish page.id %}" class="btn">
+								<i class="icon-eye-close"></i> {% trans 'Unpublish' %}
+							</a>
+						{% else %}
+							<a href="{% link cms:moderate_page_publish page.id %}" class="btn">
+								<i class="icon-eye-open"></i> {% trans 'Publish' %}
+							</a>
+						{% endif %}
+							<a href="{% link cms:moderate_write_comment page.id %}" class="btn">
+								<i class="icon-pencil"></i> {% trans 'Comment' %}
+							</a>
+						</div>
+					</div>
+				</fieldset>
+			</div>
+		</div>
+	</div>
+{% endblock %}

@@ -1,0 +1,7 @@
+.motherland-map {
+	width: 593px;
+	height:288px;
+}
+#russia_map {
+	background: url(../img/motherland-map-border.gif) top left no-repeat;
+}

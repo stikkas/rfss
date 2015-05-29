@@ -1,0 +1,68 @@
+{% load i18n %}
+{% load static %}
+{% load cms_tags %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'css/cms-page.css' %}">
+
+<table class="table table-hover page-list">
+	<tbody>
+	{% for page in comp.elements %}
+		<tr{% if page.full_preview %} class="info"{% endif %}>
+			<td class="page-id">
+				{% if not page.visible %}<i class="icon-eye-close">&nbsp;&nbsp;</i>{% endif %}
+				<strong>{{ page.id }}</strong>
+			</td>
+			<td class="page-date">
+				<small class="muted">{{ page.create_date|date:"d.m.Y" }}</small>
+				{% if page.relevance_date %}
+					<br>
+					<small class="text-success">{{ page.relevance_date|date:"d.m.Y" }}</small>
+				{% endif %}
+			</td>
+			<td>
+				{{ page.name }}
+				<br>
+				<small class="muted">{{ page.menu.name }}</small>
+			</td>
+			<td class="page-ctrl_btn">
+				<div class="btn-group">
+					{% if user.profile.is_manager or user.is_superuser %}
+						<a class="btn" href="{{ page.link_edit }}"><i class="icon-pencil"></i></a>
+					{% endif %}
+					{% if user.profile.is_moderator or user.is_superuser %}
+						{% if page.visible %}
+							<a class="btn" href="{% link cms:moderate_page_unpublish page.id %}"><i class="icon-eye-close"></i></a>
+						{% else %}
+							<a class="btn" href="{% link cms:moderate_page_publish page.id %}"><i class="icon-eye-open"></i></a>
+						{% endif %}
+					{% endif %}
+					{% if user.profile.is_manager or user.is_superuser %}
+						<a class="btn" href="#page_{{ page.id }}-delete" data-toggle="modal"><i class="icon-trash"></i></a>
+					{% endif %}
+				</div>
+				{% if user.profile.is_manager or user.is_superuser %}
+					<div id="page_{{ page.id }}-delete" class="modal hide fade text-left">
+						<div class="modal-header">
+							<h4>{% trans 'Remove Page?' %}</h4>
+						</div>
+						<div class="modal-body">{{ page.name }}</div>
+						<div class="modal-footer">
+							<form class="form-delete" action="{{ page.link_delete }}" method="post">
+								<button type="submit" class="btn btn-danger">{% trans 'Remove' %}</button>
+								<a href="#" class="btn btn-primary" data-dismiss="modal">{% trans 'Cancel' %}</a>
+								{% csrf_token %}
+							</form>
+						</div>
+					</div>
+				{% endif %}
+			</td>
+		</tr>
+	{% endfor %}
+	</tbody>
+</table>
+
+{% if comp.elements.has_other_pages %}
+	<div class="pagination pagination-right">
+		{% include 'cms/pagination.html' with objects=comp.elements %}
+	</div>
+{% endif %}

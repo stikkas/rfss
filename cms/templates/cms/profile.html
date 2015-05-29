@@ -1,0 +1,60 @@
+{% extends 'cms/base.html' %}
+{% load i18n %}
+{% load cms_tags %}
+
+{% block title %}{% trans 'Profile:' %} {{ profile.user|full_name }}{% endblock %}
+
+{% block content %}
+	<div class="container">
+		<div class="row">
+			<div class="span6 offset3">
+				<h4 class="text-centered">
+					{% trans 'User profile' %}
+					{% if user == profile.user %}
+						<small>[</small>
+						<a href="{% link cms:edit_profile profile.user.id %}">
+							<i class="icon-pencil"></i> <small>{% trans 'Edit' %}</small>
+						</a>
+						<small>]</small>
+					{% endif %}
+				</h4>
+				<table class="table table-bordered table-striped">
+					<tbody>
+						<tr>
+							<td><strong>{% trans 'First name' %}</strong></td>
+							<td>{{ profile.user.first_name }}</td>
+						</tr>
+						<tr>
+							<td><strong>{% trans 'Last name' %}</strong></td>
+							<td>{{ profile.user.last_name }}</td>
+						</tr>
+						<tr>
+							<td><strong>{% trans 'Gender' %}</strong></td>
+							<td>{{ profile.get_gender_display }}</td>
+						</tr>
+						<tr>
+							<td><strong>{% trans 'Birthday' %}</strong></td>
+							<td>{{ profile.birthday }}</td>
+						</tr>
+						<tr>
+							<td><strong>{% trans 'Depratment' %}</strong></td>
+							<td>{{ profile.department }}</td>
+						</tr>
+						<tr>
+							<td><strong>{% trans 'Position' %}</strong></td>
+							<td>{{ profile.position }}</td>
+						</tr>
+						<tr>
+							<td><strong>{% trans 'Phone' %}</strong></td>
+							<td>{{ profile.phone }}</td>
+						</tr>
+						<tr>
+							<td><strong>{% trans 'E-Mail' %}</strong></td>
+							<td>{{ profile.user.email }}</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+{% endblock %}

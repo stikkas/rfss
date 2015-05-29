@@ -1,0 +1,17 @@
+{% extends 'cms/help/base.html' %}
+{% load static %}
+
+{% block title %}Вставка видео, Flash файла в документ{% endblock %}
+
+{% block help_content %}
+	<h5>Вставка видео, Flash файла в документ</h5>
+	<p>У Вас есть возможность в любой из документов вставить видео, flash файла в документ.
+	   Для этого в форме редактирования документа, в окне документа установите курсор в нужное
+	   место и нажмите на кнопку <img src="{% static 'img/help/vid.jpg' %}"> .
+	   Далее откроется окно <strong>«Параметры клипа»</strong>, где обязательны для
+	   заполнения только поля  <strong>«Адрес»</strong> и <strong>«Размеры»</strong>.</p>
+	<p class="text-centered"><img src="{% static 'img/help/28.jpg' %}"></p>
+	<p class="text-centered"><small class="text-info">Рис. 28 </small></p>
+	<p class="text-centered"><img src="{% static 'img/help/29.jpg' %}"></p>
+	<p class="text-centered"><small class="text-info">Рис. 29</small></p>
+{% endblock %}

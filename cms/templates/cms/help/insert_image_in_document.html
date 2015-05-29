@@ -1,0 +1,46 @@
+{% extends 'cms/help/base.html' %}
+{% load static %}
+
+{% block title %}Вставка графического изображения в документ{% endblock %}
+
+{% block help_content %}
+	<h5>Вставка графического изображения в документ</h5>
+	<p> У Вас есть возможность в любой из документов вставлять фотографии, картинки, графики и т.д.</p>
+	<p>Для этого в форме редактирования документа, в окне документа установите курсор в нужное
+	   место и нажмите на кнопку <img src="{% static 'img/help/img.jpg' %}"> . Далее откроется окно – галерея
+	   загруженных изображений с их
+	   описанием и ссылкой на просмотр в отдельной закладке внижнем углу окна.</p>
+	<p class="text-centered"><img src="{% static 'img/help/23.jpg' %}"></p>
+	<p class="text-centered"><small class="text-info">Рис. 23 </small></p>
+	<p>В левом столбце формы отображаются папки, номера которых соответствуют номерам
+		субъектов, приведенных в таблице 2.</p>
+	<p class="text-centered"><img src="{% static 'img/help/tabl2.jpg' %}"></p>
+	<p class="text-centered"><small class="text-info">Таблица 2. Список субъектов РФ </small></p>
+
+	<p>Для того чтобы удалить из галереи изображение, сначала выделите его, затем нажмите <img src="{% static 'img/help/del2.jpg' %}">.
+		Можно выделять несколько файлов сразу, для этого удерживайте<span class="label label-info">Ctrl</span> при
+		выборе. Далее система переспросит Вас, сообщая также количество файлов, помеченных на
+		удаление. Подтвердите свои намерения нажатием кнопки <strong>«ОК»</strong>.</p>
+	<p>Для того чтобы загрузить фото, перейдите в папку Вашего субъекта, нажмите
+		<img src="{% static 'img/help/dow.jpg' %}">. Далее откроется окно загрузки, в котором Вы можете
+		выбрать один из типов загрузки изображений:</p>
+	<ul class="help__content-sub">
+		<li>Обычная загрузка (<small class="text-info">Рис. 24</small>) (по одному файлу)</li>
+		<li>Мульти-загрузка (<small class="text-info">Рис. 25</small>) (количество файлов <strong>до 8 шт</strong>)</li>
+	</ul>
+	<p class="text-centered"><img src="{% static 'img/help/24.jpg' %}"></p>
+	<p class="text-centered"><small class="text-info">Рис. 24</small></p>
+	<p class="text-centered"><img src="{% static 'img/help/25.jpg' %}"></p>
+	<p class="text-centered"><small class="text-info">Рис. 25</small></p>
+	<p>Для  загрузки фото нажмите кнопку «Обзор» или «Browse..». В первом случае в окне
+	   загрузке отобразится наименование файла, который Вы намерены загрузить,
+	   <img src="{% static 'img/help/h.jpg' %}"> - удалить файл,
+	   кнопка «<strong>Загрузить</strong>» - завершить загрузку файла.</p>
+	<p class="text-centered"><img src="{% static 'img/help/26.jpg' %}"></p>
+	<p class="text-centered"><small class="text-info">Рис. 26</small></p>
+	<p>Во втором случае – ход загрузки каждого файла,  <img src="{% static 'img/help/h.jpg' %}">
+	   - удалить файл, кнопка «<strong>Cancel
+	   uploads</strong>» - отметить загрузку всех файлов.</p>
+	<p class="text-centered"><img src="{% static 'img/help/27.jpg' %}"></p>
+	<p class="text-centered"><small class="text-info">Рис. 27</small></p>
+{% endblock %}

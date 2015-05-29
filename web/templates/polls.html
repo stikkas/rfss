@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% load cms_tags %}
+
+{% block title %}Опросы{% endblock %}
+
+{% block content %}
+	<h1>Опросы</h1>
+	<br />
+	<br />
+	<div class="doc">
+		{% for poll in polls %}
+			<div class="item">
+				<div class="info">
+					<a href="{% link poll poll.id %}" class="news-name">{{ poll.question }}</a>
+				</div>
+			</div>
+		{% endfor %}
+	</div>
+{% endblock %}

@@ -1,0 +1,62 @@
+{% load i18n %}
+{% load static %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'css/cms-person.css' %}">
+
+<table class="table table-hover page-list">
+	<tbody>
+	{% for person in comp.elements %}
+		<tr{% if person.show_on_map %} class="info"{% endif %}>
+			<td class="person-photo_thumb">
+				{% if person.photo %}
+					<img src="{{ person.photo_thumb_url }}">
+				{% endif %}
+			</td>
+			<td class="person-short_info">
+				<span class="text-error">{{ person.full_name }}</span>
+				<br>
+				<span class="muted">{{ person.position }}</span>
+			</td>
+			<td class="person-ctrl_btn">
+				<div class="btn-group">
+					<a class="btn" href="{{ person.link_edit }}"><i class="icon-pencil"></i></a>
+					<a class="btn" href="#person_{{ person.id }}-delete" data-toggle="modal"><i class="icon-trash"></i></a>
+				</div>
+				<div id="person_{{ person.id }}-delete" class="modal hide fade text-left">
+					<div class="modal-header">
+						<h4>{% trans 'Remove Person?' %}</h4>
+					</div>
+						<table class="person-modal_delete">
+							<tr>
+								<td class="person-photo_thumb no-border">
+									{% if person.photo %}
+										<img src="{{ person.photo_thumb_url }}">
+									{% endif %}
+								</td>
+								<td class="person-short_info no-border">
+									<span class="text-error">{{ person.full_name }}</span>
+									<br>
+									<span class="muted">{{ person.position }}</span>
+								</td>
+							</tr>
+						</table>
+					<div class="modal-footer">
+						<form class="form-delete" action="{{ person.link_delete }}" method="post">
+							<button type="submit" class="btn btn-danger">{% trans 'Remove' %}</button>
+							<a href="#" class="btn btn-primary" data-dismiss="modal">{% trans 'Cancel' %}</a>
+							{% csrf_token %}
+						</form>
+					</div>
+				</div>
+			</td>
+		</tr>
+	{% endfor %}
+	</tbody>
+</table>
+
+{% if comp.elements.has_other_pages %}
+	<div class="pagination pagination-right">
+		{% include 'cms/pagination.html' with objects=comp.elements %}
+	</div>
+{% endif %}
+

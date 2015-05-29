@@ -1,0 +1,70 @@
+{% extends 'cms/base.html' %}
+{% load static %}
+{% load i18n %}
+{% load widget_tweaks %}
+{% load cms_tags %}
+
+{% block title %}{% trans 'Edit profile:' %} {{ profile.user|full_name }}{% endblock %}
+
+{% block css %}
+	{{ block.super }}
+	<link rel="stylesheet" type="text/css" href="{% static 'css/themes/smoothness/jquery-ui-1.9.0.min.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'css/datepicker-custom.css' %}">
+{% endblock %}
+
+{% block content %}
+	<div class="container">
+		<div class="row">
+			<div class="span4 offset4 well well-small">
+				<form action="{% link cms:edit_profile profile.user.id %}" method="post">
+					<fieldset>
+						<legend>{% trans 'Edit profile' %}</legend>
+						{% for field in form %}
+							{% if field.errors %}
+								<label class="text-error">{{ field.label }}: {{ field.errors }}</label>
+							{% else %}
+								<label class="muted">{{ field.label }}</label>
+							{% endif %}
+							{% if field.name == 'gender' %}
+								{{ field|add_class:"span2" }}
+							{% elif field.name == 'birthday' %}
+								{{ field|add_class:"span2 datepicker" }}
+							{% elif field.name in 'first_name, last_name, phone, email' %}
+								{{ field|add_class:"span3" }}
+							{% else %}
+								{{ field|add_class:"span4" }}
+							{% endif %}
+						{% endfor %}
+						{% csrf_token %}
+						<br>
+						<div class="text-centered">
+							<button type="submit" class="btn" name="save" value="save">{% trans 'Save' %}</button>
+						</div>
+					</fieldset>
+				</form>
+			</div>
+		</div>
+	</div>
+{% endblock %}
+
+{% block js_libs %}
+	{{ block.super }}
+	<script src="{% static 'js/libs/jquery.ui-1.9.0-core.min.js' %}"></script>
+{% endblock %}
+{% block js_widgets %}
+	{{ block.super }}
+	<script src="{% static 'js/widgets/jquery.ui-1.9.0-datepicker.min.js' %}"></script>
+	<script src="{% static 'js/i18n/jquery.ui-1.9.0-datepicker-ru.min.js' %}"></script>
+{% endblock %}
+{% block js_raw %}
+	{{ block.super }}
+	<script>
+		(function ($) {
+			$().ready(function() {
+				$.datepicker.setDefaults( $.datepicker.regional["{{ LANG }}"] );
+				$(".datepicker").datepicker();
+			});
+		} (window.jQuery) );
+	</script>
+{% endblock %}
+

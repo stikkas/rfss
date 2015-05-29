@@ -1,0 +1,20 @@
+{% extends 'cms/help/base.html' %}
+{% load static %}
+
+{% block title %}Загрузка/прикрепление файлов формата DOC, DOCX, XLS, XSLX, PDF, RTF, ZIP к документам{% endblock %}
+
+{% block help_content %}
+	<h5>Загрузка/прикрепление файлов формата DOC, DOCX, XLS, XSLX, PDF, RTF, ZIP к документам</h5>
+	<p> В правом углу окна редактирования документа, есть поле «Новый документ»,  через которое
+		непосредственно и осуществляется загрузка файлов.</p>
+	<p class="text-centered"><img src="{% static 'img/help/30.jpg' %}"></p>
+	<p class="text-centered"><small class="text-info">Рис. 30 </small></p>
+	<p><span class="text-error">
+		<strong>Внимание!</strong> Наименование документов должно быть корректным и на русском языке!</span> </p>
+	<p>Для того чтобы загрузить сразу несколько файлов, сначала на своем рабочем столе добавьте их
+		в ZIP архив.</p>
+	<p>После загрузки файлов, под окном «Новый документ» появится окно со списком
+		прикрепленных документов, к примеру:</p>
+	<p class="text-centered"><img src="{% static 'img/help/31.jpg' %}"></p>
+	<p class="text-centered"><small class="text-info">Рис. 31</small></p>
+{% endblock %}

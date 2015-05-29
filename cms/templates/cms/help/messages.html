@@ -1,0 +1,59 @@
+{% extends 'cms/help/base.html' %}
+{% load static %}
+
+{% block title %}Cообщения{% endblock %}
+
+{% block help_content %}
+	<p>Для удобства  обмена методическими рекомендациями, оповещения пользователей с правами
+		доступа редактирования сайта, разработана подсистема «Сообщения».</p>
+	<br>
+	<h5>Просмотр сообщений</h5>
+	<p>Существует 3 способа просмотра сообщений:
+	<p class="help__content-sub">
+		<strong>1.</strong> Через панель «Сообщения» на Главной странице сайта в режиме редактирования,
+		отображаются все входящие сообщения
+	</p>
+	<p class="text-centered"><img src="{% static 'img/help/5.jpg' %}"></p>
+	<p class="text-centered"><small class="text-info">Рис. 5 </small></p>
+	<p class="help__content-sub">
+		<strong>2.</strong>Через пункт меню «Сообщения», выбор, соответственно, интересующего списка
+		входящих/исходящих сообщений
+	</p>
+	<p class="text-centered"><img src="{% static 'img/help/6.jpg' %}"></p>
+	<p class="text-centered"><small class="text-info">Рис. 6</small></p>
+
+	<p class="help__content-sub">
+		<strong>3.</strong>Новые, непрочитанные письма отображаются в шапке меню в виде уведомлений
+	</p>
+	<p class="text-centered"><img src="{% static 'img/help/7.jpg' %}"></p>
+	<p class="text-centered"><small class="text-info">Рис. 7</small></p>
+	<p>При этом отправленное письмо дублируется получателю на его электронный почтовый адрес
+		(при корректном заполнении в профиле)</p>
+	<p class="text-centered"><img src="{% static 'img/help/8.jpg' %}"></p>
+	<p class="text-centered"><small class="text-info">Рис. 8</small></p>
+	<p>Список <span class="label label-info">входящих</span> сообщений отображается следующим образом:</p>
+	<p class="text-centered"><img src="{% static 'img/help/9.jpg' %}"></p>
+	<p class="text-centered"><small class="text-info">Рис. 9</small></p>
+	<p>Непрочитанные сообщения имеют соответствующий статус - <img src="{% static 'img/help/new.jpg' %}">.</p>
+	<br>
+	<p>Список <span class="label label-info">исходящих</span> сообщений отображается следующим образом:</p>
+	<p class="text-centered"><img src="{% static 'img/help/10.jpg' %}"></p>
+	<p class="text-centered"><small class="text-info">Рис. 10</small></p>
+	<p>Для того чтобы <span class="label label-info">посмотреть профиль отправителя</span>, пройдите
+	   по ссылке – имени отправителя.</p>
+	<p>При переходе по ссылке – теме сообщения, <span class="label label-info">откроется само сообщение</span>:</p>
+	<p class="text-centered"><img src="{% static 'img/help/11.jpg' %}"></p>
+	<p class="text-centered"><small class="text-info">Рис. 11</small></p>
+	<p>Для написания ответа, нажмите соответствующую кнопку.</p>
+	<br>
+	<h5>Написание и отправка сообщения</h5>
+	<p>В пункте меню «Сообщения» выберите «Написать»</p>
+	<p class="text-centered"><img src="{% static 'img/help/12.jpg' %}"></p>
+	<p class="text-centered"><small class="text-info">Рис. 12</small></p>
+	<p>В поле «Кому» представлен полный список пользователей сайтов совета судей
+		с правом доступа редактирования сайта, включая менеджера технической поддержки
+		Яруллину Рамилю.</p>
+	<p>При необходимости удалить сообщение из списка, нажмите <img src="{% static 'img/help/del.jpg' %}"> ,
+	   чтобы убедить программу в Ваших намерениях, нажмите соответствующую кнопку в появившемся окне
+	   повторно.</p>
+{% endblock %}

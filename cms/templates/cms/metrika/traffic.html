@@ -1,0 +1,48 @@
+{% load i18n %}
+{% load static %}
+{% load cms_tags %}
+
+<div id="traffic-chart"></div>
+<br>
+<table class="table table-bordered">
+	<thead>
+		<tr>
+			<th>{% trans 'Date' %}</th>
+			<th>{% trans 'Views' %}</th>
+			<th>{% trans 'Visits' %}</th>
+			<th>{% trans 'Visitors' %}</th>
+			<th>{% trans 'New visitors' %}</th>
+			<th>{% trans 'Visit time' %}</th>
+		</tr>
+	</thead>
+	<tbody>
+	{% for day in traffic.data %}
+		<tr>
+			<td>{{ day.date|to_datetime:"%Y%m%d"|date:"d.m.Y" }}</td>
+			<td>{{ day.page_views }}</td>
+			<td>{{ day.visits }}</td>
+			<td>{{ day.visitors }}</td>
+			<td>{{ day.new_visitors }}</td>
+			<td>{{ day.visit_time }} сек.</td>
+		</tr>
+	{% endfor %}
+		<tr>
+			<td><strong>{% trans 'Total' %}</strong></td>
+			<td>{{ traffic.totals.page_views }}</td>
+			<td>{{ traffic.totals.visits }}</td>
+			<td>{{ traffic.totals.visitors }}</td>
+			<td>{{ traffic.totals.new_visitors }}</td>
+			<td>{{ traffic.totals.visit_time }} сек.</td>
+		</tr>
+	</tbody>
+</table>
+<script>
+	var data = google.visualization.arrayToDataTable([
+		["{% trans 'Day' %}", "{% trans 'Views' %}", "{% trans 'Visits' %}", "{% trans 'Visitors' %}"],
+		{% for day in traffic.data reversed %}
+			["{{ day.date|to_datetime:'%Y%m%d'|date:'d.m' }}", {{ day.page_views}}, {{ day.visits }}, {{ day.visitors }}]{% if not forloop.last %},{% endif %}
+		{% endfor %}
+	]);
+	var chart = new google.visualization.ImageLineChart(document.getElementById("traffic-chart"));
+	chart.draw(data, {width: 760, height: 310});
+</script>

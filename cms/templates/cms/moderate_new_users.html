@@ -1,0 +1,123 @@
+{% extends 'cms/base.html' %}
+{% load static %}
+{% load i18n %}
+{% load cms_tags %}
+
+{% block title %}{% trans 'Moderate registrations' %}{% endblock %}
+
+{% block css %}
+	{{ block.super }}
+	<link rel="stylesheet" type="text/css" href="{% static 'css/cms-moderate.css' %}">
+{% endblock %}
+
+{% block content %}
+	<div class="container">
+		<div class="row">
+			<div class="span12">
+
+				<ul class="breadcrumb">
+					<li class="active">{% trans 'Moderate registrations' %}</li>
+				</ul>
+
+				{% if new_users %}
+					<table class="table table-condensed well well-small">
+						<thead>
+						<tr>
+							<th class="text-centered">{% trans 'Full name' %}</th>
+							<th class="text-centered">{% trans 'Department' %}</th>
+							<th class="text-centered">{% trans 'Position' %}</th>
+							<th class="text-centered">{% trans 'E-Mail' %}</th>
+							<th class="text-centered">{% trans 'Actions' %}</th>
+						</tr>
+						</thead>
+						<tbody>
+						{% for new_user in new_users %}
+							<tr>
+								<td class="moderate-new_users-name">
+									<a href="{% link cms:profile new_user.id %}">{{ new_user|short_name }}</a>
+								</td>
+								<td class="moderate-new_users-department">
+									{% if new_user.profile.department|length > 45 %}
+										{{ new_user.profile.department|slice:":42" }}...
+									{% else %}
+										{{ new_user.profile.department }}
+									{% endif %}
+								</td>
+								<td class="moderate-new_users-position">
+									{% if new_user.profile.position|length > 35 %}
+										{{ new_user.profile.position|slice:":32" }}...
+									{% else %}
+										{{ new_user.profile.position }}
+									{% endif %}
+								</td>
+								<td class="moderate-new_users-email">
+									<small class="muted">{{ new_user.email }}</small>
+								</td>
+								<td class="moderate-new_users-actions">
+									<div class="btn-group">
+										<a href="#new_user-{{ new_user.id }}-confirm" class="btn" data-toggle="modal">
+											<i class="icon-ok"></i>
+										</a>
+										<a href="#new_user-{{ new_user.id }}-reject" class="btn" data-toggle="modal">
+											<i class="icon-remove"></i>
+										</a>
+									</div>
+
+									<div id="new_user-{{ new_user.id }}-confirm" class="modal hide fade text-left">
+										<div class="modal-header">
+											<h4>{% trans 'Confirm registration?' %}</h4>
+										</div>
+										<div class="modal-body">
+											<strong>{% trans 'Full name' %}:</strong> {{ new_user|full_name }}
+											<br>
+											<strong>{% trans 'Department' %}:</strong> {{ new_user.profile.department }}
+											<br>
+											<strong>{% trans 'Position' %}:</strong> {{ new_user.profile.position }}
+											<br>
+											<strong>{% trans 'E-Mail' %}:</strong> {{ new_user.email }}
+											<strong>{% trans 'Phone' %}:</strong> {{ new_user.profile.phone }}
+										</div>
+										<div class="modal-footer">
+											<form class="form-delete" action="{% link cms:moderate_new_user_confirm new_user.id %}" method="post">
+												<button type="submit" class="btn btn-success">{% trans 'Confirm' %}</button>
+												<a href="#" class="btn btn-primary" data-dismiss="modal">{% trans 'Cancel' %}</a>
+												{% csrf_token %}
+											</form>
+										</div>
+									</div>
+
+									<div id="new_user-{{ new_user.id }}-reject" class="modal hide fade text-left">
+										<div class="modal-header">
+											<h4>{% trans 'Reject registration?' %}</h4>
+										</div>
+										<div class="modal-body">
+											<strong>{% trans 'Full name' %}:</strong> {{ new_user|full_name }}
+											<br>
+											<strong>{% trans 'Department' %}:</strong> {{ new_user.profile.department }}
+											<br>
+											<strong>{% trans 'Position' %}:</strong> {{ new_user.profile.position }}
+											<br>
+											<strong>{% trans 'E-Mail' %}:</strong> {{ new_user.email }}
+											<strong>{% trans 'Phone' %}:</strong> {{ new_user.profile.phone }}
+										</div>
+										<div class="modal-footer">
+											<form class="form-delete" action="{% link cms:moderate_new_user_reject new_user.id %}" method="post">
+												<button type="submit" class="btn btn-danger">{% trans 'Reject' %}</button>
+												<a href="#" class="btn btn-primary" data-dismiss="modal">{% trans 'Cancel' %}</a>
+												{% csrf_token %}
+											</form>
+										</div>
+									</div>
+
+								</td>
+							</tr>
+						{% endfor %}
+						</tbody>
+					</table>
+				{% else %}
+					<legend class="text-centered no-border">{% trans 'No new registrations' %}</legend>
+				{% endif %}
+			</div>
+		</div>
+	</div>
+{% endblock %}

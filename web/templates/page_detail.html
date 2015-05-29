@@ -1,0 +1,231 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load cms_tags %}
+{% load widget_tweaks %}
+
+{% block title %}{{ menu.name }}{% endblock %}
+
+{% block content %}
+	<div class="col-2">
+		<div>
+			{% if menus.level2 %}
+				<ul class="tabs">
+					{% for m in menus.level2 %}
+						{% if not forloop.last %}
+							<li{% if m.active %} class="selected"{% endif %}>
+								<a href="{% link menu m.id %}">{{ m.name }}</a>
+							</li>
+						{% else %}
+							<li class="last{% if m.active %} selected{% endif %}"><a href="{% link menu m.id %}">{{ m.name }}</a></li>
+						{% endif %}
+					{% endfor %}
+				</ul>
+			{% endif %}
+			{% if menus.level3 %}<br/><br/><br/>{% endif %}
+			<div>
+				{% if menus.level3 %}
+					<ul class="tabs tabs_inner">
+						{% for m in menus.level3 %}
+							<li{% if m.active %} class="selected"{% endif %}>
+								<a href="{% link menu m.id %}">{{ m.name }}</a>
+							</li>
+						{% endfor %}
+					</ul>
+				{% endif %}
+				<div class="indent{% if menus.level3 %} borderl{% endif %}">
+					<h2 class="arr">{{ page.name }}</h2>
+					{% autoescape off %}
+						<div class="ohidden">
+							{{ page.content }}
+						</div>
+					{% endautoescape %}
+					{% if page.attachments.all %}
+						<div class="page-attachments">
+							<ul>
+								{% for attachment in page.attachments.all %}
+									<li>
+										<a href="{% link cms:get_attach attachment.id %}">{{ attachment.name }}</a>
+									</li>
+								{% endfor %}
+							</ul>
+						</div>
+					{% endif %}
+
+					{% if similar_pages %}
+						<div class="sep3 marb0"></div>
+							<h4>Статьи по теме:</h4>
+							<div class="indent">
+								{% for similar_page in similar_pages %}
+									<div class="mart10">
+										<div>
+											<strong>
+												<a href="{{ similar_page.link_detail }}" class="news-name">
+													{{ similar_page.name }}
+												</a>
+											</strong></div>
+										{{ similar_page.annotation|default:"" }}
+									</div>
+								{% endfor %}
+							</div>
+						<div class="sep3"></div>
+					{% endif %}
+					<br /><br />
+					<div class="rating-block">
+						<div class="ohidden">
+							<div class="fleft">Оцените эту публикацию: </div>
+							<div class="fleft marl10" data-bind="starRating: points, click: vote"></div>
+							<div class="clear"><span style="color: green;" data-bind="text: message"></span></div>
+							<div class="mart10">
+								Голосов: <span data-bind="text: votes"></span>,
+								Среднее: <span data-bind="text: avg"></span>
+							</div>
+						</div>
+					</div>
+					<div class="comments-block">
+						<div class="mart50">Коментарии ({{ comments.count }})</div>
+						{% for comment in comments %}
+							<div class="mart30">
+								<a href="" class="repl_name">{{ comment.user|full_name }}</a>, {{ comment.last_modified }}
+								{% if user.is_authenticated %}
+									<a href="#comment-{{ forloop.counter }}-reply" class="blue marl10 comment-reply">#</a>
+								{% endif %}
+								{% if user == comment.user or user.is_superuser or user.profile.is_moderator %}
+									<span class="decor" style="padding-left: 10px;">
+										<a href="{% link page_comment_delete comment.id %}">Удалить</a>
+									</span>
+								{% endif %}
+							</div>
+							<div class="repl_block">
+								<div id="comment-{{ forloop.counter }}-reply" class="mart20 comment">
+									{{ comment.message|blockquote }}
+								</div>
+							</div>
+						{% endfor %}
+						{% if user.is_authenticated %}
+							<div class="mart30 ohidden">
+								<div class="title relative">
+									<div class="tit_r">
+										<div class="tit_l">
+											<div class="indent">{{ user|full_name }}</div>
+										</div>
+									</div>
+								</div>
+								<div class="clear"></div>
+								<div class="comment_text relative">
+									<div class="indent">
+										{% if comment_success %}
+											<span style="color: green;">Коментарий успешно отправлен.</span>
+										{% elif comment_form.errors %}
+											<span style="color: red;">{{ comment_form.errors }}</span>
+										{% else %}
+											Комментарии публикуются на сайте только после проверки модератором
+										{% endif %}
+										<form action="{{ page.link_detail }}" method="post">
+											{{ comment_form.message|attr:"cols:79"|attr:"rows:5" }}
+											{{ comment_form.user }}
+											{{ comment_form.page }}
+											{% csrf_token %}
+											<button type="submit" name="submit_comment" value="send">Отправить</button>
+										</form>
+									</div>
+								</div>
+							</div>
+						{% else %}
+							<div class="mart20">
+								<strong>Только зарегистрированные пользователи могут оставлять комментарии.</strong>
+							</div>
+						{% endif %}
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="sep3"></div>
+	</div>
+{% endblock %}
+
+{% block js_libs %}
+	{{ block.super }}
+	<script src="{% static 'js/libs/knockout-2.2.0.js' %}"></script>
+{% endblock %}
+
+{% block js_raw %}
+	{{ block.super }}
+	<script>
+		(function ($) {
+			$().ready(function() {
+
+				/* Comment's blockquote */
+				$("a.comment-reply").click(function(e) {
+					var comment_block = $($(this).attr("href"))[0];
+					var comment_text = "";
+					for (var i = 0; i < comment_block.childNodes.length; i++) {
+						if (comment_block.childNodes[i].nodeType === 3) {
+							comment_text += $(comment_block.childNodes[i]).text();
+						}
+					}
+					$("#id_message").text("[blockquote]"+ $.trim(comment_text)+"[/blockquote]");
+					e.preventDefault();
+				});
+
+				/* Star Rating */
+				ko.bindingHandlers.starRating = {
+					init: function(element, valueAccessor) {
+						$(element).addClass("rating");
+						for (var i = 0; i < 5; i++)
+							$("<span>").appendTo(element);
+
+						$("span", element).each(function(index) {
+							$(this).hover(
+								function() { $(this).prevAll().add(this).addClass("rating-star_hover") },
+								function() { $(this).prevAll().add(this).removeClass("rating-star_hover") }
+							).click(function() {
+								var observable = valueAccessor();
+								observable(index+1);
+							});
+						});
+					},
+					update: function(element, valueAccessor) {
+						var observable = valueAccessor();
+						$("span", element).each(function(index) {
+							$(this).toggleClass("rating-star_chosen", index < observable());
+						});
+					}
+				};
+
+				function StarRatingViewModel() {
+					var self = this;
+					self.voted = false; // For preventing double votes
+					self.votes = ko.observable({{ star_rating.votes }});
+					self.total = ko.observable({{ star_rating.total }});
+					self.message = ko.observable();
+					self.avg = ko.computed(function() {
+						return (self.total() / self.votes()).toFixed(2);
+					});
+					self.points = ko.observable(Math.round(self.avg()));
+
+					self.vote = function() {
+						if (!self.voted) {
+							$.ajax({
+								type: 'POST',
+								dataType: 'json',
+								url: '{% link star_rating_vote star_rating.id %}',
+								data: {rate: self.points, csrfmiddlewaretoken: '{{ csrf_token }}'},
+								success: function(data) {
+									self.votes(data.votes);
+									self.total(data.total);
+									self.message(data.message);
+								}
+							});
+							self.voted = true;
+						} else {
+							self.message('Вы уже ставили оценку.');
+						}
+					};
+				}
+
+				ko.applyBindings(new StarRatingViewModel());
+
+			});
+		} (window.jQuery) );
+	</script>
+{% endblock %}

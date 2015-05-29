@@ -1,0 +1,95 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load widget_tweaks %}
+{% load cms_tags %}
+
+{% block title %}Форма подачи обращения{% endblock %}
+
+{% block content %}
+	<div class="">
+		<h1>Форма подачи обращений физических и юридических лиц</h1>
+		<div class="registr-block mart10 ohidden">
+			{% if success %}
+				<div class="width400">
+					<div class="registration-success">
+						<strong>Ваше обращение успешно отправленно</strong>
+					</div>
+				</div>
+			{% else %}
+				<form action="{% link letters_form %}" method="post" enctype="multipart/form-data">
+					<div class="width400">
+						{% for error in form.non_field_errors %}
+							<div class="ohidden">
+								<div style="text-align: center;">
+									<span class="form-field_error">{{ error }}</span>
+									<br />
+									<br />
+								</div>
+							</div>
+						{% endfor %}
+						<div class="ohidden">
+							<div class="col-1 fleft aright">&nbsp;</div>
+							<div class="col-2 fleft">
+								<label>В электронной форме</label>
+								<input type="checkbox" checked="checked" disabled="disabled">
+								<label>В письменной форме</label>
+								{{ form.reply_by_post }}
+							</div>
+						</div>
+						{% for field in form %}
+							{% if field.name != 'reply_by_post' and field.name != 'reply_by_email' and field.name != 'region' and field.name != 'captcha' %}
+								<div class="ohidden">
+									<div class="col-1 fleft aright">
+										<label>{{ field.label }}{% if field.field.required %}<span class="form-field_error">*</span>{% endif %}: </label>
+									</div>
+									<div class="col-2 fleft">
+										{{ field }}
+									</div>
+									<div style="padding-left: 170px; clear: both;">
+										<span class="form-field_error">{{ field.errors|striptags }}</span>
+									</div>
+								</div>
+							{% endif %}
+						{% endfor %}
+						<div class="ohidden">
+							<div class="col-1 fleft aright">
+								<label>Введите число с картинки<span class="form-field_error">*</span>:</label>
+							</div>
+							<div class="col-2 fleft">
+								{{ form.captcha }}
+							</div>
+							<div style="padding-left: 170px; clear: both;">
+								<span class="form-field_error">{{ form.captcha.errors|striptags }}</span>
+							</div>
+						</div>
+						{% for field in form.hidden_fields %}
+							{{ field }}
+						{% endfor %}
+						{% csrf_token %}
+						<br/>
+						<div class="ohidden" style="display: block;">
+							<input type="submit" value="Отправить" class="fright">
+						</div>
+					</div>
+				</form>
+			{% endif %}
+		</div>
+	</div>
+{% endblock %}
+
+{% block js_raw %}
+	{{ block.super }}
+	<script>
+		(function($) {
+			$(document).ready(function() {
+				$('#js-captcha-refresh').click(function(){
+					$.getJSON('/captcha/refresh/', {}, function(json) {
+						$('#id_captcha_0').attr('value', json['key']);
+						$('.captcha').attr('src', json['image_url']);
+					});
+					return false;
+				});
+			});
+		}(window.jQuery));
+	</script>
+{% endblock %}

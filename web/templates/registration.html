@@ -1,0 +1,103 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load i18n %}
+{% load cms_tags %}
+
+{% block title %}{% trans 'Registration' %}{% endblock %}
+
+{% block css %}
+	{{ block.super }}
+	<link rel="stylesheet" type="text/css" href="{% static 'css/themes/smoothness/jquery-ui-1.9.0.min.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'css/datepicker-custom.css' %}">
+{% endblock %}
+
+{% block content %}
+	<div class="">
+		<h1>регистрация пользоателя на портале совета судей</h1>
+		<div class="registr-block mart10 ohidden">
+			{% if success %}
+				<div class="width400">
+					<div class="registration-success">
+						<strong>Запрос на регистрацию отправлен.</strong>
+					</div>
+				</div>
+			{% else %}
+				<form action="{% link registration %}" method="post">
+					<div class="width400">
+						{% for error in form.non_field_errors %}
+							<div class="ohidden">
+								<div style="text-align: center;">
+									<span class="form-field_error">{{ error }}</span>
+									<br />
+									<br />
+								</div>
+							</div>
+						{% endfor %}
+						{% for field in form %}
+							{% if field.name != 'right_accept' %}
+								<div class="ohidden">
+									<div class="col-1 fleft aright">
+										<label>{{ field.label }}: </label>
+									</div>
+									<div class="col-2 fleft">
+										{{ field }}
+									</div>
+									<div style="padding-left: 170px">
+										<span class="form-field_error">{{ field.errors }}</span>
+									</div>
+								</div>
+							{% endif %}
+						{% endfor %}
+						<div class="ohidden">
+							<div class="fright middle">
+								<span class="fright"><input id="right_accept" type="checkbox" /></span>
+								<label class="fright">Я согласен с правами предоставления услуг</label>
+							</div>
+						</div>
+						<div id="reg_button" class="ohidden" style="display: none;">
+							<input type="submit" value="Зарегистрироваться" class="fright" />
+						</div>
+						{% csrf_token %}
+					</div>
+				</form>
+			{% endif %}
+		</div>
+	</div>
+{% endblock %}
+
+{% block js_libs %}
+	{{ block.super }}
+	<script src="{% static 'js/libs/jquery.ui-1.9.0-core.min.js' %}"></script>
+{% endblock %}
+{% block js_widgets %}
+	{{ block.super }}
+	<script src="{% static 'js/widgets/jquery.ui-1.9.0-datepicker.min.js' %}"></script>
+	<script src="{% static 'js/i18n/jquery.ui-1.9.0-datepicker-ru.min.js' %}"></script>
+{% endblock %}
+{% block js_raw %}
+	{{ block.super }}
+	<script>
+		(function ($) {
+			$().ready(function() {
+				$.datepicker.setDefaults( $.datepicker.regional["ru"] );
+				$("#id_birthday").datepicker();
+			});
+		} (window.jQuery) );
+	</script>
+	{% if not success %}
+		<script>
+			(function ($) {
+				$().ready(function() {
+					$('#right_accept').change(function() {
+						var reg_button = $('#reg_button');
+						if ($(this).attr('checked')) {
+							reg_button.css('display', 'block');
+						} else {
+							reg_button.css('display', 'none');
+						}
+					});
+				});
+			} (window.jQuery) );
+		</script>
+	{% endif %}
+{% endblock %}

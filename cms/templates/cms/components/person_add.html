@@ -1,0 +1,152 @@
+{% extends 'cms/base.html' %}
+{% load static %}
+{% load i18n %}
+{% load widget_tweaks %}
+{% load cms_tags %}
+
+{% block title %}{% trans 'Add new Person' %}{% endblock %}
+
+{% block content %}
+	<div class="container">
+		<div class="row">
+			<div class="span12">
+				<ul class="breadcrumb">
+					{% for node in menu|call_method:"get_ancestors:include_self=True" %}
+						<li>
+							<a href="{% link cms:menu node.id %}">{{ node.name }}</a>
+							{% if not forloop.last %}
+								<span class="divider">/</span>
+							{% endif %}
+						</li>
+					{% endfor %}
+				</ul>
+			</div>
+		</div>
+	</div>
+
+	<div class="container">
+		<div class="row">
+			<div class="span8 offset2">
+				<form action="{% link cms:person_add menu.id %}" enctype="multipart/form-data" method="post">
+					<fieldset>
+						<legend>{% trans 'New Person' %}</legend>
+
+						<div class="controls controls-row">
+							{% if form.full_name.errors %}
+								<label class="text-error">{{ form.full_name.label }}: {{ form.full_name.errors }}</label>
+							{% else %}
+								<label class="muted">{{ form.full_name.label }}</label>
+							{% endif %}
+							{{ form.full_name|add_class:"span4" }}
+
+							<span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+
+							<label class="checkbox inline muted">
+								{{ form.show_on_map }}{{ form.show_on_map.label }}
+							</label>
+						</div>
+
+						{% if form.position.errors %}
+							<label class="text-error">{{ form.position.label }}: {{ form.position.errors }}</label>
+						{% else %}
+							<label class="muted">{{ form.position.label }}</label>
+						{% endif %}
+						{{ form.position|add_class:"span4" }}
+
+						{% if form.photo.errors %}
+							<label class="text-error">{{ form.photo.label }}: {{ form.photo.errors }}</label>
+						{% else %}
+							<label class="muted">{{ form.photo.label }}</label>
+						{% endif %}
+						{{ form.photo|add_class:"span4" }}
+
+						<label class="muted">{{ form.menu.label }}</label>
+						{{ form.menu|add_class:"span4" }}
+
+						{% if form.bio.errors %}
+							<label class="text-error">{{ form.bio.label }}: {{ form.bio.errors }}</label>
+						{% else %}
+							<label class="muted">{{ form.bio.label }}</label>
+						{% endif %}
+						{{ form.bio|add_class:"tinymce span8" }}
+
+						{% for field in form.hidden_fields %}
+							{{ field }}
+						{% endfor %}
+						{% csrf_token %}
+
+						<br>
+
+						<div class="text-centered">
+							<button type="submit" class="btn" name="save" value="save">{% trans 'Save' %}</button>
+						</div>
+					</fieldset>
+				</form>
+			</div>
+		</div>
+	</div>
+{% endblock %}
+{% block js_widgets %}
+	{{ block.super }}
+	<script src="{% static 'js/tiny_mce/tiny_mce.js' %}"></script>
+{% endblock %}
+{% block js_raw %}
+	{{ block.super }}
+	<script>
+		(function ($) {
+			tinyMCE.init({
+
+				// Main settings
+				mode: "specific_textareas",
+				editor_selector: "tinymce",
+				theme: "advanced",
+				language: "{{ LANG|slice:":2" }}",
+				dialog_type: "modal",
+
+				// General settings
+				//width: '500',
+				height: '350',
+				indentation : '10px',
+				fix_list_elements : true,
+				relative_urls: false,
+				remove_script_host : true,
+				accessibility_warnings : false,
+				object_resizing: false,
+				//cleanup: false, // SETTING THIS TO FALSE WILL BREAK EMBEDDING YOUTUBE VIDEOS
+				forced_root_block: "p",
+				remove_trailing_nbsp: true,
+
+				// Theme advanced
+				theme_advanced_toolbar_location: "top",
+				theme_advanced_toolbar_align: "left",
+				theme_advanced_statusbar_location: "",
+				theme_advanced_buttons1: "bold,italic,underline,|,formatselect,|,justifyleft,justifycenter,justifyright,justifyfull,|,outdent,indent,|,code,fullscreen",
+				theme_advanced_buttons2: "hr,|,forecolor,backcolor,|,pasteword,pastetext,|,link,unlink,|,table,|,bullist,numlist,blockquote,|,image,images,media,|,charmap",
+				theme_advanced_buttons3: "",
+				theme_advanced_path: false,
+				theme_advanced_blockformats: "p,h2,h3,h4,pre",
+				theme_advanced_resizing : true,
+				theme_advanced_resize_horizontal : false,
+				theme_advanced_resizing_use_cookie : true,
+				theme_advanced_styles: "Image left-aligned=img_left;Image left-aligned (nospace)=img_left_nospacetop;Image right-aligned=img_right;Image right-aligned (nospace)=img_right_nospacetop;Image Block=img_block",
+				advlink_styles: "intern=internal;extern=external",
+
+				// Plugins
+				plugins: "inlinepopups,contextmenu,tabfocus,searchreplace,fullscreen,advimage,advlink,paste,media,table,images",
+				advimage_update_dimensions_onchange: true,
+				images_url_connector: "{% url tinymce:connector %}",
+
+				// Remove MS Word's inline styles when copying and pasting.
+				paste_remove_spans: true,
+				paste_auto_cleanup_on_paste : true,
+				paste_remove_styles: true,
+				paste_remove_styles_if_webkit: true,
+				paste_strip_class_attributes: true,
+
+				// Allow inline styles
+				inline_styles : true
+			})
+		} (window.jQuery) );
+	</script>
+{% endblock %}
+

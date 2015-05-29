@@ -1,0 +1,53 @@
+{% load i18n %}
+{% load static %}
+
+<div id="regions-chart"></div>
+<br>
+<table class="table table-bordered">
+	<thead>
+	<tr>
+		<th>{% trans 'Country' %}</th>
+		<th>{% trans 'Views' %}</th>
+		<th>{% trans 'Visits' %}</th>
+		<th>{% trans 'Depth view' %}</th>
+		<th>{% trans 'Visit time' %}</th>
+	</tr>
+	</thead>
+	<tbody>
+	{% for country in regions.chld %}
+		<tr style="background-color: #c8e3ef;">
+			<td>{{ country.name }}</td>
+			<td>{{ country.page_views}}</td>
+			<td>{{ country.visits }}</td>
+			<td>{{ country.depth }}</td>
+			<td>{{ country.visit_time }} сек.</td>
+		</tr>
+		{% for region in country.chld %}
+			<tr>
+				<td>{{ region.name }}</td>
+				<td>{{ region.page_views }}</td>
+				<td>{{ region.visits }}</td>
+				<td>{{ region.depth }}</td>
+				<td>{{ region.visit_time }}</td>
+			</tr>
+		{% endfor %}
+	{% endfor %}
+	</tbody>
+</table>
+
+<script>
+	var data = google.visualization.arrayToDataTable([
+		["{% trans 'Region' %}", "{% trans 'Visits' %}"],
+		{% for rc in regions.chld %}
+			{% for region in rc.chld %}
+				{% ifnotequal region.name 'Прочие'%}
+					["{{ region.code }}", {{ region.visits }}],
+				{% endifnotequal %}
+			{% endfor %}
+		{% endfor %}
+		["", 0]
+	]);
+	var chart = new google.visualization.GeoChart(document.getElementById("regions-chart"));
+	chart.draw(data, {region: "RU", resolution: "provinces", width: 760, height: 480});
+</script>
+
